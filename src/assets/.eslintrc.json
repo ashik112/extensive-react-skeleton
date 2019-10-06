@@ -1,0 +1,12 @@
+{
+    "rules": {
+        "quotes": "off",
+        "comma-dangle": "off",
+        "react/jsx-filename-extension": "off",
+        "prefer-template": "off",
+        "react/require-default-props": "off",
+        "import/extensions": "off",
+        "import/prefer-default-export": "off",
+        "max-len": ["off", { "code": 150 }]
+    }
+}

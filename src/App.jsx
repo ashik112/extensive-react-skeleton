@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import Badge from './components/Badge/Badge';
 import './App.css';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Badge color="primary">primary</Badge>
         <p>
           Edit
           <code>src/App.js</code>
