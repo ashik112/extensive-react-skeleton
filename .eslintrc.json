@@ -22,7 +22,7 @@
         "react"
     ],
     "rules": {
-
+        "spaced-comment": "off"
     },
     "settings": {
         "import/resolver": {
