@@ -110,7 +110,7 @@ class Sidebar extends Component {
             </span>
           </Header>
           <Content style={{
-            margin: 5, padding: 5, background: '#fff', minHeight: 280,
+            margin: 5, padding: 5, background: 'transparent', minHeight: 280,
           }}
           >
             <Switch>
