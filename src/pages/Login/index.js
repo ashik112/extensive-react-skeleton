@@ -5,11 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 //import Icon from '@material-ui/core/Icon';
 // @material-ui/icons
-import Email from '@material-ui/icons/Email';
+//import Email from '@material-ui/icons/Email';
 import People from '@material-ui/icons/People';
 import Lock from '@material-ui/icons/Lock';
+
+//import { PageHeader } from 'antd';
+
 // core components
-import Header from '../../components/Header/Header';
+//import Avatar from 'antd/es/avatar';
+//import Header from '../../components/Header/Header';
 //import HeaderLinks from '../../components/Header/HeaderLinks';
 import Footer from '../../components/Footer/Footer';
 import GridContainer from '../../components/Grid/GridContainer';
@@ -23,7 +27,7 @@ import CustomInput from '../../components/CustomInput/CustomInput';
 
 import styles from '../../assets/jss/material-kit-react/views/loginPage';
 
-import image from '../../assets/img/bg7.jpg';
+import image from '../../assets/img/bg3.jpg';
 
 const useStyles = makeStyles(styles);
 
@@ -33,15 +37,16 @@ export default function LoginPage(props) {
     setCardAnimation('');
   }, 700);
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
   const { ...rest } = props;
   return (
     <div>
-      <Header
+      {/*<Header
         absolute
         color="transparent"
         brand="Biznet"
         {...rest}
-      />
+      />*/}
       <div
         className={classes.pageHeader}
         style={{
@@ -55,9 +60,9 @@ export default function LoginPage(props) {
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
-                    <h4>Login</h4>
-                    <div className={classes.socialLine}>
+                  <CardHeader color="success" className={classes.cardHeader}>
+                    Biznet
+                    {/*<div className={classes.socialLine}>
                       <Button
                         justIcon
                         href="#pablo"
@@ -85,12 +90,12 @@ export default function LoginPage(props) {
                       >
                         <i className="fab fa-google-plus-g" />
                       </Button>
-                    </div>
+                    </div>*/}
                   </CardHeader>
-                  <p className={classes.divider}>Or Be Classical</p>
+                  {/*<p className={classes.divider}>Or Be Classical</p>*/}
                   <CardBody>
                     <CustomInput
-                      labelText="First Name..."
+                      labelText="Username"
                       id="first"
                       formControlProps={{
                         fullWidth: true,
@@ -104,21 +109,21 @@ export default function LoginPage(props) {
                         ),
                       }}
                     />
-                    <CustomInput
+                    {/*<CustomInput
                       labelText="Email..."
                       id="email"
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
-                        type: 'email',
+                        type: 'text',
                         endAdornment: (
                           <InputAdornment position="end">
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
                       }}
-                    />
+                    />*/}
                     <CustomInput
                       labelText="Password"
                       id="pass"
@@ -137,8 +142,8 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
-                      Get started
+                    <Button block color="success">
+                      Submit
                     </Button>
                   </CardFooter>
                 </form>
