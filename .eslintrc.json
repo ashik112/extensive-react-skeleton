@@ -22,7 +22,8 @@
         "react"
     ],
     "rules": {
-        "spaced-comment": "off"
+        "spaced-comment": "off",
+        "object-curly-spacing": "warn"
     },
     "settings": {
         "import/resolver": {

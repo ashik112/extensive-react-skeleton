@@ -1,6 +1,8 @@
 import React from 'react';
+import { Popconfirm, Icon } from 'antd';
 import logo from './logo.svg';
 import Badge from './components/Badge/Badge';
+import Button from './components/CustomButtons/Button';
 import './App.css';
 
 function App() {
@@ -22,6 +24,14 @@ function App() {
         >
           Learn React
         </a>
+        <Popconfirm
+          title="Are your sure?"
+          icon={<Icon type="question-circle" style={{ color: 'red' }} />}
+        >
+          <Button color="rose">
+            Test Antd
+          </Button>
+        </Popconfirm>
       </header>
     </div>
   );
