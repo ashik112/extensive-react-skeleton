@@ -6,8 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 //import Icon from '@material-ui/core/Icon';
 // @material-ui/icons
 //import Email from '@material-ui/icons/Email';
-import People from '@material-ui/icons/People';
-import Lock from '@material-ui/icons/Lock';
+import { People, Lock } from '@material-ui/icons';
 
 //import { PageHeader } from 'antd';
 
@@ -57,7 +56,7 @@ export default function LoginPage(props) {
       >
         <div className={classes.container}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={4}>
+            <GridItem xs={10} sm={10} md={4}>
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
                   <CardHeader color="success" className={classes.cardHeader}>
