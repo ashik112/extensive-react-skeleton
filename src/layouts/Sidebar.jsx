@@ -70,10 +70,11 @@ class Sidebar extends Component {
           collapsible
           collapsed={collapsed}
           onCollapse={this.onCollapse}
+          theme="light"
         >
           <div className="logo" />
           {/* values in the selectedKeys will be highlighted */}
-          <Menu selectedKeys={[this.shouldMenuHighlight()]} theme="dark" mode="inline">
+          <Menu selectedKeys={[this.shouldMenuHighlight()]} theme="light" mode="inline">
             <Menu.Item key="/dashboard">
               <Icon type="home" />
               <span>Dashboard</span>
@@ -110,10 +111,13 @@ class Sidebar extends Component {
             </span>
           </Header>
           <Content style={{
-            margin: 5, padding: 5, background: 'transparent', minHeight: 280,
+            margin: 5, padding: 5, background: '#f1f4f6', minHeight: 280,
           }}
           >
-            <Switch>
+            <Switch
+              checkedChildren="Dark"
+              unCheckedChildren="Light"
+            >
               {menuRoutes.map((route) => ((route.path === historyRoutes.dashboard)) && (
                 <PrivateRoute
                   key={route.path}
@@ -126,9 +130,9 @@ class Sidebar extends Component {
               <Route component={NotFound} />
             </Switch>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
+          {/*<Footer style={{ textAlign: 'center' }}>
             Farm Management ©2020 Created by Eon InfoSys Technology
-          </Footer>
+          </Footer>*/}
         </Layout>
 
       </Layout>
