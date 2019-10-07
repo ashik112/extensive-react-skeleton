@@ -56,7 +56,7 @@ Versions may change in the future and more libraries will be added.
 2. "prop-types": "^15.7.2"
 3. "react-scripts": "3.2.0"
 4. "react-dom": "^16.10.1"
-#### Webpack Customization `caution required`
+#### Webpack Customization `(caution required)`
 1. "customize-cra": "^0.8.0"
 2. "react-app-rewired": "^2.1.3"
 3. "babel-plugin-import": "^1.12.2" `(dev)`
