@@ -8,6 +8,12 @@ const notificationReducer = (state = {}, action) => {
         title: 'Success',
         body: action.payload,
       };
+    case notificationActionTypes.WARNING:
+      return {
+        type: 'warning',
+        title: 'Warning',
+        body: action.payload,
+      };
     case notificationActionTypes.ERROR:
       return {
         type: 'error',

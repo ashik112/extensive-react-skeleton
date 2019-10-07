@@ -50,12 +50,30 @@ export function showNotification() {
   try {
     // get alert data from store
     const { notificationReducer } = store.getState();
-    const { type, body } = notificationReducer;
+    const { type, body, title } = notificationReducer;
     switch (type) {
       case 'success':
-        return message.warning(body);
+        return notification.success({
+          message: <span style={{ color: 'white' }}>{title}</span>,
+          description: body,
+          duration: 3,
+          icon: <Icon type="file-done" style={{ color: 'white' }} />,
+          style: {
+            background: '#4caf50',
+            boxShadow: '0 14px 26px -12px rgba(76, 175, 80, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2)',
+          },
+        });
       case 'warning':
-        return message.warning(body);
+        return notification.warning({
+          message: <span style={{ color: 'white' }}>{title}</span>,
+          description: body,
+          duration: 3,
+          icon: <Icon type="exclamation-circle" style={{ color: 'white' }} />,
+          style: {
+            background: '#ff9800',
+            boxShadow: '0 14px 26px -12px rgba(255, 152, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(255, 152, 0, 0.2)',
+          },
+        });
       case 'error':
         return notification.error({
           message: <span style={{ color: 'white' }}>Error!</span>,
