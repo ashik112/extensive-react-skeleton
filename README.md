@@ -77,7 +77,7 @@ Versions may change in the future and more libraries will be added.
 1. "source-map-explorer": "^2.1.0"
 #### Http
 1. "axios": "^0.19.0"
-#### React Material Kit
+#### [React Material Kit](https://demos.creative-tim.com/material-kit-react/#/documentation/cards)
 1. "@material-ui/core": "4.3.2"
 2. "@material-ui/icons": "4.2.1"
 3. "classnames": "2.2.6"
@@ -93,7 +93,7 @@ Versions may change in the future and more libraries will be added.
 4. "eslint-plugin-jsx-a11y": "^6.2.3" `(dev)`
 5. "eslint-plugin-react": "^7.15.1" `(dev)`
 6. "eslint-plugin-react-hooks": "^1.7.0" `(dev)`
-### Ant Design
+### [Ant Design](https://ant.design/docs/react/introduce)
 1. "antd": "^3.23.6"
 2. "less": "^3.10.3"
 3. "less-loader": "^5.0.0"
