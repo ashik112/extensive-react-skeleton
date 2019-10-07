@@ -32,15 +32,15 @@ Runs multiple scripts with `npm-run-all`. Currently runs `yarn lint`.
 #### `yarn lint`
 Fixes linting and finds lint error in `src` directory.
 
-
 Analyzes the bundle size after having a build.
-
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `yarn eject`
 
-**`Extreme Caution`: this is a one-way operation. Once you `eject`, you can’t go back!**
+>`Extreme Caution`
+
+`Note`: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
@@ -140,32 +140,32 @@ Versions may change in the future and more libraries will be added.
 └── .gitignore
 ```
 #### `assets`
-Images, CSS and `React Material Kit` assets.
+>Images, CSS and `React Material Kit` assets.
 #### `layouts`
-Sidebare, Header, Footer etc.
+>Sidebare, Header, Footer etc.
 #### `pages`
-Dashboard, LoginPage etc.
+>Dashboard, LoginPage etc.
 #### `modules`
-LoginForm, MonthlySalesChart etc.
+>LoginForm, MonthlySalesChart etc.
 #### `neutrals`
-Input, Button etc.
+>Input, Button etc.
 #### `redux`
-All redux related code.
+>All redux related code.
 #### `routes`
-Page routing. `PrivateRoute.jsx` is for authenticated routing.
+>Page routing. `PrivateRoute.jsx` is for authenticated routing.
 #### `services`
-Reusable services goes here. They can be used throughout the whole application.
+>Reusable services goes here. They can be used throughout the whole application.
 Example: Api Service, Storage Service.
 #### `components`
-`React Material Kit` components.
+>`React Material Kit` components.
 #### `jsconfig.json`
-To specify base url as `src`
+>To specify base url as `src`
 #### `config-overrides.js`
-Custom webpack config.
+>Custom webpack config.
 #### `.babelrc.js`
-Babel plugin import.
+>Babel plugin import.
 #### `.eslintrc.json`
-Linting config and rules. `(eslint)`
+>Linting config and rules. `(eslint)`
 
 
 ## Learn More
