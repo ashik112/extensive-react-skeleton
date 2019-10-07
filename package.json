@@ -25,7 +25,8 @@
     "react-swipeable-views": "0.13.3",
     "redux": "^4.0.4",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "source-map-explorer": "^2.1.0"
   },
   "husky": {
     "hooks": {
@@ -39,7 +40,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"
