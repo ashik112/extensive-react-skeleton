@@ -58,7 +58,7 @@ export function showNotification() {
         return message.warning(body);
       case 'error':
         return notification.error({
-          message: <span style={{color: 'white'}}>Error!</span>,
+          message: <span style={{ color: 'white' }}>Error!</span>,
           description: body,
           duration: 3,
           icon: <Icon type="close-circle" style={{ color: 'white' }} />,
