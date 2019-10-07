@@ -153,6 +153,9 @@ Input, Button etc.
 All redux related code.
 #### `routes`
 Page routing. `PrivateRoute.jsx` is for authenticated routing.
+#### `services`
+Reusable services goes here. They can be used throughout the whole application.
+Example: Api Service, Storage Service.
 #### `components`
 `React Material Kit` components.
 #### `jsconfig.json`
