@@ -99,6 +99,8 @@ Versions may change in the future and more libraries will be added.
 6. "eslint-plugin-react-hooks": "^1.7.0" `(dev)`
 ### Ant Design
 1. "antd": "^3.23.6"
+2. "less": "^3.10.3"
+3. "less-loader": "^5.0.0"
 
 
 ## Learn More
