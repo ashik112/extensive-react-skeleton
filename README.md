@@ -140,7 +140,7 @@ Versions may change in the future and more libraries will be added.
 └── .gitignore
 ```
 #### `assets`
-Images, CSS and React Material Kit assets.
+Images, CSS and `React Material Kit` assets.
 #### `layouts`
 Sidebare, Header, Footer etc.
 #### `pages`
@@ -154,7 +154,7 @@ All redux related code.
 #### `routes`
 Page routing. `PrivateRoute.jsx` is for authenticated routing.
 #### `components`
-React Material Kit components.
+`React Material Kit` components.
 #### `jsconfig.json`
 To specify base url as `src`
 #### `config-overrides.js`
