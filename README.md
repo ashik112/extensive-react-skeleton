@@ -5,35 +5,31 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `yarn start`
-
+#### `yarn start`
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
-
+#### `yarn test`
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
+#### `yarn build`
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-### `yarn analyze`
-
+#### `yarn analyze`
 Analyzes the bundle size after having a build.
 
-### `yarn validate`
+#### `yarn validate`
 Runs multiple scripts with `npm-run-all`. Currently runs `yarn lint`.
 
-### `yarn lint`
+#### `yarn lint`
 Fixes linting and finds lint error in `src` directory.
 
 
@@ -102,6 +98,72 @@ Versions may change in the future and more libraries will be added.
 2. "less": "^3.10.3"
 3. "less-loader": "^5.0.0"
 
+# Folder Structure
+```
+├── src
+│   ├── assets
+│   ├── layouts
+│   ├── pages
+│   ├── modules
+│   ├── neutrals
+│   ├── constants
+│   │   ├── index.js.temp
+│   ├── redux
+│   │   ├── actions
+│   │   ├── actionTypes
+│   │   ├── reducers
+│   │   ├── store.js
+│   ├── routes
+│   │   ├── index.js
+│   │   ├── PrivateRoute.jsx
+│   ├── services
+│   │   ├── **/*.js
+│   ├── components
+│   ├── Root.js
+│   ├── index.js
+│   ├── index.css
+│   └── serviceWorker.js
+├── dist (or build)
+├── public
+│   ├── index.html
+│   ├── favicon.ico
+│   ├── manifest.json
+├── node_modules
+├── test
+├── jsconfig.json
+├── .babelrc.js
+├── .config-overrides.js
+├── README.md
+├── package.json
+├── yarn.lock
+├── README.md
+└── .gitignore
+```
+#### `assets`
+Images, CSS and React Material Kit assets.
+#### `layouts`
+Sidebare, Header, Footer etc.
+#### `pages`
+Dashboard, LoginPage etc.
+#### `modules`
+LoginForm, MonthlySalesChart etc.
+#### `neutrals`
+Input, Button etc.
+#### `redux`
+All redux related code.
+#### `routes`
+Page routing. `PrivateRoute.jsx` is for authenticated routing.
+#### `components`
+React Material Kit components.
+#### `jsconfig.json`
+To specify base url as `src`
+#### `config-overrides.js`
+Custom webpack config.
+#### `.babelrc.js`
+Babel plugin import.
+#### `.eslintrc.json`
+Linting config and rules. `(eslint)`
+
 
 ## Learn More
 
@@ -111,24 +173,24 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This section has moved here: <https://facebook.github.io/create-react-app/docs/code-splitting>
 
 ### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+This section has moved here: <https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size>
 
 ### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+This section has moved here: <https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app>
 
 ### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+This section has moved here: <https://facebook.github.io/create-react-app/docs/advanced-configuration>
 
 ### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+This section has moved here: <https://facebook.github.io/create-react-app/docs/deployment>
 
 ### `yarn build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This section has moved here: <https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify>
