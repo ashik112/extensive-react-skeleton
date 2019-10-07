@@ -13,7 +13,7 @@ export default function DashboardPage() {
       <Row gutter={8}>
         <Col span={12}>
           <Card>
-            <CardHeader color="danger">
+            <CardHeader color="success">
               Biznet Dashboard
             </CardHeader>
             <CardBody>
