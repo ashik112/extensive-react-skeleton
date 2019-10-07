@@ -14,7 +14,7 @@ import NotFound from '../pages/NotFound';
 //import userActions from '../redux/actions/userActions';
 
 const {
-  Header, Content, Sider, Footer,
+  Header, Content, Sider,
 } = Layout;
 
 // const { SubMenu } = Menu;
