@@ -1,7 +1,11 @@
 import userActionTypes from '../actionTypes/userActionTypes';
 
 // const user = JSON.parse(storageService.get(storageService.keys.user));
-const initialState = {};
+const initialState = {
+  loading: false,
+  loggedIn: false,
+  user: {},
+};
 
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
@@ -9,7 +13,6 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         loading: true,
-        user: action.user,
       };
     case userActionTypes.LOGIN_SUCCESS:
       return {
@@ -25,7 +28,6 @@ export default function userReducer(state = initialState, action) {
       };
     case userActionTypes.LOGOUT:
       return {
-        ...state,
         loggedIn: false,
         loading: false,
         user: {},

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import { store, persistor } from './redux/store';
 import Root from './Root';
 import * as serviceWorker from './serviceWorker';

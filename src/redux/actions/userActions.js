@@ -2,8 +2,8 @@ import userActionTypes from '../actionTypes/userActionTypes';
 import apiService from '../../services/apiService';
 import { historyRoutes } from '../../routes';
 import history from '../../services/history';
-import companyActionTypes from '../actionTypes/companyActionsTypes';
-import alertActions from './alertActions';
+//import companyActionTypes from '../actionTypes/companyActionsTypes';
+import notificationActions from './notificationActions';
 
 const login = (credentials) => {
   function request(user) {
@@ -20,8 +20,10 @@ const login = (credentials) => {
 
   return async (dispatch) => {
     const { username } = credentials;
-    dispatch({ type: companyActionTypes.CLEAR });
-    dispatch(request({ username }));
+    // dispatch({ type: companyActionTypes.CLEAR });
+    await dispatch(request({ username }));
+    // ! Show Loading on Log In button for 1 sec
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     await apiService.login(credentials)
       .then((res) => {
         if (res.data.token) {
@@ -31,10 +33,10 @@ const login = (credentials) => {
       })
       .catch((error) => {
         try {
-          dispatch(alertActions.error(error.response.statusText));
+          dispatch(notificationActions.error(error.response.message));
           dispatch(failure(error));
         } catch (e) {
-          dispatch(alertActions.error('Unexpected Error'));
+          dispatch(notificationActions.error('Unexpected Error. Please contact administration.'));
           dispatch(failure(error));
         }
       });
