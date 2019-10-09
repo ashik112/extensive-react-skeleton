@@ -5,23 +5,23 @@ import { makeStyles } from '@material-ui/core/styles';
 //import { People, Lock } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Footer from '../../components/Footer/Footer';
-import GridContainer from '../../components/Grid/GridContainer';
-import GridItem from '../../components/Grid/GridItem';
+import Footer from '../../../../components/Footer/Footer';
+import GridContainer from '../../../../components/Grid/GridContainer';
+import GridItem from '../../../../components/Grid/GridItem';
 //import Button from '../../components/CustomButtons/Button';
-import Card from '../../components/Card/Card';
-import CardBody from '../../components/Card/CardBody';
-import CardHeader from '../../components/Card/CardHeader';
+import Card from '../../../../components/Card/Card';
+import CardBody from '../../../../components/Card/CardBody';
+import CardHeader from '../../../../components/Card/CardHeader';
 //import CardFooter from '../../components/Card/CardFooter';
 //import CustomInput from '../../components/CustomInput/CustomInput';
-import styles from '../../assets/jss/material-kit-react/views/loginPage';
-import image from '../../assets/img/background.svg';
-import userActions from '../../redux/actions/userActions';
-import LoginForm from '../../modules/LoginForm';
+import styles from '../../../../assets/jss/material-kit-react/views/loginPage';
+import image from '../../../../assets/img/background.svg';
+import authActions from '../../redux/actions';
+import LoginForm from '../templates/LoginForm';
 
 const useStyles = makeStyles(styles);
 
-function LoginPage({ onLogIn, userReducer }) {
+function LoginPage({ onLogIn, authReducer }) {
   const [cardAnimaton, setCardAnimation] = React.useState('cardHidden');
   setTimeout(() => {
     setCardAnimation('');
@@ -48,7 +48,7 @@ function LoginPage({ onLogIn, userReducer }) {
                 {/*<p className={classes.divider}>Or Be Classical</p>*/}
                 <CardBody>
                   <LoginForm
-                    loading={userReducer.loading}
+                    loading={authReducer.loading}
                     handleLogin={(credentials) => onLogIn(credentials)}
                   />
                 </CardBody>
@@ -64,24 +64,24 @@ function LoginPage({ onLogIn, userReducer }) {
 
 LoginPage.defaultProps = {
   onLogIn: () => { },
-  userReducer: {},
+  authReducer: {},
 };
 
 LoginPage.propTypes = {
-  userReducer: PropTypes.shape(),
+  authReducer: PropTypes.shape(),
   onLogIn: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
-  const { userReducer } = state;
+  const { authReducer } = state;
   return {
-    userReducer,
+    authReducer,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onLogIn: (credentials) => dispatch(
-    userActions.login(
+    authActions.login(
       credentials,
     ),
   ),

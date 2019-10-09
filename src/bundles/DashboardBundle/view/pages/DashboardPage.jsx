@@ -3,9 +3,9 @@ import React from 'react';
 import {
   Row, Col,
 } from 'antd';
-import Card from '../../components/Card/Card';
-import CardBody from '../../components/Card/CardBody';
-import CardHeader from '../../components/Card/CardHeader';
+import Card from '../../../../components/Card/Card';
+import CardBody from '../../../../components/Card/CardBody';
+import CardHeader from '../../../../components/Card/CardHeader';
 
 export default function DashboardPage() {
   return (

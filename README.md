@@ -101,10 +101,24 @@ Versions may change in the future and more libraries will be added.
 # Folder Structure
 ```
 ├── src
+│   ├── bundles
+│   │   ├── AuthenticationBundle
+│   │   │   ├── redux
+│   │   │   │   ├──  actions.js
+│   │   │   │   ├──  actionTypes.js
+│   │   │   │   ├──  reducer.js
+│   │   │   ├── view
+│   │   │   │   ├──  pages
+│   │   │   │   │   ├── **/*.jsx
+│   │   │   │   ├──  modules
+│   │   │   │   │   ├── **/*.jsx
+│   │   │   │   ├──  templates
+│   │   │   │   │   ├── **/*.jsx
+│   │   ├── ...
 │   ├── assets
 │   ├── layouts
 │   ├── pages
-│   ├── modules
+│   ├── templates
 │   ├── neutrals
 │   ├── constants
 │   │   ├── index.js.temp
@@ -139,13 +153,20 @@ Versions may change in the future and more libraries will be added.
 ├── README.md
 └── .gitignore
 ```
+#### `bundles`
+> AuthenticationBundle, DashboardBundle, CompanyBundle, PurchaseBundle etc.
+
+> `redux`: redux related codes are here for a particular module. `reducer.js` must be exported
+>and imported in `src/redux/reducers/index.js` to be included in `combineReducers`.
+
+> `view`: will follow the design structure of pages, templates, neutrals for a particular bundle.
 #### `assets`
 >Images, CSS and `React Material Kit` assets.
 #### `layouts`
 >Sidebare, Header, Footer etc.
 #### `pages`
 >Dashboard, LoginPage etc.
-#### `modules`
+#### `templates`
 >LoginForm, MonthlySalesChart etc.
 #### `neutrals`
 >Input, Button etc.

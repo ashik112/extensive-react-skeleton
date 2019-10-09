@@ -4,10 +4,10 @@ import { serverURL } from '../constants';
 import storageService from './storageService';
 import history from './history';
 import { historyRoutes } from '../routes';
-import userActionTypes from '../redux/actionTypes/userActionTypes';
+import authActionTypes from '../bundles/AuthenticationBundle/redux/actionTypes';
 import { store } from '../redux/store';
 
-export const apiPrefix = '/api/v1';
+export const apiPrefix = '/api';
 
 /**
  * * [routes for apis]
@@ -22,7 +22,7 @@ function authHeaderProvider() {
     // const user = JSON.parse(storageService.get(storageService.keys.user));
 
     // * get company id from redux store
-    const { userReducer: { user } } = store.getState();
+    const { authReducer: { user } } = store.getState();
     /*const { companyReducer } = store.getState();*/
     /*const companyID = companyReducer.company.id;*/
 
@@ -50,7 +50,7 @@ function logout(dispatch) {
   // remove company id from local storage
   // storageService.remove(storageService.keys.companyID);
   try {
-    dispatch({ type: userActionTypes.LOGOUT });
+    dispatch({ type: authActionTypes.LOGOUT });
     // dispatch({ type: companyActionTypes.CLEAR });
     dispatch({ type: 'RESET_APP' });
     storageService.clear();

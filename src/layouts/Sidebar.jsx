@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { menuRoutes, historyRoutes } from '../routes';
 import PrivateRoute from '../routes/PrivateRoute';
 import NotFound from '../pages/NotFound';
-//import userActions from '../redux/actions/userActions';
+//import authActions from '../redux/actions/authActions';
 
 const {
   Header, Content, Sider,
@@ -146,7 +146,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   userLogOut: () => dispatch(
-    // userActions.logout(),
+    // authActions.logout(),
     () => {},
   ),
 });

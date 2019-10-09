@@ -1,7 +1,7 @@
 /**
  * * [Routes for Sidebar]
  */
-import DashboardPage from '../pages/Dashboard';
+import DashboardPage from '../bundles/DashboardBundle/view/pages/DashboardPage';
 
 /**
  * * [routes for history]

@@ -4,7 +4,7 @@ import {
   Form, Icon, Input,
 } from 'antd';
 import { CircularProgress } from '@material-ui/core';
-import Button from '../components/CustomButtons/Button';
+import Button from '../../../../components/CustomButtons/Button';
 //import './LoginForm.scss';
 
 class LoginForm extends Component {
