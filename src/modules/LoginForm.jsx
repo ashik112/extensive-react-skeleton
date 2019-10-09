@@ -73,6 +73,7 @@ class LoginForm extends Component {
                   fullWidth
                 >
                   <CircularProgress color="inherit" size={14} />
+                  &nbsp;Log In
                 </Button>
               ) // Size 14 works pretty well
               : (
