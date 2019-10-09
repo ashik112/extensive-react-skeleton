@@ -1,28 +1,29 @@
 /* eslint-disable react/jsx-filename-extension,react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-//import { InputAdornment } from '@material-ui/core';
-//import { People, Lock } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Footer from '../../../../components/Footer/Footer';
 import GridContainer from '../../../../components/Grid/GridContainer';
 import GridItem from '../../../../components/Grid/GridItem';
-//import Button from '../../components/CustomButtons/Button';
 import Card from '../../../../components/Card/Card';
 import CardBody from '../../../../components/Card/CardBody';
 import CardHeader from '../../../../components/Card/CardHeader';
-//import CardFooter from '../../components/Card/CardFooter';
-//import CustomInput from '../../components/CustomInput/CustomInput';
 import styles from '../../../../assets/jss/material-kit-react/views/loginPage';
 import image from '../../../../assets/img/background.svg';
 import authActions from '../../redux/actions';
 import LoginForm from '../templates/LoginForm';
+//import Button from '../../components/CustomButtons/Button';
+//import { InputAdornment } from '@material-ui/core';
+//import { People, Lock } from '@material-ui/icons';
+//import CardFooter from '../../components/Card/CardFooter';
+//import CustomInput from '../../components/CustomInput/CustomInput';
 
 const useStyles = makeStyles(styles);
 
-function LoginPage({ onLogIn, authReducer }) {
+function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
   const [cardAnimaton, setCardAnimation] = React.useState('cardHidden');
+  useEffect(() => stopButtonLoading(), [stopButtonLoading]);
   setTimeout(() => {
     setCardAnimation('');
   }, 700);
@@ -44,8 +45,8 @@ function LoginPage({ onLogIn, authReducer }) {
 
                 <CardHeader color="success" className={classes.cardHeader}>
                   <b>Biznet</b>
+                  {/*<p className={classes.divider}>{('Enter your credentials').toUpperCase()}</p>*/}
                 </CardHeader>
-                {/*<p className={classes.divider}>Or Be Classical</p>*/}
                 <CardBody>
                   <LoginForm
                     loading={authReducer.loading}
@@ -57,6 +58,7 @@ function LoginPage({ onLogIn, authReducer }) {
           </GridContainer>
         </div>
         <Footer whiteFont />
+        {/*<Footer />*/}
       </div>
     </>
   );
@@ -64,12 +66,14 @@ function LoginPage({ onLogIn, authReducer }) {
 
 LoginPage.defaultProps = {
   onLogIn: () => { },
+  stopButtonLoading: () => { },
   authReducer: {},
 };
 
 LoginPage.propTypes = {
   authReducer: PropTypes.shape(),
   onLogIn: PropTypes.func,
+  stopButtonLoading: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -84,6 +88,9 @@ const mapDispatchToProps = (dispatch) => ({
     authActions.login(
       credentials,
     ),
+  ),
+  stopButtonLoading: () => dispatch(
+    authActions.stopLoading(),
   ),
 });
 

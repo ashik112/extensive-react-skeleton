@@ -43,6 +43,10 @@ const login = (credentials) => {
   };
 };
 
+const stopLoading = () => (dispatch) => {
+  dispatch({ type: authActionTypes.LOGIN_LOADING_STOP });
+};
+
 const logout = () => (dispatch) => {
   apiService.logout(dispatch);
 };
@@ -50,6 +54,7 @@ const logout = () => (dispatch) => {
 const authActions = {
   login,
   logout,
+  stopLoading,
 };
 
 export default authActions;
