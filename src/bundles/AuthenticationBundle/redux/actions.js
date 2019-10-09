@@ -1,6 +1,6 @@
 import authActionTypes from './actionTypes';
 import apiService from '../../../services/apiService';
-import { historyRoutes} from '../../../routes';
+import { historyRoutes } from '../../../routes';
 import history from '../../../services/history';
 //import companyActionTypes from '../actionTypes/companyActionsTypes';
 import notificationActions from '../../../redux/actions/notificationActions';
