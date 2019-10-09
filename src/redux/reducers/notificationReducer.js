@@ -5,20 +5,20 @@ const notificationReducer = (state = {}, action) => {
     case notificationActionTypes.SUCCESS:
       return {
         type: 'success',
-        title: 'Success',
-        body: action.payload,
+        title: action.payload.title,
+        body: action.payload.message,
       };
     case notificationActionTypes.WARNING:
       return {
         type: 'warning',
-        title: 'Warning',
-        body: action.payload,
+        title: action.payload.title,
+        body: action.payload.message,
       };
     case notificationActionTypes.ERROR:
       return {
         type: 'error',
-        title: 'Error',
-        body: action.payload,
+        title: action.payload.title,
+        body: action.payload.message,
       };
     case notificationActionTypes.CLEAR:
       return {};

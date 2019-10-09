@@ -33,10 +33,10 @@ const login = (credentials) => {
       })
       .catch((error) => {
         try {
-          dispatch(notificationActions.error(error.response.message));
+          dispatch(notificationActions.error(error.response.statusText, error.response.data.message));
           dispatch(failure(error));
         } catch (e) {
-          dispatch(notificationActions.error('Unexpected Error. Please contact administration.'));
+          dispatch(notificationActions.error('Unexpected Error!', 'Please contact server administration.'));
           dispatch(failure(error));
         }
       });
