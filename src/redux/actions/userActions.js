@@ -6,22 +6,22 @@ import history from '../../services/history';
 import notificationActions from './notificationActions';
 
 const login = (credentials) => {
-  function request(user) {
-    return { type: userActionTypes.LOGIN_REQUEST, user };
+  function request(params) {
+    return { type: userActionTypes.LOGIN_REQUEST, payload: params };
   }
 
   function success(user) {
-    return { type: userActionTypes.LOGIN_SUCCESS, user };
+    return { type: userActionTypes.LOGIN_SUCCESS, payload: user };
   }
 
   function failure(error) {
-    return { type: userActionTypes.LOGIN_FAILURE, error };
+    return { type: userActionTypes.LOGIN_FAILURE, payload: error };
   }
 
   return async (dispatch) => {
-    const { username } = credentials;
+    const { username, password } = credentials;
     // dispatch({ type: companyActionTypes.CLEAR });
-    await dispatch(request({ username }));
+    await dispatch(request({ username, password }));
     // ! Show Loading on Log In button for 1 sec
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await apiService.login(credentials)
@@ -34,7 +34,7 @@ const login = (credentials) => {
       .catch((error) => {
         try {
           dispatch(notificationActions.error(error.response.statusText, error.response.data.message));
-          dispatch(failure(error));
+          dispatch(failure(error.response));
         } catch (e) {
           dispatch(notificationActions.error('Unexpected Error!', 'Please contact server administration.'));
           dispatch(failure(error));
