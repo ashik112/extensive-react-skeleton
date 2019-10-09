@@ -15,7 +15,7 @@ import CardHeader from '../../components/Card/CardHeader';
 //import CardFooter from '../../components/Card/CardFooter';
 //import CustomInput from '../../components/CustomInput/CustomInput';
 import styles from '../../assets/jss/material-kit-react/views/loginPage';
-import image from '../../assets/img/backgroundAntdPro.svg';
+import image from '../../assets/img/background.svg';
 import userActions from '../../redux/actions/userActions';
 import LoginForm from '../../modules/LoginForm';
 
