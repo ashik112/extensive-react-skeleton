@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 import {
-  Link
+  Link,
 } from 'react-router-dom';
 import {
   Layout, Menu, Icon,
 } from 'antd';
 import PropTypes from 'prop-types';
+import { menuRoutes } from '../routes';
 
 const {
   Sider,
@@ -29,16 +30,15 @@ class Sidebar extends Component {
         <div className="logo" />
         {/* values in the selectedKeys will be highlighted */}
         <Menu selectedKeys={[shouldMenuHighlight()]} theme="light" mode="inline">
-          <Menu.Item key="/dashboard">
-            <Icon type="home" />
-            <span>Dashboard</span>
-            <Link to="/dashboard" />
-          </Menu.Item>
-          <Menu.Item key="/404">
-            <Icon type="home" />
-            <span>404</span>
-            <Link to="/404" />
-          </Menu.Item>
+          {
+            menuRoutes.map((route) => route.visibleInSidebar && (
+              <Menu.Item key={route.path}>
+                <Icon type={route.icon} />
+                <span>{route.title}</span>
+                <Link to={route.path} />
+              </Menu.Item>
+            ))
+          }
           <Menu.Item key="/logout" onClick={logout}>
             <Icon type="logout" />
             <span>Logout</span>

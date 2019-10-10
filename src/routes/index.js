@@ -14,8 +14,9 @@ export const historyRoutes = {
 export const menuRoutes = [
   {
     path: historyRoutes.dashboard,
+    icon: 'home',
     exact: true,
-    sidebarTitle: 'Dashboard',
+    title: 'Dashboard',
     visibleInSidebar: true,
     component: DashboardPage,
   },
