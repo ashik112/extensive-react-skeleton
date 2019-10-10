@@ -30,6 +30,7 @@ class LayoutWrapper extends Component {
     this.toggle = this.toggle.bind(this);
     this.logout = this.logout.bind(this);
     this.shouldMenuHighlight = this.shouldMenuHighlight.bind(this);
+    this.onCollapse = this.onCollapse.bind(this);
   }
 
   onCollapse = (collapsed) => {
@@ -70,9 +71,9 @@ class LayoutWrapper extends Component {
     return (
       <>
         <Layout style={{ minHeight: '100vh' }}>
-          { loggedIn && <Sidebar collapsed={collapsed} logout={this.logout} shouldMenuHighlight={this.shouldMenuHighlight} /> }
+          { loggedIn && <Sidebar onCollapse={this.onCollapse} collapsed={collapsed} logout={this.logout} shouldMenuHighlight={this.shouldMenuHighlight} /> }
           <Layout>
-            { loggedIn && <HeaderBar toggleLayoutWrapper={this.toggle} collapsed={collapsed} /> }
+            { loggedIn && <HeaderBar toggleSidebar={this.toggle} collapsed={collapsed} /> }
             <Content style={{
               margin: 5, padding: 5, background: '#f1f4f6', minHeight: 280,
             }}

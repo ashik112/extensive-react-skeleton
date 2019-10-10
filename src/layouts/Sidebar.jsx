@@ -16,7 +16,7 @@ const {
 // const { SubMenu } = Menu;
 class Sidebar extends Component {
   render() {
-    const { collapsed, shouldMenuHighlight, logout } = this.props;
+    const { collapsed, shouldMenuHighlight, logout, onCollapse } = this.props;
     return (
       <Sider
         breakpoint="sm"
@@ -24,7 +24,7 @@ class Sidebar extends Component {
         collapsedWidth="0"
         collapsible
         collapsed={collapsed}
-        onCollapse={this.onCollapse}
+        onCollapse={onCollapse}
         theme="light"
       >
         <div className="logo" />
@@ -53,12 +53,14 @@ Sidebar.propTypes = {
   collapsed: PropTypes.bool,
   shouldMenuHighlight: PropTypes.func,
   logout: PropTypes.func,
+  onCollapse: PropTypes.func,
 };
 
 Sidebar.defaultProps = {
   collapsed: true,
   shouldMenuHighlight: () => {},
   logout: () => {},
+  onCollapse: () => {},
 };
 
 export default Sidebar;
