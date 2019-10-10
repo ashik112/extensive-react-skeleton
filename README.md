@@ -101,94 +101,66 @@ Versions may change in the future and more libraries will be added.
 # Folder Structure
 ```
 ├── src
-│   ├── bundles
-│   │   ├── AuthenticationBundle
-│   │   │   ├── redux
+│   ├── bundles --------------------------------------> CompanyBundle, PurchaseBundle etc.
+│   │   ├── {Title}Bundle
+│   │   │   ├── apiServices --------------------------> all api related code goes here
+│   │   │   ├── redux --------------------------------> redux related codes are here for a particular module
 │   │   │   │   ├──  actions.js
 │   │   │   │   ├──  actionTypes.js
-│   │   │   │   ├──  reducer.js
-│   │   │   ├── view
+│   │   │   │   ├──  reducer.js ----------------------> must be exported and imported in `src/redux/reducers/index.js` to be included in `combineReducers`
+│   │   │   ├── routes
+│   │   │   │   │   ├── index.js ---------------------> history & menu for the bundle routing goes here
+│   │   │   ├── views -----> follow the design structure of pages, templates, atoms
 │   │   │   │   ├──  pages
-│   │   │   │   │   ├── **/*.jsx
+│   │   │   │   │   ├── **/*.jsx ---------------------> DashboardPage, LoginPage etc.
 │   │   │   │   ├──  templates
-│   │   │   │   │   ├── **/*.jsx
+│   │   │   │   │   ├── **/*.jsx ---------------------> LoginForm, MonthlySalesChart etc.
 │   │   │   │   ├──  atoms
-│   │   │   │   │   ├── **/*.jsx
+│   │   │   │   │   ├── **/*.jsx ---------------------> Input, Button etc.
 │   │   ├── ...
-│   ├── assets
+│   ├── assets ---------------------------------------> Images, CSS and `React Material Kit` assets.
 │   ├── layouts
+│   │   ├── HeaderBar.jsx
+│   │   ├── Sidebar.jsx
+│   │   ├── LayoutWrapper.jsx ------------------------> Sidebar.jsx + HeaderBar.jsx
 │   ├── pages
 │   ├── templates
 │   ├── atoms
 │   ├── constants
-│   │   ├── index.js.temp
-│   ├── redux
+│   │   ├── index.js.temp ----------------------------> must be copied/renamed to `index.js`
+│   ├── redux ----------------------------------------> common redux related codes for whole application
 │   │   ├── actions
 │   │   ├── actionTypes
 │   │   ├── reducers
 │   │   ├── store.js
-│   ├── routes
-│   │   ├── index.js
-│   │   ├── PrivateRoute.jsx
-│   ├── services
+│   ├── routes -----------------------------------> page routing
+│   │   ├── index.js -----------------------------> import routes form bundles and export them together
+│   │   ├── AuthenticatedRouting.jsx -------------> when user logged in and authorized
+│   │   ├── UnauthenticatedRouting.jsx -----------> when user not logged in or unauthorized
+│   ├── services ---------------------------------> reusable services goes here to use throughout the application
 │   │   ├── **/*.js
-│   ├── components
+│   ├── components -------------------------------> `React Material Kit` components.
 │   ├── Root.js
 │   ├── index.js
 │   ├── index.css
 │   └── serviceWorker.js
-├── dist (or build)
+├── build (or dist) ------------------------------> `yarn build`
 ├── public
 │   ├── index.html
 │   ├── favicon.ico
 │   ├── manifest.json
 ├── node_modules
 ├── test
-├── jsconfig.json
-├── .babelrc.js
-├── .config-overrides.js
+├── jsconfig.json -------------------------------> specify base url as `src`, needed for `components`
+├── .babelrc.js ---------------------------------> Babel plugin import.
+├── .eslintrc.json ------------------------------> linting config and rules. `(eslint)`
+├── .config-overrides.js ------------------------> Custom webpack config. with `custom-cra`
 ├── README.md
-├── package.json
+├── package.json --------------------------------> packages
 ├── yarn.lock
 ├── README.md
 └── .gitignore
 ```
-#### `bundles`
-> AuthenticationBundle, DashboardBundle, CompanyBundle, PurchaseBundle etc.
-
-> `redux`: redux related codes are here for a particular module. `reducer.js` must be exported
->and imported in `src/redux/reducers/index.js` to be included in `combineReducers`.
-
-> `view`: will follow the design structure of pages, templates, neutrals for a particular bundle.
-#### `assets`
->Images, CSS and `React Material Kit` assets.
-#### `layouts`
->Sidebare, Header, Footer etc.
-#### `pages`
->Dashboard, LoginPage etc.
-#### `templates`
->LoginForm, MonthlySalesChart etc.
-#### `atoms`
->Input, Button etc.
-#### `redux`
->All redux related code.
-#### `routes`
->Page routing. `PrivateRoute.jsx` is for authenticated routing.
-#### `services`
->Reusable services goes here. They can be used throughout the whole application.
-Example: Api Service, Storage Service.
-#### `components`
->`React Material Kit` components.
-#### `jsconfig.json`
->To specify base url as `src`
-#### `config-overrides.js`
->Custom webpack config.
-#### `.babelrc.js`
->Babel plugin import.
-#### `.eslintrc.json`
->Linting config and rules. `(eslint)`
-
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

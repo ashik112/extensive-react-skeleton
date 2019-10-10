@@ -175,6 +175,11 @@ const apiService = {
   routes,
   login,
   logout,
+  get,
+  post,
+  remove,
+  patch,
+  authHeaderProvider,
 };
 
 export default apiService;

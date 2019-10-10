@@ -1,23 +1,20 @@
-import DashboardPage from '../bundles/DashboardBundle/view/pages/DashboardPage';
+import companyRoutes from '../bundles/CompanyBundle/routes';
+import dashboardRoutes from '../bundles/DashboardBundle/routes';
+import authenticationRoutes from '../bundles/AuthenticationBundle/routes';
 
 /**
- * * [routes for history]
+ * * Routes for history
  */
 export const historyRoutes = {
-  dashboard: '/dashboard',
-  login: '/',
+  ...authenticationRoutes.historyRoutes,
+  ...dashboardRoutes.historyRoutes,
+  ...companyRoutes.historyRoutes,
 };
 
 /**
- * * [Routes for Sidebar]
+ * * Routes for Sidebar
  */
 export const menuRoutes = [
-  {
-    path: historyRoutes.dashboard,
-    icon: 'home',
-    exact: true,
-    title: 'Dashboard',
-    visibleInSidebar: true,
-    component: DashboardPage,
-  },
+  ...dashboardRoutes.menuRoutes,
+  ...companyRoutes.menuRoutes,
 ];
