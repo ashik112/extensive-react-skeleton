@@ -110,16 +110,16 @@ Versions may change in the future and more libraries will be added.
 │   │   │   ├── view
 │   │   │   │   ├──  pages
 │   │   │   │   │   ├── **/*.jsx
-│   │   │   │   ├──  modules
-│   │   │   │   │   ├── **/*.jsx
 │   │   │   │   ├──  templates
+│   │   │   │   │   ├── **/*.jsx
+│   │   │   │   ├──  atoms
 │   │   │   │   │   ├── **/*.jsx
 │   │   ├── ...
 │   ├── assets
 │   ├── layouts
 │   ├── pages
 │   ├── templates
-│   ├── neutrals
+│   ├── atoms
 │   ├── constants
 │   │   ├── index.js.temp
 │   ├── redux
@@ -168,7 +168,7 @@ Versions may change in the future and more libraries will be added.
 >Dashboard, LoginPage etc.
 #### `templates`
 >LoginForm, MonthlySalesChart etc.
-#### `neutrals`
+#### `atoms`
 >Input, Button etc.
 #### `redux`
 >All redux related code.
