@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import companyReducer from './companyReducer';
+import companyReducer from '../../bundles/CompanyBundle/redux/reducer';
 import alertReducer from './alertReducer';
 import notificationReducer from './notificationReducer';
 import authReducer from '../../bundles/AuthenticationBundle/redux/reducer';

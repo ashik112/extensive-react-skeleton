@@ -1,4 +1,4 @@
-import apiService from '../../../services/apiService';
+import { get } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
 
 const companyApiRoutes = {
@@ -9,11 +9,11 @@ const companyApiRoutes = {
   companyDelete: (id) => `company/delete/${id}`,
 };
 
-const getCompanyList = (dispatch) => apiService.get(`${serverURL}${companyApiRoutes.companyList}`, dispatch);
-const getCompany = (id, dispatch) => apiService.get(`${serverURL}${companyApiRoutes.company(id)}`, dispatch);
-const updateCompany = (id, dispatch) => apiService.get(`${serverURL}${companyApiRoutes.companyUpdate(id)}`, dispatch);
-const deleteCompany = (id, dispatch) => apiService.get(`${serverURL}${companyApiRoutes.companyDelete(id)}`, dispatch);
-const createCompany = (dispatch) => apiService.get(`${serverURL}${companyApiRoutes.companyCreate}`, dispatch);
+const getCompanyList = (dispatch) => get(`${serverURL}${companyApiRoutes.companyList}`, dispatch);
+const getCompany = (id, dispatch) => get(`${serverURL}${companyApiRoutes.company(id)}`, dispatch);
+const updateCompany = (id, dispatch) => get(`${serverURL}${companyApiRoutes.companyUpdate(id)}`, dispatch);
+const deleteCompany = (id, dispatch) => get(`${serverURL}${companyApiRoutes.companyDelete(id)}`, dispatch);
+const createCompany = (dispatch) => get(`${serverURL}${companyApiRoutes.companyCreate}`, dispatch);
 
 const companyApiService = {
   companyApiRoutes,

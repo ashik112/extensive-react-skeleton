@@ -12,7 +12,7 @@ export const apiPrefix = '/api';
 /**
  * * [routes for apis]
  */
-export const routes = {
+const routes = {
   authLogin: 'login_check',
 };
 
@@ -28,7 +28,7 @@ function authHeaderProvider() {
 
     if (user && user.token) {
       return {
-        'JW-TOKEN': `Bearer ${user.token}`,
+        Authorization: `Bearer ${user.token}`,
         /*'company-id': companyID,*/
         'Content-Type': 'application/json',
       };
@@ -84,7 +84,7 @@ function handleError(error, dispatch) {
  * @param dispatch
  * @returns {Promise<any>}
  */
-async function get(url, dispatch) {
+export async function get(url, dispatch) {
   const headers = await authHeaderProvider();
   return new Promise(((resolve, reject) => {
     axios.get(`${url}`, { headers }).then((response) => {
@@ -180,6 +180,7 @@ const apiService = {
   remove,
   patch,
   authHeaderProvider,
+  serverURL,
 };
 
 export default apiService;

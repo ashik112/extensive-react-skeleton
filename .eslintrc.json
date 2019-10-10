@@ -25,7 +25,8 @@
     "rules": {
         "spaced-comment": "off",
         "object-curly-spacing": "warn",
-        "max-len": ["off", { "code": 250 }]
+        "max-len": ["off", { "code": 250 }],
+        "import/no-cycle": [2, { "maxDepth": 3 }]
     },
     "settings": {
         "import/resolver": {
