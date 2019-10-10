@@ -22,7 +22,14 @@ class LoginForm extends Component {
     const { form, loading } = this.props;
     const { getFieldDecorator } = form;
     return (
-      <Form className="login-form">
+      <Form
+        onKeyPress={(event) => {
+          if (event.key === 'Enter') {
+            this.handleSubmit(event);
+          }
+        }}
+        className="login-form"
+      >
         <Form.Item>
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'please input your username!' }],
