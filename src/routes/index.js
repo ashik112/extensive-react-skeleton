@@ -1,17 +1,4 @@
-/**
- * * [Routes for Sidebar]
- */
-import DashboardPage from '../pages/Dashboard';
-
-export const menuRoutes = [
-  {
-    path: '/dashboard',
-    exact: true,
-    sidebarTitle: 'Dashboard',
-    visibleInSidebar: true,
-    component: DashboardPage,
-  },
-];
+import DashboardPage from '../bundles/DashboardBundle/view/pages/DashboardPage';
 
 /**
  * * [routes for history]
@@ -20,3 +7,17 @@ export const historyRoutes = {
   dashboard: '/dashboard',
   login: '/',
 };
+
+/**
+ * * [Routes for Sidebar]
+ */
+export const menuRoutes = [
+  {
+    path: historyRoutes.dashboard,
+    icon: 'home',
+    exact: true,
+    title: 'Dashboard',
+    visibleInSidebar: true,
+    component: DashboardPage,
+  },
+];

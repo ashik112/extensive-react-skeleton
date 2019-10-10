@@ -1,8 +1,9 @@
+/* eslint-disable */
 /* config-overrides.js */
 const {
   useBabelRc, override, fixBabelImports, addLessLoader,
 } = require('customize-cra');
-
+const path = require('path');
 module.exports = override(
   useBabelRc(),
   fixBabelImports('import', {
@@ -12,6 +13,8 @@ module.exports = override(
   }),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars: { '@primary-color': '#1DA57A' },
+    modifyVars: {
+      'hack': `true; @import "${ path.resolve(__dirname, './src/assets/less/theme.less')}";`,// Override with less file
+    },
   }),
 );

@@ -3,12 +3,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Route, Switch, Router } from 'react-router-dom';
+import { Switch, Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import LoginPage from './pages/Login';
-import Sidebar from './layouts/Sidebar';
+import LoginPage from './bundles/AuthenticationBundle/view/pages/LoginPage';
 import { historyRoutes } from './routes';
 import history from './services/history';
+import UnauthenticatedRouting from './routes/UnauthenticatedRouting';
+import LayoutWrapper from './layouts/LayoutWrapper';
 
 const Root = ({ store, persistor }) => (
   <Provider store={store}>
@@ -16,8 +17,8 @@ const Root = ({ store, persistor }) => (
     <PersistGate loading={null} persistor={persistor}>
       <Router history={history}>
         <Switch>
-          <Route exact path={historyRoutes.login} component={LoginPage} />
-          <Sidebar />
+          <UnauthenticatedRouting exact path={historyRoutes.login} component={LoginPage} />
+          <LayoutWrapper />
         </Switch>
       </Router>
     </PersistGate>

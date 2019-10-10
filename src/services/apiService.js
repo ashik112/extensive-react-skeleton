@@ -1,35 +1,19 @@
-/* eslint-disable no-undef,max-len */
+/* eslint-disable no-undef,max-len,no-unused-vars */
 import axios from 'axios';
 import { serverURL } from '../constants';
 import storageService from './storageService';
 import history from './history';
 import { historyRoutes } from '../routes';
-import userActionTypes from '../redux/actionTypes/userActionTypes';
-import companyActionTypes from '../redux/actionTypes/companyActionsTypes';
+import authActionTypes from '../bundles/AuthenticationBundle/redux/actionTypes';
 import { store } from '../redux/store';
 
-export const apiPrefix = '/api/v1';
+export const apiPrefix = '/api';
 
 /**
  * * [routes for apis]
  */
 export const routes = {
-  login: 'signin',
-  purchase: 'purchase',
-  lc: 'lc',
-  authLogin: 'auth/login',
-  farm: 'farm',
-  flock: 'farm/flock',
-  flockList: 'farm/flock_list',
-};
-
-export const getToken = () => {
-  try {
-    return JSON.parse(localStorage.getItem('token'));
-  } catch (err) {
-    // console.log(err);
-  }
-  return {};
+  authLogin: 'login_check',
 };
 
 function authHeaderProvider() {
@@ -38,13 +22,14 @@ function authHeaderProvider() {
     // const user = JSON.parse(storageService.get(storageService.keys.user));
 
     // * get company id from redux store
-    const { companyReducer, userReducer: { user } } = store.getState();
-    const companyID = companyReducer.company.id;
+    const { authReducer: { user } } = store.getState();
+    /*const { companyReducer } = store.getState();*/
+    /*const companyID = companyReducer.company.id;*/
 
     if (user && user.token) {
       return {
         'JW-TOKEN': `Bearer ${user.token}`,
-        'company-id': companyID,
+        /*'company-id': companyID,*/
         'Content-Type': 'application/json',
       };
     }
@@ -65,8 +50,8 @@ function logout(dispatch) {
   // remove company id from local storage
   // storageService.remove(storageService.keys.companyID);
   try {
-    dispatch({ type: userActionTypes.LOGOUT });
-    dispatch({ type: companyActionTypes.CLEAR });
+    dispatch({ type: authActionTypes.LOGOUT });
+    // dispatch({ type: companyActionTypes.CLEAR });
     dispatch({ type: 'RESET_APP' });
     storageService.clear();
     history.push(historyRoutes.login);
@@ -170,31 +155,24 @@ function remove(url) {
  */
 function login(params) {
   return axios.post(`${serverURL}${routes.authLogin}`,
-    { _username: params.username, _password: params.password });
+    { username: params.username, password: params.password });
 }
 
-const getPurchase = (id, dispatch) => get(`${serverURL}${routes.purchase}/${id}`, dispatch);
+//const getPurchase = (id, dispatch) => get(`${serverURL}${routes.purchase}/${id}`, dispatch);
 
-const getLc = (id, dispatch) => get(`${serverURL}${routes.lc}/commercial-invoice-products/${id}`, dispatch);
+//const getLc = (id, dispatch) => get(`${serverURL}${routes.lc}/commercial-invoice-products/${id}`, dispatch);
 
 /** Flock::begin * */
-const getFlock = (id, dispatch) => get(`${serverURL}${routes.flock}/${id}`, dispatch);
+/*const getFlock = (id, dispatch) => get(`${serverURL}${routes.flock}/${id}`, dispatch);
 const getFlockList = (dispatch) => get(`${serverURL}${routes.flockList}`, dispatch);
 const deleteFlock = (id) => remove(`${serverURL}${routes.flock}/${id}`);
 const createFlock = (params, dispatch) => post(`${serverURL}${routes.flock}`, params, dispatch);
-const updateFlock = (params, dispatch) => patch(`${serverURL}${routes.flock}`, params, dispatch);
+const updateFlock = (params, dispatch) => patch(`${serverURL}${routes.flock}`, params, dispatch);*/
 /** Flock::end * */
 
 
 const apiService = {
   routes,
-  getPurchase,
-  getLc,
-  updateFlock,
-  createFlock,
-  deleteFlock,
-  getFlock,
-  getFlockList,
   login,
   logout,
 };

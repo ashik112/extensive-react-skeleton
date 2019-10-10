@@ -1,4 +1,6 @@
-import { message } from 'antd';
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react';
+import { message, notification, Icon } from 'antd';
 import { store } from '../redux/store';
 /**
  * [get comapny id from redux store]
@@ -27,11 +29,62 @@ export function showAlert() {
     const { type, body } = alertReducer;
     switch (type) {
       case 'success':
-        return message.success(body);
+        return message.warning(body);
       case 'warning':
         return message.warning(body);
       case 'error':
         return message.error(body);
+      default:
+        return null;
+    }
+  } catch (error) {
+    return null;
+  }
+}
+
+/**
+ * * [Shows Notification using "antd" notification object]
+ * ! Requires "antd"
+ */
+export function showNotification() {
+  try {
+    // get alert data from store
+    const { notificationReducer } = store.getState();
+    const { type, body, title } = notificationReducer;
+    switch (type) {
+      case 'success':
+        return notification.success({
+          message: <span style={{ color: 'white' }}>{title}</span>,
+          description: <span><b>{body}</b></span>,
+          duration: 5,
+          icon: <Icon type="file-done" style={{ color: 'white' }} />,
+          style: {
+            background: 'rgb(76,175,80,0.7)',
+            boxShadow: '0 14px 26px -12px rgba(76, 175, 80, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2)',
+          },
+        });
+      case 'warning':
+        return notification.warning({
+          message: <span style={{ color: 'white' }}>{title}</span>,
+          description: <span><b>{body}</b></span>,
+          duration: 5,
+          icon: <Icon type="exclamation-circle" style={{ color: 'white' }} />,
+          style: {
+            background: 'rgb(255,152,0,0.7)',
+            boxShadow: '0 14px 26px -12px rgba(255, 152, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(255, 152, 0, 0.2)',
+          },
+        });
+      case 'error':
+        return notification.error({
+          message: <span style={{ color: 'white' }}>{title}</span>,
+          description: <span><b>{body}</b></span>,
+          duration: 5,
+          icon: <Icon type="close-circle" style={{ color: 'white', fontWeight: '800' }} />,
+          style: {
+            background: 'rgb(244,67,54,0.7)',
+            boxShadow: '0 2px 2px 0 rgba(244, 67, 54, 0.14), 0 3px 1px -2px rgba(244, 67, 54, 0.2), 0 1px 5px 0 rgba(244, 67, 54, 0.12)',
+          },
+        });
       default:
         return null;
     }

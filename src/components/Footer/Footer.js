@@ -70,10 +70,10 @@ export default function Footer(props) {
           </List>
         </div>*/}
         <div className={classes.center}>
-          &copy; {1900 + new Date().getYear()} , made with{" "}
-          <Favorite className={classes.icon} /> by{" "}
+          &copy; {1900 + new Date().getYear()}, All rights reserved to {' '}
+          {/*<Favorite className={classes.icon} /> by{" "}*/}
           <a
-            href="https://www.creative-tim.com?ref=mkr-footer"
+            href="#"
             className={aClasses}
             target="_blank"
           >
