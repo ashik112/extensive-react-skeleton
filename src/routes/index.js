@@ -1,6 +1,3 @@
-/**
- * * [Routes for Sidebar]
- */
 import DashboardPage from '../bundles/DashboardBundle/view/pages/DashboardPage';
 
 /**
@@ -11,6 +8,9 @@ export const historyRoutes = {
   login: '/',
 };
 
+/**
+ * * [Routes for Sidebar]
+ */
 export const menuRoutes = [
   {
     path: historyRoutes.dashboard,
