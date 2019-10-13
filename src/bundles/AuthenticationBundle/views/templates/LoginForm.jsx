@@ -76,7 +76,7 @@ class LoginForm extends Component {
                 <Button
                   disabled
                   htmltype="submit"
-                  color="success"
+                  color="info"
                   fullWidth
                 >
                   <CircularProgress color="inherit" size={14} />
@@ -86,7 +86,7 @@ class LoginForm extends Component {
               : (
                 <Button
                   onClick={this.handleSubmit}
-                  color="success"
+                  color="info"
                   fullWidth
                 >
                 Log In

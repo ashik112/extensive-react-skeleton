@@ -1,14 +1,20 @@
 /* eslint-disable react/jsx-filename-extension,react/jsx-props-no-spreading */
 import React, { Component } from 'react';
 import {
-  Row, Col, Button, Divider, Table,
+  Row, Col, Button, Divider, Table, Tooltip, Popconfirm, Icon,
 } from 'antd';
+import {
+  MDBCard, MDBBtn, MDBCardBody, MDBCardTitle, MDBIcon, MDBBtnGroup,
+} from 'mdbreact';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Card from '../../../components/Card/Card';
-import CardBody from '../../../components/Card/CardBody';
 import CardHeader from '../../../components/Card/CardHeader';
 import companyActions from '../redux/actions';
+import Card from '../../../components/Card/Card';
+import CardBody from '../../../components/Card/CardBody';
+import CardFooter from '../../../components/Card/CardFooter';
+
+const ButtonGroup = Button.Group;
 
 class CompanyListPage extends Component {
   componentDidMount() {
@@ -23,7 +29,7 @@ class CompanyListPage extends Component {
         title: 'ID',
         dataIndex: 'id',
         key: 'id',
-        width: '5%',
+        width: 20,
         sorter: (a, b) => a.id - b.id,
       },
       {
@@ -34,36 +40,59 @@ class CompanyListPage extends Component {
       {
         title: 'Action',
         key: 'action',
-        width: '15%',
         align: 'center',
+        width: 150,
         render: () => (
           <span>
-            <Button
-              size="small"
-              type="dashed"
-              icon="eye"
-              onClick={() => {
-                // TODO: show
-              }}
-            />
-            <Divider type="vertical" />
-            <Button
-              size="small"
-              type="primary"
-              icon="edit"
-              onClick={async () => {
+            {/*<MDBBtnGroup>
+              <MDBBtn color="info" size="sm">
+                <MDBIcon icon="eye" />
+              </MDBBtn>
+              <MDBBtn color="info" size="sm">
+                <MDBIcon icon="edit" />
+              </MDBBtn>
+              <MDBBtn color="danger" size="sm">
+                <MDBIcon icon="delete" />
+              </MDBBtn>
+            </MDBBtnGroup>*/}
+            <ButtonGroup>
+              <Button
+                size="small"
+                type="primary"
+                className="button-color-cyan"
+                icon="eye"
+                onClick={() => {
+                  console.log('view');
+                  // TODO: show
+                }}
+              />
+              <Divider type="vertical" />
+              <Button
+                size="small"
+                type="primary"
+                className="button-color-daybreak"
+                icon="edit"
+                onClick={async () => {
                 // TODO: edit
-              }}
-            />
-            <Divider type="vertical" />
-            <Button
-              size="small"
-              type="danger"
-              icon="delete"
-              onClick={() => {
-                // TODO: delete
-              }}
-            />
+                }}
+              />
+              <Divider type="vertical" />
+              <Popconfirm
+                title="Are you sure"
+                placement="topLeft"
+                okText="Yes"
+                icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
+              >
+                <Button
+                  size="small"
+                  type="danger"
+                  icon="delete"
+                  onClick={() => {
+                    // TODO: delete
+                  }}
+                />
+              </Popconfirm>
+            </ButtonGroup>
           </span>
         ),
       },
@@ -74,20 +103,28 @@ class CompanyListPage extends Component {
         <Row gutter={8}>
           <Col span={24}>
             <Card>
-              <CardHeader
-                color="success"
-              >
-                Company List
+              <CardHeader>
+                <Tooltip
+                  title="Create a new Company"
+                  mouseEnterDelay={1}
+                >
+                  <Button
+                    type="primary"
+                  >
+                    <Icon type="plus"></Icon> Companies
+                  </Button>
+                </Tooltip>
               </CardHeader>
               <CardBody>
                 <Table
-                  pagination={{ pageSize: 15 }}
                   size="small"
-                  loading={loading}
                   bordered
+                  pagination={{ pageSize: 15 }}
+                  loading={loading}
                   rowKey={(record) => record.id}
                   columns={columns}
                   dataSource={list}
+                  scroll={{ x: 768 }}
                 />
               </CardBody>
             </Card>

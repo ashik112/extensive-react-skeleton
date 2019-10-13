@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
+//import '@fortawesome/fontawesome-free/css/all.min.css'; // ! mbreact
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'assets/mdbreact/dist/scss/mdb.scss';
 import { store, persistor } from './redux/store';
 import Root from './Root';
 import * as serviceWorker from './serviceWorker';

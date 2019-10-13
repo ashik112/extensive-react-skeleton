@@ -43,7 +43,7 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
             <GridItem xs={10} sm={10} md={4}>
               <Card className={classes[cardAnimaton]}>
 
-                <CardHeader color="success" className={classes.cardHeader}>
+                <CardHeader color="info" className={classes.cardHeader}>
                   <b>Biznet</b>
                   {/*<p className={classes.divider}>{('Enter your credentials').toUpperCase()}</p>*/}
                 </CardHeader>
