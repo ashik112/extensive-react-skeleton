@@ -29,7 +29,7 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
   }, 700);
   const classes = useStyles();
   return (
-    <>
+    <div className="wrapper">
       <div
         className={classes.pageHeader}
         style={{
@@ -58,9 +58,21 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
           </GridContainer>
         </div>
         <Footer whiteFont />
+        <ul className="bg-bubbles">
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
         {/*<Footer />*/}
       </div>
-    </>
+    </div>
   );
 }
 
