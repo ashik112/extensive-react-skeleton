@@ -3,16 +3,13 @@ import React, { Component } from 'react';
 import {
   Row, Col, Button, Divider, Table, Tooltip, Popconfirm, Icon,
 } from 'antd';
-import {
-  MDBCard, MDBBtn, MDBCardBody, MDBCardTitle, MDBIcon, MDBBtnGroup,
-} from 'mdbreact';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CardHeader from '../../../components/Card/CardHeader';
 import companyActions from '../redux/actions';
 import Card from '../../../components/Card/Card';
 import CardBody from '../../../components/Card/CardBody';
-import CardFooter from '../../../components/Card/CardFooter';
+//import CardFooter from '../../../components/Card/CardFooter';
 
 const ButtonGroup = Button.Group;
 
@@ -44,17 +41,6 @@ class CompanyListPage extends Component {
         width: 150,
         render: () => (
           <span>
-            {/*<MDBBtnGroup>
-              <MDBBtn color="info" size="sm">
-                <MDBIcon icon="eye" />
-              </MDBBtn>
-              <MDBBtn color="info" size="sm">
-                <MDBIcon icon="edit" />
-              </MDBBtn>
-              <MDBBtn color="danger" size="sm">
-                <MDBIcon icon="delete" />
-              </MDBBtn>
-            </MDBBtnGroup>*/}
             <ButtonGroup>
               <Button
                 size="small"
@@ -62,8 +48,9 @@ class CompanyListPage extends Component {
                 className="button-color-cyan"
                 icon="eye"
                 onClick={() => {
-                  console.log('view');
                   // TODO: show
+                  // eslint-disable-next-line no-console
+                  console.log('view');
                 }}
               />
               <Divider type="vertical" />
@@ -111,7 +98,8 @@ class CompanyListPage extends Component {
                   <Button
                     type="primary"
                   >
-                    <Icon type="plus"></Icon> Companies
+                    {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+                    <Icon type="plus" /> Companies
                   </Button>
                 </Tooltip>
               </CardHeader>
