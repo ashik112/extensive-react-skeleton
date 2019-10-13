@@ -11,8 +11,6 @@ import Card from '../../../components/Card/Card';
 import CardBody from '../../../components/Card/CardBody';
 //import CardFooter from '../../../components/Card/CardFooter';
 
-const ButtonGroup = Button.Group;
-
 class CompanyListPage extends Component {
   componentDidMount() {
     const { getList } = this.props;
@@ -41,45 +39,51 @@ class CompanyListPage extends Component {
         width: 150,
         render: () => (
           <span>
-            <ButtonGroup>
-              <Button
-                size="small"
-                type="primary"
-                className="button-color-cyan"
-                icon="eye"
-                onClick={() => {
-                  // TODO: show
-                  // eslint-disable-next-line no-console
-                  console.log('view');
-                }}
-              />
-              <Divider type="vertical" />
-              <Button
-                size="small"
-                type="primary"
-                className="button-color-daybreak"
-                icon="edit"
-                onClick={async () => {
+            {/*<ButtonGroup>*/}
+            <Button
+              ghost
+              shape="circle-outline"
+              size="small"
+              type="primary"
+              className="button-color-cyan"
+              icon="eye"
+              onClick={() => {
+                // TODO: show
+                // eslint-disable-next-line no-console
+                console.log('view');
+              }}
+            />
+            <Divider type="vertical" />
+            <Button
+              ghost
+              shape="circle-outline"
+              size="small"
+              type="primary"
+              className="button-color-daybreak"
+              icon="edit"
+              onClick={async () => {
                 // TODO: edit
+              }}
+            />
+            <Divider type="vertical" />
+            <Popconfirm
+              title="Are you sure"
+              placement="topLeft"
+              okText="Yes"
+              icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
+            >
+              <Button
+                ghost
+                shape="circle-outline"
+                size="small"
+                type="danger"
+                icon="delete"
+                onClick={() => {
+                  // TODO: delete
                 }}
               />
-              <Divider type="vertical" />
-              <Popconfirm
-                title="Are you sure"
-                placement="topLeft"
-                okText="Yes"
-                icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
-              >
-                <Button
-                  size="small"
-                  type="danger"
-                  icon="delete"
-                  onClick={() => {
-                    // TODO: delete
-                  }}
-                />
-              </Popconfirm>
-            </ButtonGroup>
+            </Popconfirm>
+            {/*</ButtonGroup>*/}
           </span>
         ),
       },
@@ -95,12 +99,7 @@ class CompanyListPage extends Component {
                   title="Create a new Company"
                   mouseEnterDelay={1}
                 >
-                  <Button
-                    type="primary"
-                  >
-                    {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-                    <Icon type="plus" /> Companies
-                  </Button>
+                  <Button type="primary" icon="plus"> Companies </Button>
                 </Tooltip>
               </CardHeader>
               <CardBody>

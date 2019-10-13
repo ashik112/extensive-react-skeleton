@@ -21,7 +21,8 @@
 @large:             ~"only screen and (min-width: @{screen-lg-min})";
 //@table-header-color: @heading-color;
 //@table-header-sort-bg: @background-color-base;
-.ant-btn, .ant-btn * {
+.ant-btn {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   i {
     font-weight: bolder;
     display: contents;
@@ -35,7 +36,6 @@
     transform: translateY(-2px) !important;
   }
   &:active, &.active {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     color: #fff;
   }
 }
