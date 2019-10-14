@@ -34,8 +34,10 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
         className={classes.pageHeader}
         style={{
           backgroundImage: `url(${image})`,
+          boxShadow: 'inset 0 0 0 50vw rgba(38, 198, 218,0.1)',
           backgroundSize: 'cover',
           backgroundPosition: 'top center',
+          backgroundBlendMode: 'multiply',
         }}
       >
         <div className={classes.container}>
