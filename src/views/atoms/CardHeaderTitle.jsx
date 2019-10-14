@@ -5,7 +5,7 @@ export default function CardHeaderTitle({ title, children }) {
   return (
     <span>
       {children}
-      <span style={{ position: 'absolute', top: '13%' }}>
+      <span style={{ position: 'absolute', top: '11px' }}>
         &nbsp;
         {title}
       </span>

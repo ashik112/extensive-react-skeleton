@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-cycle
-import CompanyListPage from '../views/CompanyListPage';
-import CompanyShowPage from '../views/CompanyShowPage';
-import CompanyCreatePage from '../views/CompanyCreatePage';
-import CompanyUpdatePage from '../views/CompanyUpdatePage';
+import CompanyListPage from '../views/pages/CompanyListPage';
+import CompanyShowPage from '../views/pages/CompanyShowPage';
+import CompanyCreatePage from '../views/pages/CompanyCreatePage';
+import CompanyUpdatePage from '../views/pages/CompanyUpdatePage';
 
 const baseURL = '/company';
 

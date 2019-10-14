@@ -11,6 +11,7 @@
     "bootstrap-css-only": "^4.3.1",
     "classnames": "2.2.6",
     "customize-cra": "^0.8.0",
+    "formik": "^1.5.8",
     "history": "^4.9.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
@@ -31,7 +32,8 @@
     "redux": "^4.0.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "source-map-explorer": "^2.1.0"
+    "source-map-explorer": "^2.1.0",
+    "yup": "^0.27.0"
   },
   "husky": {
     "hooks": {

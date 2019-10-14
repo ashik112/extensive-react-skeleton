@@ -5,12 +5,12 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CardHeader from '../../../components/Card/CardHeader';
-import companyActions from '../redux/actions';
-import Card from '../../../components/Card/Card';
-import CardBody from '../../../components/Card/CardBody';
-import history from '../../../services/history';
-import companyRouteLinks from '../routes/links';
+import CardHeader from '../../../../components/Card/CardHeader';
+import companyActions from '../../redux/actions';
+import Card from '../../../../components/Card/Card';
+import CardBody from '../../../../components/Card/CardBody';
+import history from '../../../../services/history';
+import companyRouteLinks from '../../routes/links';
 //import CardFooter from '../../../components/Card/CardFooter';
 
 class CompanyListPage extends Component {
