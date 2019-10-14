@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'assets/mdbreact/dist/scss/mdb.scss';
+import 'assets/mdbreact/scss/mdb.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { store, persistor } from './redux/store';
 import Root from './Root';
