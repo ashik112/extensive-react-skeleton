@@ -13,6 +13,7 @@ import styles from '../../../../assets/jss/material-kit-react/views/loginPage';
 import image from '../../../../assets/img/background.svg';
 import authActions from '../../redux/actions';
 import LoginForm from '../templates/LoginForm';
+import AnimationBoxBubbles from '../../../../layouts/AnimationBoxBubbles';
 //import Button from '../../components/CustomButtons/Button';
 //import { InputAdornment } from '@material-ui/core';
 //import { People, Lock } from '@material-ui/icons';
@@ -29,7 +30,7 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
   }, 700);
   const classes = useStyles();
   return (
-    <div className="wrapper">
+    <>
       <div
         className={classes.pageHeader}
         style={{
@@ -57,23 +58,12 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
               </Card>
             </GridItem>
           </GridContainer>
+          <AnimationBoxBubbles />
         </div>
         <Footer whiteFont />
-        <ul className="bg-bubbles">
-          <li />
-          <li />
-          <li />
-          <li />
-          <li />
-          <li />
-          <li />
-          <li />
-          <li />
-          <li />
-        </ul>
         {/*<Footer />*/}
       </div>
-    </div>
+    </>
   );
 }
 
