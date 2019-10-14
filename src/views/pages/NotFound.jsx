@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   Row, Col, Result, Button,
 } from 'antd';
-import { historyRoutes } from '../routes';
+import { historyRoutes } from '../../routes';
 
 export default function NotFound() {
   return (

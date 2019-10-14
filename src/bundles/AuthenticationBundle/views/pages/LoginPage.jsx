@@ -13,7 +13,7 @@ import styles from '../../../../assets/jss/material-kit-react/views/loginPage';
 import image from '../../../../assets/img/background.svg';
 import authActions from '../../redux/actions';
 import LoginForm from '../templates/LoginForm';
-import AnimationBoxBubbles from '../../../../layouts/AnimationBoxBubbles';
+import AnimationBoxBubbles from '../../../../views/atoms/AnimationBoxBubbles';
 //import Button from '../../components/CustomButtons/Button';
 //import { InputAdornment } from '@material-ui/core';
 //import { People, Lock } from '@material-ui/icons';

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { menuRoutes, historyRoutes } from '../routes';
 import AuthenticatedRouting from '../routes/AuthenticatedRouting';
-import NotFound from '../pages/NotFound';
+import NotFound from '../views/pages/NotFound';
 import authActions from '../bundles/AuthenticationBundle/redux/actions';
 import HeaderBar from './HeaderBar';
 import Sidebar from './Sidebar';
