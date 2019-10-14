@@ -26,7 +26,7 @@ export default class CompanyForm extends Component {
             setFieldValue(field.name, e.target.value);
           }}
         />
-        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+        {errorMessage && <div style={{ color: 'red', fontSize: '0.7em' }}>{errorMessage}</div>}
       </>
     );
   };
