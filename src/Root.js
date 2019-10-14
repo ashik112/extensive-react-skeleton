@@ -9,7 +9,7 @@ import LoginPage from './bundles/AuthenticationBundle/views/pages/LoginPage';
 import { historyRoutes } from './routes';
 import history from './services/history';
 import UnauthenticatedRouting from './routes/UnauthenticatedRouting';
-import LayoutWrapper from './layouts/LayoutWrapper';
+import LayoutWrapper from './views/layouts/LayoutWrapper';
 
 const Root = ({ store, persistor }) => (
   <Provider store={store}>

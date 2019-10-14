@@ -7,7 +7,7 @@ import {
   Layout, Menu, Icon,
 } from 'antd';
 import PropTypes from 'prop-types';
-import { menuRoutes } from '../routes';
+import { menuRoutes } from '../../routes';
 
 const {
   Sider,
