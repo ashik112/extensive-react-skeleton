@@ -7,7 +7,7 @@ import CompanyUpdatePage from '../views/CompanyUpdatePage';
 const baseURL = '/company';
 
 const historyRoutes = {
-  companyList: `${baseURL}/list`,
+  companyList: `${baseURL}`, // * List should be same as baseURL for sidebar hightlight
   companyShow: `${baseURL}/show/:id`,
   companyCreate: `${baseURL}/create`,
   companyUpdate: `${baseURL}/edit/:id`,
