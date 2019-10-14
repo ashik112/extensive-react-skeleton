@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-filename-extension,react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-filename-extension*/
 import React, { Component } from 'react';
 import {
   Row, Col, Button, Divider, Table, Tooltip, Popconfirm, Icon,
@@ -9,6 +9,8 @@ import CardHeader from '../../../components/Card/CardHeader';
 import companyActions from '../redux/actions';
 import Card from '../../../components/Card/Card';
 import CardBody from '../../../components/Card/CardBody';
+import history from '../../../services/history';
+import companyRouteLinks from '../routes/links';
 //import CardFooter from '../../../components/Card/CardFooter';
 
 class CompanyListPage extends Component {
@@ -37,7 +39,7 @@ class CompanyListPage extends Component {
         key: 'action',
         align: 'center',
         width: 150,
-        render: () => (
+        render: (item) => (
           <span>
             {/*<ButtonGroup>*/}
             <Button
@@ -48,9 +50,7 @@ class CompanyListPage extends Component {
               className="button-color-cyan"
               icon="eye"
               onClick={() => {
-                // TODO: show
-                // eslint-disable-next-line no-console
-                console.log('view');
+                history.push(companyRouteLinks.show(item.id));
               }}
             />
             <Divider type="vertical" />
@@ -62,7 +62,7 @@ class CompanyListPage extends Component {
               className="button-color-daybreak"
               icon="edit"
               onClick={async () => {
-                // TODO: edit
+                history.push(companyRouteLinks.edit(item.id));
               }}
             />
             <Divider type="vertical" />
@@ -99,7 +99,7 @@ class CompanyListPage extends Component {
                   title="Create a new Company"
                   mouseEnterDelay={1}
                 >
-                  <Button type="primary" icon="plus"> Companies </Button>
+                  <Button type="primary" icon="plus" onClick={() => history.push(companyRouteLinks.create)}> Companies </Button>
                 </Tooltip>
               </CardHeader>
               <CardBody>
