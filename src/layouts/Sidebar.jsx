@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable max-len,react/prefer-stateless-function */
 import React, { Component } from 'react';
 import {
   Link,
@@ -16,7 +16,9 @@ const {
 // const { SubMenu } = Menu;
 class Sidebar extends Component {
   render() {
-    const { collapsed, shouldMenuHighlight, logout, onCollapse } = this.props;
+    const {
+      collapsed, shouldMenuHighlight, logout, onCollapse,
+    } = this.props;
     return (
       <Sider
         breakpoint="sm"
