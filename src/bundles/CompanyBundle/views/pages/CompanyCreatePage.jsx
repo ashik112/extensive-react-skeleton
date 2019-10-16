@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import {
-  Card, Form, Icon, Spin,
+  Button, Form, Spin,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import CardHeaderTitle from '../../../../views/atoms/CardHeaderTitle';
 import CompanyForm from '../templates/CompanyForm';
 import companyActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
+import CardHeader from '../../../../components/Card/CardHeader';
+import history from '../../../../services/history';
+import companyRouteLinks from '../../routes/links';
+import CardBody from '../../../../components/Card/CardBody';
+import Card from '../../../../components/Card/Card';
 
 class CompanyCreatePage extends Component {
   constructor(props) {
@@ -19,7 +22,6 @@ class CompanyCreatePage extends Component {
   componentWillUnmount() {
     const { clearStore, clearNotifications } = this.props;
     clearStore();
-    console.log('WIll unmount');
     clearNotifications();
   }
 
@@ -32,12 +34,21 @@ class CompanyCreatePage extends Component {
     const { loading } = this.props;
     return (
       <Spin spinning={loading}>
-        <Card
-          className="card-header-primary"
-          size="small"
-          title={<CardHeaderTitle title="Create Company"><Icon type="plus-square" /></CardHeaderTitle>}
-        >
-          <WrappedCompanyForm handleSubmit={this.handleSubmit} />
+        <Card>
+          <CardHeader>
+            <Button
+              type="primary"
+              icon="arrow-left"
+              onClick={async () => {
+                history.push(companyRouteLinks.list);
+              }}
+            >
+              <span>&nbsp;Company List</span>
+            </Button>
+          </CardHeader>
+          <CardBody>
+            <WrappedCompanyForm company={{ name: '', address: '' }} handleSubmit={this.handleSubmit} />
+          </CardBody>
         </Card>
       </Spin>
     );

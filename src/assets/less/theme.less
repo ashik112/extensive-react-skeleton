@@ -22,6 +22,14 @@
 @large:             ~"only screen and (min-width: @{screen-lg-min})";
 //@table-header-color: @heading-color;
 //@table-header-sort-bg: @background-color-base;
+.ant-descriptions-view {
+  .ant-descriptions-item-label {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    background: @primary-color;
+    color: #ffffff;
+  }
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
 .ant-card {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
@@ -42,6 +50,10 @@
   &:active, &.active {
     color: #fff;
   }
+}
+
+.ant-message .anticon {
+  top: -2px;
 }
 
 .ant-table {

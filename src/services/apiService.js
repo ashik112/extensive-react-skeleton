@@ -123,9 +123,10 @@ export async function post(url, param, dispatch) {
  * @returns {Promise<any>}
  */
 // eslint-disable-next-line no-unused-vars
-function patch(url, param, dispatch) {
+export async function patch(url, param, dispatch) {
+  const headers = await authHeaderProvider();
   return new Promise(((resolve, reject) => {
-    axios.patch(`${url}`, param, authHeaderProvider()).then((response) => {
+    axios.patch(`${url}`, param, {headers}).then((response) => {
       resolve(response);
     }).catch((error) => {
       reject(error);
@@ -138,9 +139,10 @@ function patch(url, param, dispatch) {
  * @param url
  * @returns {Promise<any>}
  */
-function remove(url) {
+export async function remove(url) {
+  const headers = await authHeaderProvider();
   return new Promise(((resolve, reject) => {
-    axios.delete(`${url}`, authHeaderProvider()).then((response) => {
+    axios.delete(`${url}`, {headers}).then((response) => {
       resolve(response);
     }).catch((error) => {
       reject(error);

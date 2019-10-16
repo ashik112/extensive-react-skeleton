@@ -3,6 +3,7 @@ import companyActionTypes from '../actionTypes';
 import alertActions from '../../../../redux/actions/alertActions';
 import companyApiService from '../../apiServices/companyApiService';
 import createCompany from './companyCreateActions';
+import updateCompany from './companyUpdateActions';
 
 const fetchCompanyListBegin = () => ({
   type: companyActionTypes.COMPANY_LIST_FETCH_REQUEST,
@@ -48,6 +49,7 @@ const fetchCompanyList = () => async (dispatch) => {
 const companyActions = {
   fetchCompanyList,
   createCompany,
+  updateCompany,
   clearStore,
 };
 

@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types,react/jsx-props-no-spreading */
 import React, { Component } from 'react';
 import {
   Input, Row, Col,
@@ -15,12 +15,14 @@ const validationSchema = yup.object().shape({
 });
 
 export default class CompanyForm extends Component {
-  // eslint-disable-next-line no-unused-vars
-  TextInput = ({ field, form: { values, errors, setFieldValue } }) => {
+  TextInput = ({ field, form, ...props }) => {
+    // eslint-disable-next-line no-unused-vars
+    const { values, errors, setFieldValue } = form;
     const errorMessage = getIn(errors, field.name);
     return (
       <>
         <Input
+          {...props}
           autoComplete="off"
           /* eslint-disable-next-line react/jsx-props-no-spreading */
           {...field}
@@ -34,41 +36,57 @@ export default class CompanyForm extends Component {
   };
 
   render() {
-    const { handleSubmit, loading } = this.props;
+    const { handleSubmit, loading, company } = this.props;
     return (
       <div>
         <Formik
+          initialValues={company}
           enableReinitialize
           onSubmit={(values) => {
             handleSubmit(values);
-            // console.log(values);
           }}
           validationSchema={validationSchema}
         >
           <Form>
-            <Row style={{ margin: 10 }}>
-              <Col span={2} style={{ textAlign: 'right', margin: 5 }}>
+            {
+              company.id && (
+                <Row gutter={8} style={{ margin: 10 }}>
+                  <Col span={2} style={{ textAlign: 'right', marginLeft: 5 }}>
+                    Id:
+                  </Col>
+                  <Col span={20}>
+                    {company.id}
+                  </Col>
+                </Row>
+              )
+            }
+            <Row gutter={8} style={{ margin: 10 }}>
+              <Col span={2} style={{ textAlign: 'right', marginLeft: 5 }}>
                 Name:
               </Col>
-              <Col span={16}>
+              <Col span={20}>
                 <Field
                   name="name"
                   component={this.TextInput}
                 />
               </Col>
             </Row>
-            <Row style={{ margin: 10 }}>
-              <Col span={2} style={{ textAlign: 'right', margin: 5 }}>
+            <Row gutter={8} style={{ margin: 10 }}>
+              <Col span={2} style={{ textAlign: 'right', marginLeft: 5 }}>
                 Address:
               </Col>
-              <Col span={16}>
+              <Col span={20}>
                 <Field
                   name="address"
                   component={this.TextInput}
                 />
               </Col>
             </Row>
-            <ButtonSubmit loading={loading} />
+            <Row>
+              <Col style={{ float: 'right' }}>
+                <ButtonSubmit loading={loading} />
+              </Col>
+            </Row>
           </Form>
         </Formik>
       </div>
