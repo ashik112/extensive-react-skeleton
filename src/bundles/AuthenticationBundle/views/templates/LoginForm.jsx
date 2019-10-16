@@ -35,7 +35,7 @@ class LoginForm extends Component {
             rules: [{ required: true, message: 'please input your username!' }],
           })(
             <Input
-              addonBefore={<Icon type="user" style={{ color: '#26c6da' }} />}
+              suffix={<Icon type="user" style={{ color: '#26c6da' }} />}
               placeholder="Username"
               size="large"
             />,
@@ -46,7 +46,7 @@ class LoginForm extends Component {
             rules: [{ required: true, message: 'please input your password!' }],
           })(
             <Input
-              addonBefore={<Icon type="lock" style={{ color: '#26c6da' }} />}
+              suffix={<Icon type="lock" style={{ color: '#26c6da' }} />}
               type="password"
               placeholder="Password"
               size="large"
