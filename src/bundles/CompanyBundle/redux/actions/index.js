@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
-import companyActionTypes from './actionTypes';
-import alertActions from '../../../redux/actions/alertActions';
-import companyApiService from '../apiServices/companyApiService';
+import companyActionTypes from '../actionTypes';
+import alertActions from '../../../../redux/actions/alertActions';
+import companyApiService from '../../apiServices/companyApiService';
+import createCompany from './companyCreateActions';
 
 const fetchCompanyListBegin = () => ({
   type: companyActionTypes.COMPANY_LIST_FETCH_REQUEST,
@@ -17,7 +18,7 @@ const fetchCompanyListFailure = (error) => ({
   payload: { error },
 });
 
-const clearAllOperation = () => ({
+const clearStore = () => ({
   type: companyActionTypes.CLEAR_ALL,
 });
 
@@ -46,6 +47,8 @@ const fetchCompanyList = () => async (dispatch) => {
 
 const companyActions = {
   fetchCompanyList,
+  createCompany,
+  clearStore,
 };
 
 export default companyActions;

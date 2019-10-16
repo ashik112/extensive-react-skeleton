@@ -28,6 +28,22 @@ export default function companyReducer(state = initialState, action) {
         list: [],
         error: action.payload,
       };
+    case companyActionTypes.COMPANY_CREATE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case companyActionTypes.COMPANY_CREATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case companyActionTypes.COMPANY_CREATE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     case companyActionTypes.CLEAR_ALL:
       return {
         loading: false,

@@ -1,35 +1,29 @@
-import notificationActionTypes from '../actionTypes/notificationActionTypes';
-import { showNotification } from '../../services/generalhelper';
+import {
+  closeNotifications,
+  showNotification,
+} from '../../services/generalhelper';
 
-const showSuccessAlert = (title, message) => ({ type: notificationActionTypes.SUCCESS, payload: { title, message } });
-const showWarningAlert = (title, message) => ({ type: notificationActionTypes.WARNING, payload: { title, message } });
-const showErrorAlert = (title, message) => ({ type: notificationActionTypes.ERROR, payload: { title, message } });
-
-const clear = () => ({ type: notificationActionTypes.CLEAR });
-
-const success = (title, message) => async (dispatch) => {
-  await dispatch(showSuccessAlert(title, message));
-  showNotification();
-  await dispatch(clear());
+const closeAll = () => async () => {
+  await closeNotifications();
 };
 
-const warning = (title, message) => async (dispatch) => {
-  await dispatch(showWarningAlert(title, message));
-  showNotification();
-  await dispatch(clear());
+const success = (title, message, duration = 5) => () => {
+  showNotification('warning', title, message, duration);
 };
 
-const error = (title, message) => async (dispatch) => {
-  await dispatch(showErrorAlert(title, message));
-  showNotification();
-  await dispatch(clear());
+const warning = (title, message, duration = 5) => () => {
+  showNotification('warning', title, message, duration);
+};
+
+const error = (title, message, duration = 5) => () => {
+  showNotification('warning', title, message, duration);
 };
 
 const notificationActions = {
   success,
   warning,
   error,
-  clear,
+  closeAll,
 };
 
 export default notificationActions;

@@ -103,7 +103,7 @@ export async function get(url, dispatch) {
  * @param dispatch
  * @returns {Promise<any>}
  */
-async function post(url, param, dispatch) {
+export async function post(url, param, dispatch) {
   const headers = await authHeaderProvider();
   return new Promise(((resolve, reject) => {
     axios.post(`${url}`, param, { headers }).then((response) => {

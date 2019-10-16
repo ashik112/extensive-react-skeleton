@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import {
-  Input, Row, Col, Button,
+  Input, Row, Col,
 } from 'antd';
 import {
   Formik, getIn, Field, Form,
 } from 'formik';
 import * as yup from 'yup';
+import ButtonSubmit from '../../../../views/atoms/ButtonSubmit';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
@@ -14,6 +15,7 @@ const validationSchema = yup.object().shape({
 });
 
 export default class CompanyForm extends Component {
+  // eslint-disable-next-line no-unused-vars
   TextInput = ({ field, form: { values, errors, setFieldValue } }) => {
     const errorMessage = getIn(errors, field.name);
     return (
@@ -32,15 +34,14 @@ export default class CompanyForm extends Component {
   };
 
   render() {
+    const { handleSubmit, loading } = this.props;
     return (
       <div>
         <Formik
-          initialValues={{
-            name: '',
-            address: '',
-          }}
+          enableReinitialize
           onSubmit={(values) => {
-            console.log(values);
+            handleSubmit(values);
+            // console.log(values);
           }}
           validationSchema={validationSchema}
         >
@@ -67,17 +68,7 @@ export default class CompanyForm extends Component {
                 />
               </Col>
             </Row>
-            <div>
-              <Button
-                loading={false}
-                disabled={false}
-                style={{ marginTop: 10 }}
-                type="submit"
-                htmlType="submit"
-              >
-                Submit
-              </Button>
-            </div>
+            <ButtonSubmit loading={loading} />
           </Form>
         </Formik>
       </div>

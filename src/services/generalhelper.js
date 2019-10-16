@@ -22,18 +22,15 @@ export function getCompany(id) {
  * * [Shows Alert using "antd" message object]
  * ! Requires "antd"
  */
-export function showAlert() {
+export function showAlert(type, body, duration = 5) {
   try {
-    // get alert data from store
-    const { alertReducer } = store.getState();
-    const { type, body } = alertReducer;
     switch (type) {
       case 'success':
-        return message.warning(body);
+        return message.success(body, duration);
       case 'warning':
-        return message.warning(body);
+        return message.warning(body, duration);
       case 'error':
-        return message.error(body);
+        return message.error(body, duration);
       default:
         return null;
     }
@@ -46,17 +43,16 @@ export function showAlert() {
  * * [Shows Notification using "antd" notification object]
  * ! Requires "antd"
  */
-export function showNotification() {
+export function showNotification(type, title, body, duration) {
+  const placement = 'bottomLeft';
   try {
-    // get alert data from store
-    const { notificationReducer } = store.getState();
-    const { type, body, title } = notificationReducer;
     switch (type) {
       case 'success':
         return notification.success({
-          message: <span style={{ color: 'white' }}>{title}</span>,
+          placement,
+          message: <h6 style={{ color: 'white' }}>{title}</h6>,
           description: <span><b>{body}</b></span>,
-          duration: 5,
+          duration,
           icon: <Icon type="file-done" style={{ color: 'white' }} />,
           style: {
             background: 'rgb(76,175,80,0.7)',
@@ -65,9 +61,10 @@ export function showNotification() {
         });
       case 'warning':
         return notification.warning({
-          message: <span style={{ color: 'white' }}>{title}</span>,
+          placement,
+          message: <h6 style={{ color: 'white' }}>{title}</h6>,
           description: <span><b>{body}</b></span>,
-          duration: 5,
+          duration,
           icon: <Icon type="exclamation-circle" style={{ color: 'white' }} />,
           style: {
             background: 'rgb(255,152,0,0.7)',
@@ -76,9 +73,10 @@ export function showNotification() {
         });
       case 'error':
         return notification.error({
+          placement,
           message: <span style={{ color: 'white' }}>{title}</span>,
           description: <span><b>{body}</b></span>,
-          duration: 5,
+          duration,
           icon: <Icon type="close-circle" style={{ color: 'white', fontWeight: '800' }} />,
           style: {
             background: 'rgb(244,67,54,0.7)',
@@ -91,4 +89,8 @@ export function showNotification() {
   } catch (error) {
     return null;
   }
+}
+
+export async function closeNotifications() {
+  await notification.destroy();
 }

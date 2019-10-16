@@ -1,28 +1,21 @@
-import alertActionTypes from '../actionTypes/alertActionTypes';
 import { showAlert } from '../../services/generalhelper';
 
-const showSuccessAlert = (message) => ({ type: alertActionTypes.SUCCESS, payload: message });
-
-const showErrorAlert = (message) => ({ type: alertActionTypes.ERROR, payload: message });
-
-const clear = () => ({ type: alertActionTypes.CLEAR });
-
-const success = (message) => async (dispatch) => {
-  await dispatch(showSuccessAlert(message));
-  showAlert();
-  await dispatch(clear());
+const success = (message) => () => {
+  showAlert('error', message);
 };
 
-const error = (message) => async (dispatch) => {
-  await dispatch(showErrorAlert(message));
-  showAlert();
-  await dispatch(clear());
+const error = (message, duration = 5) => () => {
+  showAlert('error', message, duration);
+};
+
+const warning = (message, duration = 5) => () => {
+  showAlert('warning', message, duration);
 };
 
 const alertActions = {
   success,
   error,
-  clear,
+  warning,
 };
 
 export default alertActions;
