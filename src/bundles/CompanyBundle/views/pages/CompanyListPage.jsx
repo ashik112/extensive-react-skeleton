@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension*/
 import React, { Component } from 'react';
 import {
-  Row, Col, Button, Divider, Table, Tooltip, Popconfirm, Icon,
+  Row, Col, Button, Divider, Table, Tooltip,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -11,16 +11,54 @@ import Card from '../../../../components/Card/Card';
 import CardBody from '../../../../components/Card/CardBody';
 import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
+import TableButtonDelete from '../../../../views/atoms/TableButtonDelete';
+import companyApiService from '../../apiServices/companyApiService';
 //import CardFooter from '../../../components/Card/CardFooter';
 
 class CompanyListPage extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.state = {
+      list: [],
+      localLoading: false,
+    };
+  }
+
   componentDidMount() {
     const { getList } = this.props;
     getList();
+    const { list } = this.props;
+    this.setState({
+      list,
+    });
+  }
+
+  handleDelete = async (id, row, index) => {
+    const { dispatch } = this.props;
+    this.toggleLoading(true);
+    companyApiService.deleteCompany(id, dispatch).then(() => {
+      const { list } = this.state;
+      list.splice(index, 1);
+      this.setState({
+        list,
+      });
+      this.toggleLoading(false);
+    }).catch(() => {
+      this.toggleLoading(false);
+    });
+  };
+
+  toggleLoading(status) {
+    this.setState({
+      localLoading: status,
+    });
   }
 
   render() {
-    const { loading, list } = this.props;
+    const { loading } = this.props;
+    const { localLoading } = this.state;
+    const { list } = this.state;
     const columns = [
       {
         title: 'ID',
@@ -39,7 +77,7 @@ class CompanyListPage extends Component {
         key: 'action',
         align: 'center',
         width: 150,
-        render: (item) => (
+        render: (item, row, index) => (
           <span>
             {/*<ButtonGroup>*/}
             <Button
@@ -66,23 +104,7 @@ class CompanyListPage extends Component {
               }}
             />
             <Divider type="vertical" />
-            <Popconfirm
-              title="Are you sure"
-              placement="topLeft"
-              okText="Yes"
-              icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
-            >
-              <Button
-                ghost
-                shape="circle-outline"
-                size="small"
-                type="danger"
-                icon="delete"
-                onClick={() => {
-                  // TODO: delete
-                }}
-              />
-            </Popconfirm>
+            <TableButtonDelete loading={loading} handleConfirm={() => this.handleDelete(item.id, row, index)} />
             {/*</ButtonGroup>*/}
           </span>
         ),
@@ -107,7 +129,7 @@ class CompanyListPage extends Component {
                   size="small"
                   bordered
                   pagination={{ pageSize: 15 }}
-                  loading={loading}
+                  loading={loading || localLoading}
                   rowKey={(record) => record.id}
                   columns={columns}
                   dataSource={list}
@@ -124,12 +146,14 @@ class CompanyListPage extends Component {
 
 CompanyListPage.defaultProps = {
   getList: () => { },
+  dispatch: () => { },
   list: [],
   loading: false,
 };
 
 CompanyListPage.propTypes = {
   getList: PropTypes.func,
+  dispatch: PropTypes.func,
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
 };

@@ -126,9 +126,10 @@ export async function post(url, param, dispatch) {
 export async function patch(url, param, dispatch) {
   const headers = await authHeaderProvider();
   return new Promise(((resolve, reject) => {
-    axios.patch(`${url}`, param, {headers}).then((response) => {
+    axios.patch(`${url}`, param, { headers }).then((response) => {
       resolve(response);
     }).catch((error) => {
+      handleError(error, dispatch);
       reject(error);
     });
   }));
@@ -137,14 +138,16 @@ export async function patch(url, param, dispatch) {
 /**
  * * [Delete Request]
  * @param url
+ * @param dispatch
  * @returns {Promise<any>}
  */
-export async function remove(url) {
+export async function remove(url, dispatch) {
   const headers = await authHeaderProvider();
   return new Promise(((resolve, reject) => {
-    axios.delete(`${url}`, {headers}).then((response) => {
+    axios.delete(`${url}`, { headers }).then((response) => {
       resolve(response);
     }).catch((error) => {
+      handleError(error, dispatch);
       reject(error);
     });
   }));

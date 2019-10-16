@@ -12,10 +12,13 @@ import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
+import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
+import CompanyCardDeleteButton from '../atoms/CompanyCardDeleteButton';
 
 class CompanyShowPage extends Component {
   constructor(props) {
     super(props);
+    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       company: {},
     };
@@ -32,7 +35,12 @@ class CompanyShowPage extends Component {
     });
   }
 
+  handleDelete =() => {
+    console.log('delete');
+  };
+
   render() {
+    const { dispatch } = this.props;
     const { company } = this.state;
     return (
       <Card>
@@ -58,18 +66,14 @@ class CompanyShowPage extends Component {
               }}
             />
             <Divider type="vertical" />
-            <Button
-              size="default"
-              type="danger"
-              icon="delete"
-            />
+            <CompanyCardDeleteButton dispatch={dispatch} id={company.id} />
           </div>
         </CardHeader>
         <CardBody>
-          <Descriptions layout="horizontal" size="small" bordered>
-            <Descriptions.Item span={3} label="ID">{company.id}</Descriptions.Item>
-            <Descriptions.Item span={3} label="Name">{company.name}</Descriptions.Item>
-            <Descriptions.Item span={3} label="Address">{company.address ? company.address : 'N/A'}</Descriptions.Item>
+          <Descriptions layout="vertical" size="small" bordered>
+            <Descriptions.Item label="ID">{company.id}</Descriptions.Item>
+            <Descriptions.Item label="Name">{company.name}</Descriptions.Item>
+            <Descriptions.Item label="Address">{company.address ? company.address : 'N/A'}</Descriptions.Item>
           </Descriptions>
         </CardBody>
       </Card>

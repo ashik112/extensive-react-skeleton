@@ -1,4 +1,4 @@
-import { get, post, patch } from '../../../services/apiService';
+import { get, post, patch, remove } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
 
 const companyApiRoutes = {
@@ -12,7 +12,7 @@ const companyApiRoutes = {
 const getCompanyList = (dispatch) => get(`${serverURL}${companyApiRoutes.companyList}`, dispatch);
 const getCompany = (id, dispatch = () => {}) => get(`${serverURL}${companyApiRoutes.company(id)}`, dispatch);
 const updateCompany = (id, param, dispatch) => patch(`${serverURL}${companyApiRoutes.companyUpdate(id)}`, param, dispatch);
-const deleteCompany = (id, dispatch) => get(`${serverURL}${companyApiRoutes.companyDelete(id)}`, dispatch);
+const deleteCompany = (id, dispatch) => remove(`${serverURL}${companyApiRoutes.companyDelete(id)}`, dispatch);
 const createCompany = (param, dispatch) => post(`${serverURL}${companyApiRoutes.companyCreate}`, param, dispatch);
 
 const companyApiService = {

@@ -13,11 +13,13 @@ import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
+import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 
 
 class CompanyUpdatePage extends Component {
   constructor(props) {
     super(props);
+    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       company: null,
     };
@@ -44,6 +46,10 @@ class CompanyUpdatePage extends Component {
     clearStore();
     clearNotifications();
   }
+
+  handleDelete =() => {
+    console.log('delete');
+  };
 
   handleSubmit = (params) => {
     const { updateCompany } = this.props;
@@ -81,11 +87,7 @@ class CompanyUpdatePage extends Component {
                 }}
               />
               <Divider type="vertical" />
-              <Button
-                size="default"
-                type="danger"
-                icon="delete"
-              />
+              <CardButtonDelete handleConfirm={this.handleDelete} />
             </div>
           </CardHeader>
           <CardBody>

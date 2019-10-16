@@ -60,6 +60,22 @@ export default function companyReducer(state = initialState, action) {
         loading: false,
         error: action.payload,
       };
+    case companyActionTypes.COMPANY_DELETE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case companyActionTypes.COMPANY_DELETE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case companyActionTypes.COMPANY_DELETE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     case companyActionTypes.CLEAR_ALL:
       return {
         loading: false,
