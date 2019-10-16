@@ -1,7 +1,7 @@
 import companyActionTypes from '../actionTypes';
 import companyApiService from '../../apiServices/companyApiService';
 import checkHttpError from '../../../../services/checkHttpError';
-import {showAlert} from '../../../../services/generalhelper';
+import { showAlert } from '../../../../services/generalhelper';
 import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
 

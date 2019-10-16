@@ -1,4 +1,4 @@
-import {get, post} from '../../../services/apiService';
+import { get, post } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
 
 const companyApiRoutes = {
