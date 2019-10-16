@@ -16,7 +16,7 @@ const warning = (title, message, duration = 5) => () => {
 };
 
 const error = (title, message, duration = 5) => () => {
-  showNotification('warning', title, message, duration);
+  showNotification('error', title, message, duration);
 };
 
 const notificationActions = {
