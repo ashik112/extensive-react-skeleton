@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension,react/jsx-props-no-spreading */
 import React from 'react';
 import {
-  Row, Col,
+  Row, Col, Result,
 } from 'antd';
 import Card from '../../../../components/Card/Card';
 import CardBody from '../../../../components/Card/CardBody';
@@ -11,13 +11,18 @@ export default function DashboardPage() {
   return (
     <>
       <Row gutter={8}>
-        <Col span={12}>
+        <Col span={24}>
           <Card>
-            <CardHeader color="success">
+            <CardHeader color="info">
               Biznet Dashboard
             </CardHeader>
             <CardBody>
-              Welcome!
+              <Result
+                status="success"
+                title="Successfully Logged In!"
+                subTitle="Thank you for using Biznet."
+                extra={[]}
+              />
             </CardBody>
           </Card>
         </Col>

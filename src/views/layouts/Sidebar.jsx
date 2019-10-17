@@ -41,9 +41,10 @@ class Sidebar extends Component {
               </Menu.Item>
             ))
           }
+          <Menu.Divider />
           <Menu.Item key="/logout" onClick={logout}>
             <Icon type="logout" />
-            <span>Logout</span>
+            <span>Log Out</span>
           </Menu.Item>
         </Menu>
       </Sider>
