@@ -22,12 +22,23 @@ class Sidebar extends Component {
     return (
       <Sider
         breakpoint="sm"
-        trigger={null}
-        collapsedWidth="0"
+        /*trigger={null}*/
+        /*collapsedWidth="0"*/
         collapsible
         collapsed={collapsed}
         onCollapse={onCollapse}
         theme="light"
+        // ! Style only for fixed collapsible SideBar
+        style={{
+          overflow: 'auto',
+          height: '100vh',
+          position: 'sticky',
+          // ! HedaerBar not fixed -> comment out top
+          // top: 0,
+          // ! for fixed Header
+          marginTop: 64,
+          left: 0,
+        }}
       >
         <div className="logo" />
         {/* values in the selectedKeys will be highlighted */}

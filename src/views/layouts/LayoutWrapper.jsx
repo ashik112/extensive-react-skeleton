@@ -73,12 +73,23 @@ class LayoutWrapper extends Component {
     }
     return (
       <>
-        <Layout style={{ minHeight: '100vh' }}>
-          { loggedIn && <Sidebar onCollapse={this.onCollapse} collapsed={collapsed} logout={this.logout} shouldMenuHighlight={this.shouldMenuHighlight} /> }
+        <Layout
+          style={{
+            maxHeight: '100vh',
+            overflow: 'hidden', // !fixed sidebar && fixed header bar
+            // marginLeft: 200, // ! only if Sidebar fixed
+          }}
+        >
+          { loggedIn && <HeaderBar toggleSidebar={this.toggle} logout={this.logout} collapsed={collapsed} /> }
           <Layout>
-            { loggedIn && <HeaderBar toggleSidebar={this.toggle} logout={this.logout} collapsed={collapsed} /> }
+            { loggedIn && <Sidebar onCollapse={this.onCollapse} collapsed={collapsed} logout={this.logout} shouldMenuHighlight={this.shouldMenuHighlight} /> }
             <Content style={{
-              margin: 5, padding: 5, background: '#f1f4f6', minHeight: 280,
+              margin: 5,
+              padding: 5,
+              background: '#f1f4f6',
+              minHeight: 280,
+              overflow: 'scroll', // ! if sidebar fixed
+              marginTop: 64, // ! if Header fixed
             }}
             >
               <TransitionGroup>

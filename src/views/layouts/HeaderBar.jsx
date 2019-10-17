@@ -36,9 +36,17 @@ class HeaderBar extends Component {
     const { collapsed, toggleSidebar } = this.props;
     return (
       <div>
-        <Header style={{
-          zIndex: 1, width: '100%', background: '#fff', padding: 0, paddingLeft: 16,
-        }}
+        <Header
+          style={{
+            boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
+            zIndex: 1,
+            width: '100%',
+            background: '#fff',
+            padding: 0,
+            paddingLeft: 16,
+            // ! only for Fixed Header
+            position: 'fixed',
+          }}
         >
           <Icon
             className="trigger"
