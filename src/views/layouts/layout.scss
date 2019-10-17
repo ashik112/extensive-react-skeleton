@@ -7,7 +7,7 @@
   //top: 0;
   //width: 100%;
   //-webkit-overflow-scrolling: touch;
-  transition: transform 1s ease-in-out;
+  //transition: transform 1s ease-in-out;
 }
 
 .page-enter {
@@ -15,10 +15,10 @@
 }
 .page-enter-active {
   opacity: 1;
-  transition: opacity 1000ms ease-in;
+  transition: opacity 500ms ease-in;
 }
 .page-exit {
   opacity: 0;
-  //transition: opacity 1000ms ease-out;
+  //transition: opacity 500ms ease-out;
 }
 // * Page Transition Effect
