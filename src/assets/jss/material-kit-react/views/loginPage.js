@@ -23,7 +23,7 @@ const signupPageStyle = {
     border: "0",
     alignItems: "center",
     "&:before": {
-      background: "rgba(5, 33, 24, 0.2)",
+      // background: "rgba(5, 33, 24, 0.2)",
     },
     "&:before,&:after": {
       position: "absolute",
