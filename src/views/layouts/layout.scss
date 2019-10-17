@@ -15,10 +15,10 @@
 }
 .page-enter-active {
   opacity: 1;
-  transition: opacity 700ms ease-in;
+  transition: opacity 250ms ease-in;
 }
 .page-exit {
   opacity: 0;
-  transition: opacity 850ms ease-out;
+  //transition: opacity 250ms ease-out;
 }
 // * Page Transition Effect
