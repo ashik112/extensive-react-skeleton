@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Popconfirm } from 'antd';
+import {Button, Icon, Popconfirm} from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { remove } from '../../services/apiService';
@@ -35,6 +35,7 @@ class CardButtonDelete extends Component {
           title="Are you sure?"
           onConfirm={this.deleteItem}
           placement="left"
+          icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
         >
           <Button
             size="default"

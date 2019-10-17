@@ -130,7 +130,7 @@ class CompanyListPage extends Component {
                   title="Create a new Company"
                   mouseEnterDelay={1}
                 >
-                  <Button type="primary" icon="plus" onClick={() => history.push(companyRouteLinks.create)}> Companies </Button>
+                  <Button type="primary" icon="plus" onClick={() => history.push(companyRouteLinks.create)}> Company </Button>
                 </Tooltip>
               </CardHeader>
               <CardBody>
