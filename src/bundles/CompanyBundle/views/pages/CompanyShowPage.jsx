@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Button, Descriptions, Divider,
+  Button, Descriptions, Divider, Tag,
 } from 'antd';
 import companyApiService, { companyApiRoutes } from '../../apiServices/companyApiService';
 import Card from '../../../../components/Card/Card';
@@ -80,7 +80,7 @@ class CompanyShowPage extends Component {
           <Descriptions layout="vertical" size="small" bordered>
             <Descriptions.Item label="ID">{company.id}</Descriptions.Item>
             <Descriptions.Item label="Name">{company.name}</Descriptions.Item>
-            <Descriptions.Item label="Address">{company.address ? company.address : 'N/A'}</Descriptions.Item>
+            <Descriptions.Item label="Address">{company.address ? company.address : <Tag color="red">Not Available</Tag>}</Descriptions.Item>
           </Descriptions>
         </CardBody>
       </Card>
