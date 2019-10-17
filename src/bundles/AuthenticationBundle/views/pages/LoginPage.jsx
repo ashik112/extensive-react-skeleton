@@ -45,7 +45,13 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
         <div className={classes.container} style={{ paddingBottom: 0 }}>
           <GridContainer justify="center">
             <GridItem xs={10} sm={10} md={4}>
-              <Card className={classes[cardAnimaton]} style={{ background: 'rgba(255, 255, 255, 0.5)' }}>
+              <Card
+                className={classes[cardAnimaton]}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 1), 0 1px 5px 0 rgba(0, 0, 0, 1)',
+                }}
+              >
                 <CardHeader color="info" className={classes.cardHeader}>
                   <Avatar size={64} icon="user" style={{ color: '#00acc1', backgroundColor: '#ffffff' }} />
                   <p className={classes.divider}>{('WELCOME TO BIZNET').toUpperCase()}</p>
