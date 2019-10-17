@@ -4,20 +4,20 @@ import {
   Link,
 } from 'react-router-dom';
 import {
-  Layout, Menu, Icon,
+  Layout, Menu, Icon, Button,
 } from 'antd';
 import PropTypes from 'prop-types';
-import { menuRoutes } from '../../routes';
+import { historyRoutes, menuRoutes } from '../../routes';
+import './layout.scss';
 
 const {
   Sider,
 } = Layout;
-
 // const { SubMenu } = Menu;
 class Sidebar extends Component {
   render() {
     const {
-      collapsed, shouldMenuHighlight, logout, onCollapse,
+      collapsed, shouldMenuHighlight, onCollapse,
     } = this.props;
     return (
       <Sider
@@ -40,9 +40,35 @@ class Sidebar extends Component {
           left: 0,
         }}
       >
-        <div className="logo" />
         {/* values in the selectedKeys will be highlighted */}
-        <Menu selectedKeys={[shouldMenuHighlight()]} theme="light" mode="inline">
+        <Menu
+          selectedKeys={[shouldMenuHighlight()]}
+          theme="light"
+          mode="inline"
+          style={{
+            height: '100%',
+          }}
+        >
+          <Menu.Item>
+            <Icon
+              type="desktop"
+              style={{
+                opacity: 0,
+              }}
+            />
+            <span style={{ textAlign: 'center' }}>
+              <Button type="primary" ghost>
+                <Link to={historyRoutes.dashboard}>
+                  &nbsp; &nbsp;BIZNET&nbsp; &nbsp;
+                </Link>
+              </Button>
+            </span>
+          </Menu.Item>
+          <Menu.Divider
+            style={{
+              opacity: 0,
+            }}
+          />
           {
             menuRoutes.map((route) => route.visibleInSidebar && (
               <Menu.Item key={route.path}>
@@ -52,11 +78,24 @@ class Sidebar extends Component {
               </Menu.Item>
             ))
           }
-          <Menu.Divider />
-          <Menu.Item key="/logout" onClick={logout}>
-            <Icon type="logout" />
-            <span>Log Out</span>
-          </Menu.Item>
+          <Menu.Divider
+            style={{
+              opacity: 0,
+            }}
+          />
+          {/*<Menu.Item key="/logout" onClick={logout}>
+            <Icon
+              type="logout"
+              style={{
+                opacity: 0,
+              }}
+            />
+            <span>
+              <Button type="danger" ghost>
+                &nbsp;&nbsp;&nbsp;Log Out&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </Button>
+            </span>
+          </Menu.Item>*/}
         </Menu>
       </Sider>
     );
@@ -66,14 +105,14 @@ class Sidebar extends Component {
 Sidebar.propTypes = {
   collapsed: PropTypes.bool,
   shouldMenuHighlight: PropTypes.func,
-  logout: PropTypes.func,
+  //  logout: PropTypes.func,
   onCollapse: PropTypes.func,
 };
 
 Sidebar.defaultProps = {
   collapsed: true,
   shouldMenuHighlight: () => {},
-  logout: () => {},
+  //  logout: () => {},
   onCollapse: () => {},
 };
 
