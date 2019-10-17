@@ -38,7 +38,7 @@ class HeaderBar extends Component {
       <div>
         <Header
           style={{
-            boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 8px 15px rgba(0, 0, 0, 0.05)',
             zIndex: 1,
             width: '100%',
             background: '#fff',
