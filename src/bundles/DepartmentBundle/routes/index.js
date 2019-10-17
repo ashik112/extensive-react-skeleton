@@ -22,7 +22,7 @@ export const departmentRouteLinks = {
 const menuRoutes = [
   {
     path: historyRoutes.departmentList,
-    icon: 'home',
+    icon: 'deployment-unit',
     exact: true,
     title: 'Department',
     visibleInSidebar: true,

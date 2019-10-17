@@ -77,6 +77,11 @@ class CompanyListPage extends Component {
         key: 'name',
       },
       {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
         title: 'Action',
         key: 'action',
         align: 'center',

@@ -5,6 +5,7 @@ import companyApiService from '../../apiServices/companyApiService';
 import createCompany from './companyCreateActions';
 import updateCompany from './companyUpdateActions';
 import deleteCompany from './companyDeleteActions';
+import checkHttpError from '../../../../services/checkHttpError';
 
 const fetchCompanyListBegin = () => ({
   type: companyActionTypes.COMPANY_LIST_FETCH_REQUEST,
@@ -32,17 +33,7 @@ const fetchCompanyList = () => async (dispatch) => {
       dispatch(fetchCompanyListSuccess(data));
     })
     .catch((err) => {
-      try {
-        if (err.response && err.response.statusText) {
-          dispatch(alertActions.error(err.response.statusText));
-        } else if (err.response.message) {
-          dispatch(alertActions.error(err.response.message));
-        } else {
-          dispatch(alertActions.error('Unexpected Error'));
-        }
-      } catch (e) {
-        dispatch(alertActions.error('Unexpected Error'));
-      }
+      checkHttpError(err, 1, 5, dispatch);
       dispatch(fetchCompanyListFailure(err));
     });
 };

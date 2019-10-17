@@ -22,7 +22,7 @@ export const companyRouteLinks = {
 const menuRoutes = [
   {
     path: historyRoutes.companyList,
-    icon: 'home',
+    icon: 'share-alt',
     exact: true,
     title: 'Company',
     visibleInSidebar: true,
