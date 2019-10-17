@@ -7,13 +7,14 @@ import PropTypes from 'prop-types';
 import CompanyForm from '../templates/CompanyForm';
 import companyActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import companyApiService from '../../apiServices/companyApiService';
+import companyApiService, {companyApiRoutes} from '../../apiServices/companyApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
 import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
+import {serverURL} from '../../../../constants';
 
 
 class CompanyUpdatePage extends Component {
@@ -71,23 +72,27 @@ class CompanyUpdatePage extends Component {
                 Company List
               </span>
             </Button>
-            <div style={{ float: 'right' }}>
-              <Button
-                size="default"
-                type="primary"
-                className="button-color-daybreak"
-                icon="eye"
-                onClick={async () => {
-                  try {
-                    history.push(companyRouteLinks.show(company.id));
-                  } catch (e) {
-                    /* */
-                  }
-                }}
-              />
-              <Divider type="vertical" />
-              <CardButtonDelete handleConfirm={this.handleDelete} />
-            </div>
+            {
+              company && company.id && (
+                <div style={{ float: 'right' }}>
+                  <Button
+                    size="default"
+                    type="primary"
+                    className="button-color-daybreak"
+                    icon="eye"
+                    onClick={async () => {
+                      try {
+                        history.push(companyRouteLinks.show(company.id));
+                      } catch (e) {
+                        /* */
+                      }
+                    }}
+                  />
+                  <Divider type="vertical" />
+                  <CardButtonDelete url={`${serverURL}${companyApiRoutes.companyDelete(company.id)}`} route={companyRouteLinks.list} />
+                </div>
+              )
+            }
           </CardHeader>
           <CardBody>
             {company && <WrappedCompanyForm company={company} handleSubmit={this.handleSubmit} />}

@@ -54,23 +54,27 @@ class CompanyShowPage extends Component {
             &nbsp;
             Company List
           </Button>
-          <div style={{ float: 'right' }}>
-            <Button
-              size="default"
-              type="primary"
-              className="button-color-daybreak"
-              icon="edit"
-              onClick={async () => {
-                try {
-                  history.push(companyRouteLinks.edit(company.id));
-                } catch (e) {
-                  /* */
-                }
-              }}
-            />
-            <Divider type="vertical" />
-            <CardButtonDelete url={`${serverURL}${companyApiRoutes.companyDelete(company.id)}`} route={companyRouteLinks.list} />
-          </div>
+          {
+            company && company.id && (
+              <div style={{ float: 'right' }}>
+                <Button
+                  size="default"
+                  type="primary"
+                  className="button-color-daybreak"
+                  icon="edit"
+                  onClick={async () => {
+                    try {
+                      history.push(companyRouteLinks.edit(company.id));
+                    } catch (e) {
+                      /* */
+                    }
+                  }}
+                />
+                <Divider type="vertical" />
+                <CardButtonDelete url={`${serverURL}${companyApiRoutes.companyDelete(company.id)}`} route={companyRouteLinks.list} />
+              </div>
+            )
+          }
         </CardHeader>
         <CardBody>
           <Descriptions layout="vertical" size="small" bordered>
