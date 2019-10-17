@@ -92,8 +92,8 @@ class LayoutWrapper extends Component {
                   key={location.key}
                   classNames="page"
                   timeout={{
-                    enter: 500,
-                    exit: 0,
+                    enter: 700,
+                    exit: 850,
                   }}
                 >
                   <Switch
