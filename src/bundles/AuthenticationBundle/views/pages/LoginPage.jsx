@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import { Avatar } from 'antd';
 import PropTypes from 'prop-types';
 import Footer from '../../../../components/Footer/Footer';
 import GridContainer from '../../../../components/Grid/GridContainer';
@@ -41,14 +42,18 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
           backgroundBlendMode: 'multiply',
         }}
       >
-        <div className={classes.container}>
+        <div className={classes.container} style={{ paddingBottom: 0 }}>
           <GridContainer justify="center">
             <GridItem xs={10} sm={10} md={4}>
               <Card className={classes[cardAnimaton]} style={{ background: 'rgba(255, 255, 255, 0.5)' }}>
                 <CardHeader color="info" className={classes.cardHeader}>
-                  <b>Biznet</b>
-                  {/*<p className={classes.divider}>{('Enter your credentials').toUpperCase()}</p>*/}
+                  <Avatar size={64} icon="user" style={{ color: '#00acc1', backgroundColor: '#ffffff' }} />
+                  <p className={classes.divider}>{('WELCOME TO BIZNET').toUpperCase()}</p>
                 </CardHeader>
+                {/*<CardHeader color="info" className={classes.cardHeader}>
+                  <b>Biznet</b>
+                  <p className={classes.divider}>{('Enter your credentials').toUpperCase()}</p>
+                </CardHeader>*/}
                 <CardBody>
                   <LoginForm
                     loading={authReducer.loading}
