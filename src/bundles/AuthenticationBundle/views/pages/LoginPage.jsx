@@ -15,6 +15,7 @@ import image from '../../../../assets/img/background.svg';
 import authActions from '../../redux/actions';
 import LoginForm from '../templates/LoginForm';
 import AnimationBoxBubbles from '../../../../views/atoms/AnimationBoxBubbles';
+import './LoginPage.scss';
 //import Button from '../../components/CustomButtons/Button';
 //import { InputAdornment } from '@material-ui/core';
 //import { People, Lock } from '@material-ui/icons';
@@ -60,7 +61,7 @@ function LoginPage({ onLogIn, authReducer, stopButtonLoading }) {
                   <b>Biznet</b>
                   <p className={classes.divider}>{('Enter your credentials').toUpperCase()}</p>
                 </CardHeader>*/}
-                <CardBody>
+                <CardBody className="login-page">
                   <LoginForm
                     loading={authReducer.loading}
                     handleLogin={(credentials) => onLogIn(credentials)}
