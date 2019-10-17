@@ -137,7 +137,7 @@ class LayoutWrapper extends Component {
                   the old location as it animates out.
                 */}
                 <CSSTransition
-                  key={location.pathname}
+                  key={location.key}
                   classNames="page"
                   timeout={{
                     enter: 500,
