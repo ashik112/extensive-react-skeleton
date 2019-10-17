@@ -3,7 +3,7 @@ import {
 } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
 
-const companyApiRoutes = {
+export const companyApiRoutes = {
   companyList: 'company/list',
   company: (id) => `company/show/${id}`,
   companyCreate: 'company/new',

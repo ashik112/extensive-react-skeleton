@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Form, Icon, Spin, Empty, Button, Divider,
+  Form, Spin, Empty, Button, Divider,
 } from 'antd';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import CompanyForm from '../templates/CompanyForm';
 import companyActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
@@ -19,7 +19,6 @@ import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 class CompanyUpdatePage extends Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       company: null,
     };
@@ -46,10 +45,6 @@ class CompanyUpdatePage extends Component {
     clearStore();
     clearNotifications();
   }
-
-  handleDelete =() => {
-    console.log('delete');
-  };
 
   handleSubmit = (params) => {
     const { updateCompany } = this.props;
@@ -83,7 +78,11 @@ class CompanyUpdatePage extends Component {
                 className="button-color-daybreak"
                 icon="eye"
                 onClick={async () => {
-                  history.push(companyRouteLinks.show(company.id));
+                  try {
+                    history.push(companyRouteLinks.show(company.id));
+                  } catch (e) {
+                    /* */
+                  }
                 }}
               />
               <Divider type="vertical" />

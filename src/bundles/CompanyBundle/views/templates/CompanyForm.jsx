@@ -11,7 +11,7 @@ import ButtonSubmit from '../../../../views/atoms/ButtonSubmit';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
-  address: yup.string().required('Required!'),
+  address: yup.string(),
 });
 
 export default class CompanyForm extends Component {

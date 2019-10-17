@@ -3,9 +3,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Button, Descriptions, Divider, Table, Tooltip,
+  Button, Descriptions, Divider,
 } from 'antd';
-import companyApiService from '../../apiServices/companyApiService';
+import companyApiService, { companyApiRoutes } from '../../apiServices/companyApiService';
 import Card from '../../../../components/Card/Card';
 import CardHeader from '../../../../components/Card/CardHeader';
 import history from '../../../../services/history';
@@ -13,7 +13,7 @@ import companyRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import CompanyCardDeleteButton from '../atoms/CompanyCardDeleteButton';
+import { serverURL } from '../../../../constants';
 
 class CompanyShowPage extends Component {
   constructor(props) {
@@ -40,7 +40,6 @@ class CompanyShowPage extends Component {
   };
 
   render() {
-    const { dispatch } = this.props;
     const { company } = this.state;
     return (
       <Card>
@@ -62,11 +61,15 @@ class CompanyShowPage extends Component {
               className="button-color-daybreak"
               icon="edit"
               onClick={async () => {
-                history.push(companyRouteLinks.edit(company.id));
+                try {
+                  history.push(companyRouteLinks.edit(company.id));
+                } catch (e) {
+                  /* */
+                }
               }}
             />
             <Divider type="vertical" />
-            <CompanyCardDeleteButton dispatch={dispatch} id={company.id} />
+            <CardButtonDelete url={`${serverURL}${companyApiRoutes.companyDelete(company.id)}`} route={companyRouteLinks.list} />
           </div>
         </CardHeader>
         <CardBody>

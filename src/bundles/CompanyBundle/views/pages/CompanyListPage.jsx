@@ -26,12 +26,7 @@ class CompanyListPage extends Component {
   }
 
   componentDidMount() {
-    const { getList } = this.props;
-    getList();
-    const { list } = this.props;
-    this.setState({
-      list,
-    });
+    this.loadList().then();
   }
 
   handleDelete = async (id, row, index) => {
@@ -48,6 +43,15 @@ class CompanyListPage extends Component {
       this.toggleLoading(false);
     });
   };
+
+  async loadList() {
+    const { getList } = this.props;
+    await getList();
+    const { list } = this.props;
+    await this.setState({
+      list,
+    });
+  }
 
   toggleLoading(status) {
     this.setState({
