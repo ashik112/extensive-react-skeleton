@@ -52,7 +52,7 @@ export default class DepartmentForm extends Component {
               department.id && (
                 <Row gutter={8} style={{ margin: 10 }}>
                   <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
-                    Id:
+                    ID:
                   </Col>
                   <Col span={20}>
                     {department.id}

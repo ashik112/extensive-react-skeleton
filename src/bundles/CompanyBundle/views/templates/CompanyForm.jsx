@@ -51,8 +51,8 @@ export default class CompanyForm extends Component {
             {
               company.id && (
                 <Row gutter={8} style={{ margin: 10 }}>
-                  <Col span={2} style={{ textAlign: 'right', marginLeft: 5 }}>
-                    Id:
+                  <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
+                    ID:
                   </Col>
                   <Col span={20}>
                     {company.id}
@@ -61,7 +61,7 @@ export default class CompanyForm extends Component {
               )
             }
             <Row gutter={8} style={{ margin: 10 }}>
-              <Col span={2} style={{ textAlign: 'right', marginLeft: 5 }}>
+              <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
                 Name:
               </Col>
               <Col span={20}>
@@ -72,7 +72,7 @@ export default class CompanyForm extends Component {
               </Col>
             </Row>
             <Row gutter={8} style={{ margin: 10 }}>
-              <Col span={2} style={{ textAlign: 'right', marginLeft: 5 }}>
+              <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
                 Address:
               </Col>
               <Col span={20}>
@@ -82,8 +82,9 @@ export default class CompanyForm extends Component {
                 />
               </Col>
             </Row>
-            <Row>
-              <Col style={{ float: 'right' }}>
+            <Row gutter={8} style={{ margin: 10 }}>
+              <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }} />
+              <Col span={20}>
                 <ButtonSubmit loading={loading} />
               </Col>
             </Row>
