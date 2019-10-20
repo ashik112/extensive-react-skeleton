@@ -22,7 +22,7 @@ export const supplierRouteLinks = {
 const menuRoutes = [
   {
     path: historyRoutes.supplierList,
-    icon: 'deployment-unit',
+    icon: 'import',
     exact: true,
     title: 'Supplier',
     visibleInSidebar: true,
