@@ -20,7 +20,7 @@ export default function LocationForm({
   handleSubmit, loading, location, list,
 }) {
   return (
-    <div>
+    <>
       <Formik
         initialValues={location}
         enableReinitialize
@@ -88,6 +88,6 @@ export default function LocationForm({
           </Row>
         </Form>
       </Formik>
-    </div>
+    </>
   );
 }
