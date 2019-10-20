@@ -19,6 +19,7 @@ const validationSchema = yup.object().shape({
 export default function UnitForm({
   handleSubmit, loading, unit, list,
 }) {
+  console.log(unit)
   return (
     <div>
       <Formik

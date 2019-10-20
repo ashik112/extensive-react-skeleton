@@ -83,7 +83,7 @@ class UnitListPage extends Component {
       },
       {
         title: 'Conversion Factor',
-        dataIndex: 'conversionFactor',
+        dataIndex: 'conversion_factor',
         key: 'conversionFactor',
       },
       {
