@@ -19,6 +19,11 @@ class UnitCreatePage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const { getList } = this.props;
+    getList();
+  }
+
   componentWillUnmount() {
     const { clearStore, clearNotifications } = this.props;
     clearStore();
@@ -31,7 +36,7 @@ class UnitCreatePage extends Component {
   };
 
   render() {
-    const { loading } = this.props;
+    const { loading, list } = this.props;
     return (
       <Spin spinning={loading}>
         <Card>
@@ -47,12 +52,7 @@ class UnitCreatePage extends Component {
             </Button>
           </CardHeader>
           <CardBody>
-            <WrappedUnitForm
-              unit={{
-                name: '', short: '', conversionFactor: '', parent: '',
-              }}
-              handleSubmit={this.handleSubmit}
-            />
+            <WrappedUnitForm list={list} unit={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />
           </CardBody>
         </Card>
       </Spin>
@@ -62,20 +62,25 @@ class UnitCreatePage extends Component {
 
 UnitCreatePage.defaultProps = {
   loading: false,
+  list: [],
   createUnit: () => {},
   clearStore: () => {},
   clearNotifications: () => {},
+  getList: () => { },
 };
 
 UnitCreatePage.propTypes = {
   loading: PropTypes.bool,
+  list: PropTypes.arrayOf(PropTypes.shape([])),
   createUnit: PropTypes.func,
   clearStore: PropTypes.func,
   clearNotifications: PropTypes.func,
+  getList: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   loading: state.unitReducer.loading,
+  list: state.unitReducer.list,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -87,6 +92,9 @@ const mapDispatchToProps = (dispatch) => ({
   ),
   clearNotifications: () => dispatch(
     notificationActions.closeAll(),
+  ),
+  getList: () => dispatch(
+    unitActions.fetchUnitList(),
   ),
 });
 
