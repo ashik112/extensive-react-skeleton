@@ -6,16 +6,16 @@ import history from '../../../../services/history';
 import locationRouteLinks from '../../routes/links';
 
 const updateLocationBegin = () => ({
-  type: locationActionTypes.DEPARTMENT_UPDATE_REQUEST,
+  type: locationActionTypes.LOCATION_UPDATE_REQUEST,
 });
 
 const updateLocationSuccess = (data) => ({
-  type: locationActionTypes.DEPARTMENT_UPDATE_SUCCESS,
+  type: locationActionTypes.LOCATION_UPDATE_SUCCESS,
   payload: data,
 });
 
 const updateLocationFailure = (error) => ({
-  type: locationActionTypes.DEPARTMENT_UPDATE_FAILURE,
+  type: locationActionTypes.LOCATION_UPDATE_FAILURE,
   payload: { error },
 });
 

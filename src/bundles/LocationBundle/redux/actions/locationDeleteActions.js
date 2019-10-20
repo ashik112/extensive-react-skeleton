@@ -6,16 +6,16 @@ import history from '../../../../services/history';
 import locationRouteLinks from '../../routes/links';
 
 const deleteLocationBegin = () => ({
-  type: locationActionTypes.DEPARTMENT_DELETE_REQUEST,
+  type: locationActionTypes.LOCATION_DELETE_REQUEST,
 });
 
 const deleteLocationSuccess = (data) => ({
-  type: locationActionTypes.DEPARTMENT_DELETE_SUCCESS,
+  type: locationActionTypes.LOCATION_DELETE_SUCCESS,
   payload: data,
 });
 
 const deleteLocationFailure = (error) => ({
-  type: locationActionTypes.DEPARTMENT_DELETE_FAILURE,
+  type: locationActionTypes.LOCATION_DELETE_FAILURE,
   payload: { error },
 });
 

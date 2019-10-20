@@ -6,16 +6,16 @@ import history from '../../../../services/history';
 import locationRouteLinks from '../../routes/links';
 
 const createLocationBegin = () => ({
-  type: locationActionTypes.DEPARTMENT_CREATE_REQUEST,
+  type: locationActionTypes.LOCATION_CREATE_REQUEST,
 });
 
 const createLocationSuccess = (data) => ({
-  type: locationActionTypes.DEPARTMENT_CREATE_SUCCESS,
+  type: locationActionTypes.LOCATION_CREATE_SUCCESS,
   payload: data,
 });
 
 const createLocationFailure = (error) => ({
-  type: locationActionTypes.DEPARTMENT_CREATE_FAILURE,
+  type: locationActionTypes.LOCATION_CREATE_FAILURE,
   payload: { error },
 });
 
