@@ -45,6 +45,10 @@ export default function checkHttpError(error, alertType, duration = 5, dispatch)
               await dispatch(notificationActions.warning(err, '', duration));
             });
           }
+        } else if (error.response && error.response.data && error.response.data.message) {
+          dispatch(notificationActions.error(error.response.statusText, error.response.data.message, duration));
+        } else {
+          dispatch(notificationActions.error('Unexpected Error!', 'Please contact server administration.', duration));
         }
       } catch (e) {
         if (error.response && error.response.data && error.response.data.message) {
