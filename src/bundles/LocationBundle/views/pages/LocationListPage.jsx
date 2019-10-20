@@ -82,6 +82,11 @@ class LocationListPage extends Component {
         key: 'description',
       },
       {
+        title: 'Parent',
+        dataIndex: 'parent.name',
+        key: 'parent',
+      },
+      {
         title: 'Action',
         key: 'action',
         align: 'center',

@@ -7,14 +7,14 @@ import PropTypes from 'prop-types';
 import LocationForm from '../templates/LocationForm';
 import locationActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import locationApiService, {locationApiRoutes} from '../../apiServices/locationApiService';
+import locationApiService, { locationApiRoutes } from '../../apiServices/locationApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
 import history from '../../../../services/history';
 import locationRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import {serverURL} from '../../../../constants';
+import { serverURL } from '../../../../constants';
 
 
 class LocationUpdatePage extends Component {
@@ -27,9 +27,10 @@ class LocationUpdatePage extends Component {
 
   componentDidMount() {
     try {
-      const { match, dispatch } = this.props;
+      const { match, dispatch, getList } = this.props;
       const { params } = match;
       if (params) {
+        getList();
         locationApiService.getLocation(params.id, dispatch).then((res) => {
           this.setState({
             location: res.data,
@@ -54,8 +55,17 @@ class LocationUpdatePage extends Component {
   };
 
   render() {
-    const { loading } = this.props;
+    const { loading, list } = this.props;
     const { location } = this.state;
+    const initialValue = (
+      location
+        && location.id
+        && {
+          id: location.id,
+          name: location.name,
+          description: location.description,
+          parent: (location.parent && location.parent.id) || null,
+        }) || null;
     return (
       <Spin spinning={loading}>
         <Card>
@@ -95,7 +105,7 @@ class LocationUpdatePage extends Component {
             }
           </CardHeader>
           <CardBody>
-            {location && <WrappedLocationForm location={location} handleSubmit={this.handleSubmit} />}
+            {location && <WrappedLocationForm list={list} location={initialValue} handleSubmit={this.handleSubmit} />}
             {!location && <Empty />}
           </CardBody>
         </Card>
@@ -107,6 +117,7 @@ class LocationUpdatePage extends Component {
 
 LocationUpdatePage.defaultProps = {
   loading: false,
+  list: [],
   updateLocation: () => {},
   dispatch: () => {},
   clearStore: () => {},
@@ -114,19 +125,23 @@ LocationUpdatePage.defaultProps = {
   match: {
     param: null,
   },
+  getList: () => { },
 };
 
 LocationUpdatePage.propTypes = {
   loading: PropTypes.bool,
+  list: PropTypes.arrayOf(PropTypes.shape([])),
   updateLocation: PropTypes.func,
   dispatch: PropTypes.func,
   clearStore: PropTypes.func,
   clearNotifications: PropTypes.func,
   match: PropTypes.shape(),
+  getList: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   loading: state.locationReducer.loading,
+  list: state.locationReducer.list,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -138,6 +153,9 @@ const mapDispatchToProps = (dispatch) => ({
   ),
   clearNotifications: () => dispatch(
     notificationActions.closeAll(),
+  ),
+  getList: () => dispatch(
+    locationActions.fetchLocationList(),
   ),
 });
 const WrappedLocationForm = Form.create({ name: 'location_create' })(LocationForm);

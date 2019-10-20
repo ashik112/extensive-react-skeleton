@@ -75,6 +75,7 @@ class LocationShowPage extends Component {
             <Descriptions.Item label="ID">{location.id}</Descriptions.Item>
             <Descriptions.Item label="Name">{location.name}</Descriptions.Item>
             <Descriptions.Item label="Description">{location.description ? location.description : <Tag color="red">Not Available</Tag>}</Descriptions.Item>
+            <Descriptions.Item label="Parent">{location.parent ? (location.parent && location.parent.name) : <Tag color="red">Not Available</Tag>}</Descriptions.Item>
           </Descriptions>
         </CardBody>
       </Card>
