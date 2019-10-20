@@ -62,6 +62,8 @@ typings/
 
 # ide
 .idea
+# vs codee
+.history
 
 # project config
 src/constants/index.js
