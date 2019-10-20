@@ -140,5 +140,5 @@ const mapDispatchToProps = (dispatch) => ({
     notificationActions.closeAll(),
   ),
 });
-const WrappedSupplierForm = Form.create({ name: 'supplier_create' })(SupplierForm);
+const WrappedSupplierForm = Form.create({ name: 'supplier_update' })(SupplierForm);
 export default connect(mapStateToProps, mapDispatchToProps)(SupplierUpdatePage);

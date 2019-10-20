@@ -140,5 +140,5 @@ const mapDispatchToProps = (dispatch) => ({
     notificationActions.closeAll(),
   ),
 });
-const WrappedDepartmentForm = Form.create({ name: 'department_create' })(DepartmentForm);
+const WrappedDepartmentForm = Form.create({ name: 'department_update' })(DepartmentForm);
 export default connect(mapStateToProps, mapDispatchToProps)(DepartmentUpdatePage);

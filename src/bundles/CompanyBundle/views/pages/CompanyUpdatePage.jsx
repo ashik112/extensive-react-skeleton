@@ -140,5 +140,5 @@ const mapDispatchToProps = (dispatch) => ({
     notificationActions.closeAll(),
   ),
 });
-const WrappedCompanyForm = Form.create({ name: 'company_create' })(CompanyForm);
+const WrappedCompanyForm = Form.create({ name: 'company_update' })(CompanyForm);
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyUpdatePage);

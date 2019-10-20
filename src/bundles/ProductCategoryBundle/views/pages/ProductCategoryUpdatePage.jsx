@@ -4,24 +4,24 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LocationForm from '../templates/LocationForm';
-import locationActions from '../../redux/actions';
+import ProductCategoryForm from '../templates/ProductCategoryForm';
+import productCategoryActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import locationApiService, { locationApiRoutes } from '../../apiServices/locationApiService';
+import productCategoryApiService, { productCategoryApiRoutes } from '../../apiServices/productCategoryApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
 import history from '../../../../services/history';
-import locationRouteLinks from '../../routes/links';
+import productCategoryRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 
 
-class LocationUpdatePage extends Component {
+class ProductCategoryUpdatePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: null,
+      productCategory: null,
     };
   }
 
@@ -31,9 +31,9 @@ class LocationUpdatePage extends Component {
       const { params } = match;
       if (params) {
         getList();
-        locationApiService.getLocation(params.id, dispatch).then((res) => {
+        productCategoryApiService.getProductCategory(params.id, dispatch).then((res) => {
           this.setState({
-            location: res.data,
+            productCategory: res.data,
           });
         });
       }
@@ -49,22 +49,22 @@ class LocationUpdatePage extends Component {
   }
 
   handleSubmit = (params) => {
-    const { updateLocation } = this.props;
-    const { location } = this.state;
-    updateLocation(location.id, params);
+    const { updateProductCategory } = this.props;
+    const { productCategory } = this.state;
+    updateProductCategory(productCategory.id, params);
   };
 
   render() {
     const { loading, list } = this.props;
-    const { location } = this.state;
+    const { productCategory } = this.state;
     const initialValue = (
-      location
-        && location.id
+      productCategory
+        && productCategory.id
         && {
-          id: location.id,
-          name: location.name,
-          description: location.description,
-          parent: (location.parent && location.parent.id) || null,
+          id: productCategory.id,
+          name: productCategory.name,
+          description: productCategory.description,
+          parent: (productCategory.parent && productCategory.parent.id) || null,
         }) || null;
     return (
       <Spin spinning={loading}>
@@ -74,16 +74,16 @@ class LocationUpdatePage extends Component {
               type="primary"
               icon="arrow-left"
               onClick={async () => {
-                history.push(locationRouteLinks.list);
+                history.push(productCategoryRouteLinks.list);
               }}
             >
               <span>
                 &nbsp;
-                Location List
+                ProductCategory List
               </span>
             </Button>
             {
-              location && location.id && (
+              productCategory && productCategory.id && (
                 <div style={{ float: 'right' }}>
                   <Button
                     size="default"
@@ -92,21 +92,21 @@ class LocationUpdatePage extends Component {
                     icon="eye"
                     onClick={async () => {
                       try {
-                        history.push(locationRouteLinks.show(location.id));
+                        history.push(productCategoryRouteLinks.show(productCategory.id));
                       } catch (e) {
                         /* */
                       }
                     }}
                   />
                   <Divider type="vertical" />
-                  <CardButtonDelete url={`${serverURL}${locationApiRoutes.locationDelete(location.id)}`} route={locationRouteLinks.list} />
+                  <CardButtonDelete url={`${serverURL}${productCategoryApiRoutes.productCategoryDelete(productCategory.id)}`} route={productCategoryRouteLinks.list} />
                 </div>
               )
             }
           </CardHeader>
           <CardBody>
-            {location && <WrappedLocationForm list={list} location={initialValue} handleSubmit={this.handleSubmit} />}
-            {!location && <Empty />}
+            {productCategory && <WrappedProductCategoryForm list={list} productCategory={initialValue} handleSubmit={this.handleSubmit} />}
+            {!productCategory && <Empty />}
           </CardBody>
         </Card>
       </Spin>
@@ -115,10 +115,10 @@ class LocationUpdatePage extends Component {
 }
 
 
-LocationUpdatePage.defaultProps = {
+ProductCategoryUpdatePage.defaultProps = {
   loading: false,
   list: [],
-  updateLocation: () => {},
+  updateProductCategory: () => {},
   dispatch: () => {},
   clearStore: () => {},
   clearNotifications: () => {},
@@ -128,10 +128,10 @@ LocationUpdatePage.defaultProps = {
   getList: () => { },
 };
 
-LocationUpdatePage.propTypes = {
+ProductCategoryUpdatePage.propTypes = {
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
-  updateLocation: PropTypes.func,
+  updateProductCategory: PropTypes.func,
   dispatch: PropTypes.func,
   clearStore: PropTypes.func,
   clearNotifications: PropTypes.func,
@@ -140,23 +140,23 @@ LocationUpdatePage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  loading: state.locationReducer.loading,
-  list: state.locationReducer.list,
+  loading: state.productCategoryReducer.loading,
+  list: state.productCategoryReducer.list,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateLocation: (id, param) => dispatch(
-    locationActions.updateLocation(id, param),
+  updateProductCategory: (id, param) => dispatch(
+    productCategoryActions.updateProductCategory(id, param),
   ),
   clearStore: () => dispatch(
-    locationActions.clearLocationStore(),
+    productCategoryActions.clearProductCategoryStore(),
   ),
   clearNotifications: () => dispatch(
     notificationActions.closeAll(),
   ),
   getList: () => dispatch(
-    locationActions.fetchLocationList(),
+    productCategoryActions.fetchProductCategoryList(),
   ),
 });
-const WrappedLocationForm = Form.create({ name: 'location_update' })(LocationForm);
-export default connect(mapStateToProps, mapDispatchToProps)(LocationUpdatePage);
+const WrappedProductCategoryForm = Form.create({ name: 'product_category_update' })(ProductCategoryForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCategoryUpdatePage);
