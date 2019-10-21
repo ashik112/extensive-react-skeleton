@@ -1,65 +1,34 @@
-import React, { Component } from 'react';
-import {Button, Icon, Popconfirm} from 'antd';
+import React from 'react';
+import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { remove } from '../../services/apiService';
 import history from '../../services/history';
-import { showNotification } from '../../services/generalhelper';
-import checkHttpError from '../../services/checkHttpError';
 
 
-class CardButtonDelete extends Component {
-  constructor(props) {
-    super(props);
-    this.deleteItem = this.deleteItem.bind(this);
-    this.state = {
-      loading: false,
-    };
-  }
-
-  deleteItem = () => {
-    const { dispatch, url, route } = this.props;
-    remove(url, dispatch).then(() => {
-      history.push(route);
-      showNotification('success', 'Successful!', 'Deletion Complete.', 5);
-    }).catch((err) => {
-      checkHttpError(err, 2, 5, dispatch);
-    });
-  };
-
-  render() {
-    const { loading } = this.state;
-    return (
-      <>
-        <Popconfirm
-          title="Are you sure?"
-          onConfirm={this.deleteItem}
-          placement="left"
-          icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
-        >
-          <Button
-            tabIndex={-1}
-            size="default"
-            type="danger"
-            icon="delete"
-            loading={loading}
-          />
-        </Popconfirm>
-      </>
-    );
-  }
+function CardButtonEdit({ route }) {
+  return (
+    <Button
+      size="default"
+      type="primary"
+      className="button-color-daybreak"
+      icon="edit"
+      onClick={async () => {
+        try {
+          await history.push(route);
+        } catch (e) {
+          /* */
+        }
+      }}
+    />
+  );
 }
 
-CardButtonDelete.propTypes = {
-  dispatch: PropTypes.func,
-  url: PropTypes.string,
+CardButtonEdit.propTypes = {
   route: PropTypes.string,
 };
 
-CardButtonDelete.defaultProps = {
-  dispatch: () => {},
-  url: '',
+CardButtonEdit.defaultProps = {
   route: '/dashboard',
 };
 
-export default connect()(CardButtonDelete);
+export default connect()(CardButtonEdit);
