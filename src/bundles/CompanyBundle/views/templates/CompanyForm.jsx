@@ -15,7 +15,7 @@ const validationSchema = yup.object().shape({
   address: yup.string(),
 });
 
-export default function CompanyForm({handleSubmit, loading, company}) {
+export default function CompanyForm({ handleSubmit, loading, company }) {
   return (
     <>
       <Formik

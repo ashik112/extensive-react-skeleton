@@ -61,6 +61,13 @@
   top: -3px;
 }
 
+.form-descriptions {
+  .ant-descriptions-item-label {
+    background: #ffffff;
+    color: @primary-color;
+  }
+}
+
 
 .ant-table-row-expand-icon {
   padding-top: 2px;
@@ -95,7 +102,18 @@
   }
 }
 
-/* ! Button Colors for ant theme */
+/* ! Input */
+.form-field-error {
+  .ant-input, &.ant-input-number, &.ant-select > .ant-select-selection {
+    border-color: @error-color;
+    //outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(255, 0, 0, .2);
+    //box-shadow: 0 0 0 2px rgba(255, 0, 0, .2);
+  }
+}
+/* ! Input */
+
+  /* ! Button Colors for ant theme */
 .button-color-dust {
   background-color: #F5222D;
   border-color: #F5222D;
@@ -133,6 +151,7 @@
   &:hover, &:focus {
     background-color: #ffc53d;
     border-color: #ffc53d;
+    color: #ffffff;
   }
 
   &:active, &.active {
