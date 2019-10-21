@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Divider,
+  Form, Spin, Empty,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,10 +12,6 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import departmentRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonView from '../../../../views/atoms/CardButtonView';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
