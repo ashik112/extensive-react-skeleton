@@ -41,7 +41,7 @@ class ProductCategoryCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Product Category List" route={productCategoryRouteLinks.list} />
+            <ButtonBack title="Product Category" route={productCategoryRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedProductCategoryForm list={list} productCategory={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />

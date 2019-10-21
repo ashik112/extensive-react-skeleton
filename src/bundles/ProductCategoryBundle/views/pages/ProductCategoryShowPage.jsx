@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Descriptions, Divider, Tag,
+  Descriptions, Tag,
 } from 'antd';
 import productCategoryApiService, { productCategoryApiRoutes } from '../../apiServices/productCategoryApiService';
 import Card from '../../../../components/Card/Card';
@@ -10,10 +10,7 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import productCategoryRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonEdit from '../../../../views/atoms/CardButtonEdit';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 class ProductCategoryShowPage extends Component {
   constructor(props) {
@@ -39,16 +36,14 @@ class ProductCategoryShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <ButtonBack title="Product Category List" route={productCategoryRouteLinks.list} />
-          {
-            productCategory && productCategory.id && (
-              <div style={{ float: 'right' }}>
-                <CardButtonEdit route={productCategoryRouteLinks.edit(productCategory.id)} />
-                <Divider type="vertical" />
-                <CardButtonDelete url={`${serverURL}${productCategoryApiRoutes.productCategoryDelete(productCategory.id)}`} route={productCategoryRouteLinks.list} />
-              </div>
-            )
-          }
+          <CardActionButtons
+            title="Product Category"
+            entity={productCategory}
+            linkRouteObject={productCategoryRouteLinks}
+            deleteApiRouteFunction={productCategoryApiRoutes.productCategoryDelete}
+            update
+            remove
+          />
         </CardHeader>
         <CardBody>
           <Descriptions layout="vertical" size="small" bordered>

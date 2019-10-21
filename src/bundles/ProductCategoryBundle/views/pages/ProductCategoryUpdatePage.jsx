@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Divider,
+  Form, Spin, Empty,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,10 +12,7 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import productCategoryRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonView from '../../../../views/atoms/CardButtonView';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
 class ProductCategoryUpdatePage extends Component {
@@ -71,16 +68,14 @@ class ProductCategoryUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Product Category List" route={productCategoryRouteLinks.list} />
-            {
-              productCategory && productCategory.id && (
-                <div style={{ float: 'right' }}>
-                  <CardButtonView route={productCategoryRouteLinks.show(productCategory.id)} />
-                  <Divider type="vertical" />
-                  <CardButtonDelete url={`${serverURL}${productCategoryApiRoutes.productCategoryDelete(productCategory.id)}`} route={productCategoryRouteLinks.list} />
-                </div>
-              )
-            }
+            <CardActionButtons
+              title="Product Category"
+              entity={productCategory}
+              linkRouteObject={productCategoryRouteLinks}
+              deleteApiRouteFunction={productCategoryApiRoutes.productCategoryDelete}
+              show
+              remove
+            />
           </CardHeader>
           <CardBody>
             {productCategory && <WrappedProductCategoryForm list={list} productCategory={initialValue} handleSubmit={this.handleSubmit} />}
