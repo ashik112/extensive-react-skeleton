@@ -95,7 +95,7 @@ class CompanyUpdatePage extends Component {
             }
           </CardHeader>
           <CardBody>
-            {company && <WrappedCompanyForm company={company} handleSubmit={this.handleSubmit} />}
+            {company && company.id && <WrappedCompanyForm company={company} handleSubmit={this.handleSubmit} />}
             {!company && <Empty />}
           </CardBody>
         </Card>

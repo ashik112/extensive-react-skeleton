@@ -21,6 +21,7 @@ class Sidebar extends Component {
     } = this.props;
     return (
       <Sider
+        tabIndex={-1}
         breakpoint="sm"
         /*trigger={null}*/
         /*collapsedWidth="0"*/
@@ -42,6 +43,7 @@ class Sidebar extends Component {
       >
         {/* values in the selectedKeys will be highlighted */}
         <Menu
+          tabIndex={-1}
           selectedKeys={[shouldMenuHighlight()]}
           theme="light"
           mode="inline"
@@ -49,7 +51,9 @@ class Sidebar extends Component {
             height: '100%',
           }}
         >
-          <Menu.Item>
+          <Menu.Item
+            tabIndex={-1}
+          >
             <Icon
               type="desktop"
               style={{
@@ -57,8 +61,11 @@ class Sidebar extends Component {
               }}
             />
             <span style={{ textAlign: 'center' }}>
-              <Button type="primary" ghost>
-                <Link to={historyRoutes.dashboard}>
+              <Button tabIndex={-1} type="primary" ghost>
+                <Link
+                  tabIndex={-1}
+                  to={historyRoutes.dashboard}
+                >
                   &nbsp; &nbsp;BIZNET&nbsp; &nbsp;
                 </Link>
               </Button>
@@ -71,10 +78,16 @@ class Sidebar extends Component {
           />
           {
             menuRoutes.map((route) => route.visibleInSidebar && (
-              <Menu.Item key={route.path}>
+              <Menu.Item
+                key={route.path}
+                tabIndex={-1}
+              >
                 <Icon type={route.icon} />
                 <span>{route.title}</span>
-                <Link to={route.path} />
+                <Link
+                  tabIndex={-1}
+                  to={route.path}
+                />
               </Menu.Item>
             ))
           }

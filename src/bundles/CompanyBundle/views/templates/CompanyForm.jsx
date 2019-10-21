@@ -15,7 +15,7 @@ const validationSchema = yup.object().shape({
   address: yup.string(),
 });
 
-export default function CompanyForm(handleSubmit, loading, company) {
+export default function CompanyForm({handleSubmit, loading, company}) {
   return (
     <>
       <Formik
@@ -28,7 +28,7 @@ export default function CompanyForm(handleSubmit, loading, company) {
       >
         <Form>
           {
-            company.id && (
+            company && company.id && (
               <Row gutter={8} style={{ margin: 10 }}>
                 <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
                   ID:

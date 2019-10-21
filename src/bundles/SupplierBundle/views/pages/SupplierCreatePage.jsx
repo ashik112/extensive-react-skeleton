@@ -37,6 +37,7 @@ class SupplierCreatePage extends Component {
         <Card>
           <CardHeader>
             <Button
+              tabIndex={-1}
               type="primary"
               icon="arrow-left"
               onClick={async () => {

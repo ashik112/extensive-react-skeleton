@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import {
-  Icon, Layout, Dropdown, Menu,
+  Icon, Layout, Dropdown, Menu, Button,
 } from 'antd';
 import PropTypes from 'prop-types';
 
@@ -25,9 +25,13 @@ class HeaderBar extends Component {
     <Menu
       theme="light"
     >
-      <Menu.Item key="0" onClick={this.userLogOut}>
+      <Menu.Item
+        tabIndex={-1}
+        key="0"
+        onClick={this.userLogOut}
+      >
         {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-        <Icon type="logout" /> Log Out
+        <Icon tabIndex={-1} type="logout" /> Log Out
       </Menu.Item>
     </Menu>
   );
@@ -60,7 +64,7 @@ class HeaderBar extends Component {
             </Typography.Text>*/}
             <Dropdown overlay={this.getMenu()}>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line,jsx-a11y/anchor-is-valid */}
-              <a className="ant-dropdown-link" href="#"> User <Icon style={{ bottom: '3px', position: 'relative' }} type="down" /> </a>
+              <a tabIndex={-1} className="ant-dropdown-link" href="#"> User <Icon style={{ bottom: '3px', position: 'relative' }} type="down" /> </a>
             </Dropdown>
           </div>
         </Header>

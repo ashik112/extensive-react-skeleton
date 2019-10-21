@@ -61,6 +61,7 @@ class DepartmentUpdatePage extends Component {
         <Card>
           <CardHeader>
             <Button
+              tabIndex={-1}
               type="primary"
               icon="arrow-left"
               onClick={async () => {
@@ -76,6 +77,7 @@ class DepartmentUpdatePage extends Component {
               department && department.id && (
                 <div style={{ float: 'right' }}>
                   <Button
+                    tabIndex={-1}
                     size="default"
                     type="primary"
                     className="button-color-daybreak"

@@ -12,8 +12,8 @@ import { AntInput, AntSelect } from '../../../../forms/FormikAntFields';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
-  description: yup.string(),
-  parent: yup.number(),
+  description: yup.string().nullable(true),
+  parent: yup.number().nullable(true),
 });
 
 export default function LocationForm({

@@ -12,8 +12,8 @@ import { AntInput, AntSelect } from '../../../../forms/FormikAntFields';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
-  description: yup.string(),
-  parent: yup.number(),
+  description: yup.string().nullable(true),
+  parent: yup.number().nullable(true),
 });
 
 export default function ProductCategoryForm({
@@ -48,6 +48,7 @@ export default function ProductCategoryForm({
             </Col>
             <Col span={20}>
               <Field
+                tabIndex={0}
                 name="name"
                 component={AntInput}
               />
@@ -59,6 +60,7 @@ export default function ProductCategoryForm({
             </Col>
             <Col span={20}>
               <Field
+                tabIndex={0}
                 name="description"
                 component={AntInput}
               />
@@ -70,6 +72,7 @@ export default function ProductCategoryForm({
             </Col>
             <Col span={20}>
               <Field
+                tabIndex={0}
                 name="parent"
                 showSearch
                 optionFilterProp="name"
@@ -83,7 +86,10 @@ export default function ProductCategoryForm({
           <Row gutter={8} style={{ margin: 10 }}>
             <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }} />
             <Col span={20}>
-              <ButtonSubmit loading={loading} />
+              <ButtonSubmit
+                tabIndex={0}
+                loading={loading}
+              />
             </Col>
           </Row>
         </Form>

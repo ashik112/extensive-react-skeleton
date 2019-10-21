@@ -38,6 +38,7 @@ class CardButtonDelete extends Component {
           icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
         >
           <Button
+            tabIndex={-1}
             size="default"
             type="danger"
             icon="delete"

@@ -12,7 +12,7 @@ import { AntInput } from '../../../../forms/FormikAntFields';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
-  description: yup.string(),
+  description: yup.string().nullable(true),
 });
 
 export default function SupplierForm({ handleSubmit, loading, supplier }) {
