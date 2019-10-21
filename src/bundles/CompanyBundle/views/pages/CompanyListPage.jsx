@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension*/
 import React, { Component } from 'react';
 import {
-  Row, Col, Button, Divider, Table, Tooltip,
+  Row, Col, Button, Table, Tooltip,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -11,14 +11,12 @@ import Card from '../../../../components/Card/Card';
 import CardBody from '../../../../components/Card/CardBody';
 import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
-import TableButtonDelete from '../../../../views/atoms/TableButtonDelete';
 import companyApiService from '../../apiServices/companyApiService';
-//import CardFooter from '../../../components/Card/CardFooter';
+import TableActionButtons from '../../../../views/templates/TableActionButtons';
 
 class CompanyListPage extends Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       list: [],
       localLoading: false,
@@ -29,33 +27,12 @@ class CompanyListPage extends Component {
     this.loadList().then();
   }
 
-  handleDelete = async (id, row, index) => {
-    const { dispatch } = this.props;
-    this.toggleLoading(true);
-    companyApiService.deleteCompany(id, dispatch).then(() => {
-      const { list } = this.state;
-      list.splice(index, 1);
-      this.setState({
-        list,
-      });
-      this.toggleLoading(false);
-    }).catch(() => {
-      this.toggleLoading(false);
-    });
-  };
-
   async loadList() {
     const { getList } = this.props;
     await getList();
     const { list } = this.props;
     await this.setState({
       list,
-    });
-  }
-
-  toggleLoading(status) {
-    this.setState({
-      localLoading: status,
     });
   }
 
@@ -87,35 +64,22 @@ class CompanyListPage extends Component {
         align: 'center',
         width: 150,
         render: (item, row, index) => (
-          <span>
-            {/*<ButtonGroup>*/}
-            <Button
-              ghost
-              shape="circle-outline"
-              size="small"
-              type="primary"
-              className="button-color-cyan"
-              icon="eye"
-              onClick={() => {
-                history.push(companyRouteLinks.show(item.id));
-              }}
-            />
-            <Divider type="vertical" />
-            <Button
-              ghost
-              shape="circle-outline"
-              size="small"
-              type="primary"
-              className="button-color-daybreak"
-              icon="edit"
-              onClick={async () => {
-                history.push(companyRouteLinks.edit(item.id));
-              }}
-            />
-            <Divider type="vertical" />
-            <TableButtonDelete loading={loading} handleConfirm={() => this.handleDelete(item.id, row, index)} />
-            {/*</ButtonGroup>*/}
-          </span>
+          <TableActionButtons
+            show
+            remove
+            update
+            list={list}
+            entity={item}
+            row={row}
+            index={index}
+            linkRouteObject={companyRouteLinks}
+            deleteApiFunction={companyApiService.deleteCompany}
+            updateList={(updatedList) => {
+              this.setState({
+                list: updatedList,
+              });
+            }}
+          />
         ),
       },
     ];
@@ -155,14 +119,12 @@ class CompanyListPage extends Component {
 
 CompanyListPage.defaultProps = {
   getList: () => { },
-  dispatch: () => { },
   list: [],
   loading: false,
 };
 
 CompanyListPage.propTypes = {
   getList: PropTypes.func,
-  dispatch: PropTypes.func,
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
 };
