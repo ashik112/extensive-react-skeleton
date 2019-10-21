@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Divider,
+  Form, Spin, Empty,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,10 +12,7 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import locationRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonView from '../../../../views/atoms/CardButtonView';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
 class LocationUpdatePage extends Component {
@@ -71,16 +68,14 @@ class LocationUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Location List" route={locationRouteLinks.list} />
-            {
-              location && location.id && (
-                <div style={{ float: 'right' }}>
-                  <CardButtonView route={locationRouteLinks.show(location.id)} />
-                  <Divider type="vertical" />
-                  <CardButtonDelete url={`${serverURL}${locationApiRoutes.locationDelete(location.id)}`} route={locationRouteLinks.list} />
-                </div>
-              )
-            }
+            <CardActionButtons
+              title="Location"
+              entity={location}
+              linkRouteObject={locationRouteLinks}
+              deleteApiRouteFunction={locationApiRoutes.locationDelete}
+              remove
+              show
+            />
           </CardHeader>
           <CardBody>
             {location && <WrappedLocationForm list={list} location={initialValue} handleSubmit={this.handleSubmit} />}

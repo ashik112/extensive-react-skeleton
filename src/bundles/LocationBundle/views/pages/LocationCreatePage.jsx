@@ -41,7 +41,7 @@ class LocationCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Location List" route={locationRouteLinks.list} />
+            <ButtonBack title="Location" route={locationRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedLocationForm list={list} location={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />

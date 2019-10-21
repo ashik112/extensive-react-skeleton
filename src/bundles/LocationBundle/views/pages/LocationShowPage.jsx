@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Descriptions, Divider, Tag,
+  Descriptions, Tag,
 } from 'antd';
 import locationApiService, { locationApiRoutes } from '../../apiServices/locationApiService';
 import Card from '../../../../components/Card/Card';
@@ -10,10 +10,7 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import locationRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonEdit from '../../../../views/atoms/CardButtonEdit';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 class LocationShowPage extends Component {
   constructor(props) {
@@ -39,16 +36,14 @@ class LocationShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <ButtonBack title="Location List" route={locationRouteLinks.list} />
-          {
-            location && location.id && (
-              <div style={{ float: 'right' }}>
-                <CardButtonEdit route={locationRouteLinks.edit(location.id)} />
-                <Divider type="vertical" />
-                <CardButtonDelete url={`${serverURL}${locationApiRoutes.locationDelete(location.id)}`} route={locationRouteLinks.list} />
-              </div>
-            )
-          }
+          <CardActionButtons
+            title="Location"
+            entity={location}
+            linkRouteObject={locationRouteLinks}
+            deleteApiRouteFunction={locationApiRoutes.locationDelete}
+            update
+            remove
+          />
         </CardHeader>
         <CardBody>
           <Descriptions layout="vertical" size="small" bordered>
