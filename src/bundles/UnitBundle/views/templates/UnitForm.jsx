@@ -12,14 +12,14 @@ import { AntInput, AntSelect } from '../../../../forms/FormikAntFields';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
-  short: yup.string(),
-  parent: yup.number(),
+  short: yup.string().required('Required!'),
+  conversionFactor: yup.number().required('Required!'),
+  parent: yup.number().nullable(true),
 });
 
 export default function UnitForm({
   handleSubmit, loading, unit, list,
 }) {
-  console.log(unit)
   return (
     <div>
       <Formik
