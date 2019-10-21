@@ -6,7 +6,7 @@ import history from '../../services/history';
 // eslint-disable-next-line no-unused-vars
 export default function ButtonBack({ title, route }) {
   return (
-    <div>
+    <>
       <Button
         tabIndex={-1}
         type="primary"
@@ -20,7 +20,7 @@ export default function ButtonBack({ title, route }) {
           {title}
         </span>
       </Button>
-    </div>
+    </>
   );
 }
 
