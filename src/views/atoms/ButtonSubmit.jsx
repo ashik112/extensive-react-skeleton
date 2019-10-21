@@ -7,11 +7,14 @@ export default function ButtonSubmit({ loading }) {
   return (
     <div>
       <Button
+        className="button-color-sunset"
         disabled={false}
         style={{ marginTop: 10 }}
         type="submit"
         htmlType="submit"
+        icon="check"
       >
+        &nbsp;
         Submit
       </Button>
     </div>

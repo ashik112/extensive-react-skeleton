@@ -74,7 +74,7 @@ export default function UnitForm({
           </Row>
           <Row gutter={8} style={{ margin: 10 }}>
             <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
-              Conversion Factor
+              Conversion Factor:
             </Col>
             <Col span={20}>
               <Field
