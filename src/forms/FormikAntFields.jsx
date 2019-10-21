@@ -12,6 +12,7 @@ export const AntInput = ({ field, form, ...props }) => {
   return (
     <>
       <Input
+        size="small"
         allowClear
         {...props}
         autoComplete="off"
@@ -34,6 +35,7 @@ export const AntSelect = ({ field, form, ...props }) => {
   return (
     <>
       <Select
+        size="small"
         {...props}
         allowClear
         defaultValue={selectedValue || null}
@@ -58,6 +60,7 @@ export const AntInputNumber = ({ field, form, ...props }) => {
   return (
     <>
       <InputNumber
+        size="small"
         style={{ width: '100%' }}
         {...props}
         autoComplete="off"
