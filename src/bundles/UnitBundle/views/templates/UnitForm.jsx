@@ -8,12 +8,19 @@ import {
 } from 'formik';
 import * as yup from 'yup';
 import ButtonSubmit from '../../../../views/atoms/ButtonSubmit';
-import { AntInput, AntSelect } from '../../../../forms/FormikAntFields';
+import {
+  AntInput,
+  AntInputNumber,
+  AntSelect,
+} from '../../../../forms/FormikAntFields';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
   short: yup.string().required('Required!'),
-  conversionFactor: yup.number().required('Required!'),
+  conversionFactor: yup.number().positive()
+    .typeError('Not a number!')
+    .min(0.001, 'Must be greater than 0.001!')
+    .required('Required!'),
   parent: yup.number().nullable(true),
 });
 
@@ -71,8 +78,10 @@ export default function UnitForm({
             </Col>
             <Col span={20}>
               <Field
+                min={0.001}
+                step={0.001}
                 name="conversionFactor"
-                component={AntInput}
+                component={AntInputNumber}
               />
             </Col>
           </Row>

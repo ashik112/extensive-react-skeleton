@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types,react/jsx-props-no-spreading */
 import React from 'react';
 import { getIn } from 'formik';
-import { Input, Select } from 'antd';
+import {Input, InputNumber, Select} from 'antd';
 
 const { Option } = Select;
 
@@ -12,6 +12,7 @@ export const AntInput = ({ field, form, ...props }) => {
   return (
     <>
       <Input
+        allowClear
         {...props}
         autoComplete="off"
         /* eslint-disable-next-line react/jsx-props-no-spreading */
@@ -28,7 +29,6 @@ export const AntInput = ({ field, form, ...props }) => {
 export const AntSelect = ({ field, form, ...props }) => {
   // eslint-disable-next-line no-unused-vars
   const { values, errors, setFieldValue } = form;
-  // eslint-disable-next-line no-unused-vars
   const { options, selectedValue } = props;
   const errorMessage = getIn(errors, field.name);
   return (
@@ -47,6 +47,27 @@ export const AntSelect = ({ field, form, ...props }) => {
       </Select>
       {errorMessage
       && <div style={{ color: 'red', fontSize: '0.7em' }}>{errorMessage}</div>}
+    </>
+  );
+};
+
+export const AntInputNumber = ({ field, form, ...props }) => {
+  // eslint-disable-next-line no-unused-vars
+  const { values, errors, setFieldValue } = form;
+  const errorMessage = getIn(errors, field.name);
+  return (
+    <>
+      <InputNumber
+        style={{ width: '100%' }}
+        {...props}
+        autoComplete="off"
+        /* eslint-disable-next-line react/jsx-props-no-spreading */
+        {...field}
+        onChange={(e) => {
+          setFieldValue(field.name, e);
+        }}
+      />
+      {errorMessage && <div style={{ color: 'red', fontSize: '0.7em' }}>{errorMessage}</div>}
     </>
   );
 };
