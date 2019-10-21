@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Divider,
+  Form, Spin, Empty,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,10 +12,7 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import unitRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonView from '../../../../views/atoms/CardButtonView';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
 class UnitUpdatePage extends Component {
@@ -72,16 +69,14 @@ class UnitUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Unit List" route={unitRouteLinks.list} />
-            {
-                unit && unit.id && (
-                <div style={{ float: 'right' }}>
-                  <CardButtonView route={unitRouteLinks.show(unit.id)} />
-                  <Divider type="vertical" />
-                  <CardButtonDelete url={`${serverURL}${unitApiRoutes.unitDelete(unit.id)}`} route={unitRouteLinks.list} />
-                </div>
-                )
-              }
+            <CardActionButtons
+              title="Unit"
+              entity={unit}
+              linkRouteObject={unitRouteLinks}
+              deleteApiRouteFunction={unitApiRoutes.unitDelete}
+              show
+              remove
+            />
           </CardHeader>
           <CardBody>
             {unit && <WrappedUnitForm list={list} unit={initialValue} handleSubmit={this.handleSubmit} />}

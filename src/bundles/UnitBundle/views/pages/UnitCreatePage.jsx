@@ -41,7 +41,7 @@ class UnitCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Unit List" route={unitRouteLinks.list} />
+            <ButtonBack title="Unit" route={unitRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedUnitForm list={list} unit={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />
