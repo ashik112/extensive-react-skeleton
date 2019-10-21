@@ -16,6 +16,7 @@ import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
 import CardButtonView from '../../../../views/atoms/CardButtonView';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
 class DepartmentUpdatePage extends Component {
@@ -61,16 +62,15 @@ class DepartmentUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Department List" route={departmentRouteLinks.list} />
-            {
-              department && department.id && (
-                <div style={{ float: 'right' }}>
-                  <CardButtonView route={departmentRouteLinks.show(department.id)} />
-                  <Divider type="vertical" />
-                  <CardButtonDelete url={`${serverURL}${departmentApiRoutes.departmentDelete(department.id)}`} route={departmentRouteLinks.list} />
-                </div>
-              )
-            }
+
+            <CardActionButtons
+              title="Department"
+              entity={department}
+              show
+              remove
+              linkRouteObject={departmentRouteLinks}
+              deleteApiRouteFunction={departmentApiRoutes.departmentDelete}
+            />
           </CardHeader>
           <CardBody>
             {department && <WrappedDepartmentForm department={department} handleSubmit={this.handleSubmit} />}

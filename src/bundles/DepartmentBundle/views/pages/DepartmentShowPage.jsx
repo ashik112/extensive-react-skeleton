@@ -14,6 +14,7 @@ import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
 import CardButtonEdit from '../../../../views/atoms/CardButtonEdit';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 class DepartmentShowPage extends Component {
   constructor(props) {
@@ -39,16 +40,14 @@ class DepartmentShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <ButtonBack title="Department List" route={departmentRouteLinks.list} />
-          {
-            department && department.id && (
-              <div style={{ float: 'right' }}>
-                <CardButtonEdit route={departmentRouteLinks.edit(department.id)} />
-                <Divider type="vertical" />
-                <CardButtonDelete url={`${serverURL}${departmentApiRoutes.departmentDelete(department.id)}`} route={departmentRouteLinks.list} />
-              </div>
-            )
-          }
+          <CardActionButtons
+            title="Department"
+            entity={department}
+            update
+            remove
+            linkRouteObject={departmentRouteLinks}
+            deleteApiRouteFunction={departmentApiRoutes.departmentDelete}
+          />
         </CardHeader>
         <CardBody>
           <Descriptions layout="vertical" size="small" bordered>

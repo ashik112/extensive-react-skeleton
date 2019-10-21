@@ -36,7 +36,7 @@ class DepartmentCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Department List" route={departmentRouteLinks.list} />
+            <ButtonBack title="Department" route={departmentRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedDepartmentForm department={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />
