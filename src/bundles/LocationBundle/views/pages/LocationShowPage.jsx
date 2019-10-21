@@ -2,18 +2,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Button, Descriptions, Divider, Tag,
+  Descriptions, Divider, Tag,
 } from 'antd';
 import locationApiService, { locationApiRoutes } from '../../apiServices/locationApiService';
 import Card from '../../../../components/Card/Card';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import locationRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
+import CardButtonEdit from '../../../../views/atoms/CardButtonEdit';
 
 class LocationShowPage extends Component {
   constructor(props) {
@@ -43,19 +43,7 @@ class LocationShowPage extends Component {
           {
             location && location.id && (
               <div style={{ float: 'right' }}>
-                <Button
-                  size="default"
-                  type="primary"
-                  className="button-color-daybreak"
-                  icon="edit"
-                  onClick={async () => {
-                    try {
-                      history.push(locationRouteLinks.edit(location.id));
-                    } catch (e) {
-                      /* */
-                    }
-                  }}
-                />
+                <CardButtonEdit route={locationRouteLinks.edit(location.id)} />
                 <Divider type="vertical" />
                 <CardButtonDelete url={`${serverURL}${locationApiRoutes.locationDelete(location.id)}`} route={locationRouteLinks.list} />
               </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Button, Divider,
+  Form, Spin, Empty, Divider,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,13 +9,13 @@ import departmentActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import departmentApiService, { departmentApiRoutes } from '../../apiServices/departmentApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import departmentRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
+import CardButtonView from '../../../../views/atoms/CardButtonView';
 
 
 class DepartmentUpdatePage extends Component {
@@ -65,20 +65,7 @@ class DepartmentUpdatePage extends Component {
             {
               department && department.id && (
                 <div style={{ float: 'right' }}>
-                  <Button
-                    tabIndex={-1}
-                    size="default"
-                    type="primary"
-                    className="button-color-daybreak"
-                    icon="eye"
-                    onClick={async () => {
-                      try {
-                        history.push(departmentRouteLinks.show(department.id));
-                      } catch (e) {
-                        /* */
-                      }
-                    }}
-                  />
+                  <CardButtonView route={departmentRouteLinks.show(department.id)} />
                   <Divider type="vertical" />
                   <CardButtonDelete url={`${serverURL}${departmentApiRoutes.departmentDelete(department.id)}`} route={departmentRouteLinks.list} />
                 </div>

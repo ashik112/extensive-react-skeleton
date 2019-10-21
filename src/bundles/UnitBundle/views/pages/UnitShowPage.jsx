@@ -2,18 +2,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Button, Descriptions, Divider, Tag,
+  Descriptions, Divider, Tag,
 } from 'antd';
 import unitApiService, { unitApiRoutes } from '../../apiServices/unitApiService';
 import Card from '../../../../components/Card/Card';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import unitRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
+import CardButtonEdit from '../../../../views/atoms/CardButtonEdit';
 
 class UnitShowPage extends Component {
   constructor(props) {
@@ -43,19 +43,7 @@ class UnitShowPage extends Component {
           {
               unit && unit.id && (
               <div style={{ float: 'right' }}>
-                <Button
-                  size="default"
-                  type="primary"
-                  className="button-color-daybreak"
-                  icon="edit"
-                  onClick={async () => {
-                    try {
-                      history.push(unitRouteLinks.edit(unit.id));
-                    } catch (e) {
-                      /* */
-                    }
-                  }}
-                />
+                <CardButtonEdit route={unitRouteLinks.edit(unit.id)} />
                 <Divider type="vertical" />
                 <CardButtonDelete url={`${serverURL}${unitApiRoutes.unitDelete(unit.id)}`} route={unitRouteLinks.list} />
               </div>

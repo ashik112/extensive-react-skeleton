@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Button, Divider,
+  Form, Spin, Empty, Divider,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,13 +9,13 @@ import supplierActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import supplierApiService, { supplierApiRoutes } from '../../apiServices/supplierApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import supplierRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
+import CardButtonView from '../../../../views/atoms/CardButtonView';
 
 
 class SupplierUpdatePage extends Component {
@@ -65,20 +65,7 @@ class SupplierUpdatePage extends Component {
             {
               supplier && supplier.id && (
                 <div style={{ float: 'right' }}>
-                  <Button
-                    tabIndex={-1}
-                    size="default"
-                    type="primary"
-                    className="button-color-daybreak"
-                    icon="eye"
-                    onClick={async () => {
-                      try {
-                        history.push(supplierRouteLinks.show(supplier.id));
-                      } catch (e) {
-                        /* */
-                      }
-                    }}
-                  />
+                  <CardButtonView route={supplierRouteLinks.show(supplier.id)} />
                   <Divider type="vertical" />
                   <CardButtonDelete url={`${serverURL}${supplierApiRoutes.supplierDelete(supplier.id)}`} route={supplierRouteLinks.list} />
                 </div>

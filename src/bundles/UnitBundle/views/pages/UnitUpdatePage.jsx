@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Button, Divider,
+  Form, Spin, Empty, Divider,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,13 +9,13 @@ import unitActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import unitApiService, { unitApiRoutes } from '../../apiServices/unitApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import unitRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
+import CardButtonView from '../../../../views/atoms/CardButtonView';
 
 
 class UnitUpdatePage extends Component {
@@ -76,19 +76,7 @@ class UnitUpdatePage extends Component {
             {
                 unit && unit.id && (
                 <div style={{ float: 'right' }}>
-                  <Button
-                    size="default"
-                    type="primary"
-                    className="button-color-daybreak"
-                    icon="eye"
-                    onClick={async () => {
-                      try {
-                        history.push(unitRouteLinks.show(unit.id));
-                      } catch (e) {
-                        /* */
-                      }
-                    }}
-                  />
+                  <CardButtonView route={unitRouteLinks.show(unit.id)} />
                   <Divider type="vertical" />
                   <CardButtonDelete url={`${serverURL}${unitApiRoutes.unitDelete(unit.id)}`} route={unitRouteLinks.list} />
                 </div>

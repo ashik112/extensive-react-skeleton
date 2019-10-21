@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Button, Divider,
+  Form, Spin, Empty, Divider,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,13 +9,13 @@ import productCategoryActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import productCategoryApiService, { productCategoryApiRoutes } from '../../apiServices/productCategoryApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import productCategoryRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
+import CardButtonView from '../../../../views/atoms/CardButtonView';
 
 
 class ProductCategoryUpdatePage extends Component {
@@ -75,20 +75,7 @@ class ProductCategoryUpdatePage extends Component {
             {
               productCategory && productCategory.id && (
                 <div style={{ float: 'right' }}>
-                  <Button
-                    tabIndex={-1}
-                    size="default"
-                    type="primary"
-                    className="button-color-daybreak"
-                    icon="eye"
-                    onClick={async () => {
-                      try {
-                        history.push(productCategoryRouteLinks.show(productCategory.id));
-                      } catch (e) {
-                        /* */
-                      }
-                    }}
-                  />
+                  <CardButtonView route={productCategoryRouteLinks.show(productCategory.id)} />
                   <Divider type="vertical" />
                   <CardButtonDelete url={`${serverURL}${productCategoryApiRoutes.productCategoryDelete(productCategory.id)}`} route={productCategoryRouteLinks.list} />
                 </div>
