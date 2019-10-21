@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension*/
 import React, { Component } from 'react';
 import {
-  Row, Col, Button, Divider, Table, Tooltip,
+  Row, Col, Button, Table, Tooltip,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -11,38 +11,20 @@ import Card from '../../../../components/Card/Card';
 import CardBody from '../../../../components/Card/CardBody';
 import history from '../../../../services/history';
 import supplierRouteLinks from '../../routes/links';
-import TableButtonDelete from '../../../../views/atoms/TableButtonDelete';
+import TableActionButtons from '../../../../views/templates/TableActionButtons';
 import supplierApiService from '../../apiServices/supplierApiService';
-//import CardFooter from '../../../components/Card/CardFooter';
 
 class SupplierListPage extends Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       list: [],
-      localLoading: false,
     };
   }
 
   componentDidMount() {
     this.loadList().then();
   }
-
-  handleDelete = async (id, row, index) => {
-    const { dispatch } = this.props;
-    this.toggleLoading(true);
-    supplierApiService.deleteSupplier(id, dispatch).then(() => {
-      const { list } = this.state;
-      list.splice(index, 1);
-      this.setState({
-        list,
-      });
-      this.toggleLoading(false);
-    }).catch(() => {
-      this.toggleLoading(false);
-    });
-  };
 
   async loadList() {
     const { getList } = this.props;
@@ -53,15 +35,8 @@ class SupplierListPage extends Component {
     });
   }
 
-  toggleLoading(status) {
-    this.setState({
-      localLoading: status,
-    });
-  }
-
   render() {
     const { loading } = this.props;
-    const { localLoading } = this.state;
     const { list } = this.state;
     const columns = [
       {
@@ -92,35 +67,22 @@ class SupplierListPage extends Component {
         align: 'center',
         width: 150,
         render: (item, row, index) => (
-          <span>
-            {/*<ButtonGroup>*/}
-            <Button
-              ghost
-              shape="circle-outline"
-              size="small"
-              type="primary"
-              className="button-color-cyan"
-              icon="eye"
-              onClick={() => {
-                history.push(supplierRouteLinks.show(item.id));
-              }}
-            />
-            <Divider type="vertical" />
-            <Button
-              ghost
-              shape="circle-outline"
-              size="small"
-              type="primary"
-              className="button-color-daybreak"
-              icon="edit"
-              onClick={async () => {
-                history.push(supplierRouteLinks.edit(item.id));
-              }}
-            />
-            <Divider type="vertical" />
-            <TableButtonDelete loading={loading} handleConfirm={() => this.handleDelete(item.id, row, index)} />
-            {/*</ButtonGroup>*/}
-          </span>
+          <TableActionButtons
+            show
+            remove
+            update
+            list={list}
+            entity={item}
+            row={row}
+            index={index}
+            linkRouteObject={supplierRouteLinks}
+            deleteApiFunction={supplierApiService.deleteSupplier}
+            updateList={(updatedList) => {
+              this.setState({
+                list: updatedList,
+              });
+            }}
+          />
         ),
       },
     ];
@@ -143,7 +105,7 @@ class SupplierListPage extends Component {
                   size="small"
                   bordered
                   pagination={{ pageSize: 15 }}
-                  loading={loading || localLoading}
+                  loading={loading}
                   rowKey={(record) => record.id}
                   columns={columns}
                   dataSource={list}
@@ -160,14 +122,12 @@ class SupplierListPage extends Component {
 
 SupplierListPage.defaultProps = {
   getList: () => { },
-  dispatch: () => { },
   list: [],
   loading: false,
 };
 
 SupplierListPage.propTypes = {
   getList: PropTypes.func,
-  dispatch: PropTypes.func,
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
 };

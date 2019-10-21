@@ -19,7 +19,6 @@ class CompanyListPage extends Component {
     super(props);
     this.state = {
       list: [],
-      localLoading: false,
     };
   }
 
@@ -38,7 +37,6 @@ class CompanyListPage extends Component {
 
   render() {
     const { loading } = this.props;
-    const { localLoading } = this.state;
     const { list } = this.state;
     const columns = [
       {
@@ -102,7 +100,7 @@ class CompanyListPage extends Component {
                   size="small"
                   bordered
                   pagination={{ pageSize: 15 }}
-                  loading={loading || localLoading}
+                  loading={loading}
                   rowKey={(record) => record.id}
                   columns={columns}
                   dataSource={list}

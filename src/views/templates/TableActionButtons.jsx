@@ -45,7 +45,7 @@ class TableActionButtons extends Component {
       <>
         <span>
           {
-            show && (
+            entity && entity.id && show && (
               <>
                 <Button
                   ghost
@@ -63,7 +63,7 @@ class TableActionButtons extends Component {
             )
           }
           {
-            update && (
+            entity && entity.id && update && (
               <>
                 <Button
                   ghost
@@ -81,7 +81,7 @@ class TableActionButtons extends Component {
             )
           }
           {
-            remove && (
+            entity && entity.id && remove && (
               <TableButtonDelete loading={loading} handleConfirm={() => this.handleDelete(entity.id, row, index)} />
             )
           }
