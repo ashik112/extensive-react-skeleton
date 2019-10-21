@@ -22,7 +22,7 @@ export const unitRouteLinks = {
 const menuRoutes = [
   {
     path: historyRoutes.unitList,
-    icon: 'deployment-unit',
+    icon: 'experiment',
     exact: true,
     title: 'Unit',
     visibleInSidebar: true,
@@ -30,7 +30,7 @@ const menuRoutes = [
   },
   {
     path: historyRoutes.unitShow,
-    icon: 'home',
+    icon: 'experiment',
     exact: true,
     title: 'Unit',
     visibleInSidebar: false,
@@ -38,7 +38,7 @@ const menuRoutes = [
   },
   {
     path: historyRoutes.unitCreate,
-    icon: 'home',
+    icon: 'experiment',
     exact: true,
     title: 'Unit',
     visibleInSidebar: false,
@@ -46,7 +46,7 @@ const menuRoutes = [
   },
   {
     path: historyRoutes.unitUpdate,
-    icon: 'home',
+    icon: 'experiment',
     exact: true,
     title: 'Unit',
     visibleInSidebar: false,

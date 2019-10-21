@@ -45,11 +45,11 @@ class UnitShowPage extends Component {
               history.push(unitRouteLinks.list);
             }}
           >
-            &nbsp;
-            Unit List
+              &nbsp;
+              Unit List
           </Button>
           {
-            unit && unit.id && (
+              unit && unit.id && (
               <div style={{ float: 'right' }}>
                 <Button
                   size="default"
@@ -67,16 +67,16 @@ class UnitShowPage extends Component {
                 <Divider type="vertical" />
                 <CardButtonDelete url={`${serverURL}${unitApiRoutes.unitDelete(unit.id)}`} route={unitRouteLinks.list} />
               </div>
-            )
-          }
+              )
+            }
         </CardHeader>
         <CardBody>
           <Descriptions layout="vertical" size="small" bordered>
             <Descriptions.Item label="ID">{unit.id}</Descriptions.Item>
             <Descriptions.Item label="Name">{unit.name}</Descriptions.Item>
-            <Descriptions.Item label="Short">{unit.short}</Descriptions.Item>
-            <Descriptions.Item label="Conversion Factor">{unit.conversion_factor}</Descriptions.Item>
-            <Descriptions.Item label="Parent">{unit.parent}</Descriptions.Item>
+            <Descriptions.Item label="Short">{unit.short ? unit.short : <Tag color="red">Not Available</Tag>}</Descriptions.Item>
+            <Descriptions.Item label="Conversion Factor">{unit.conversion_factor ? unit.conversion_factor : <Tag color="red">Not Available</Tag>}</Descriptions.Item>
+            <Descriptions.Item label="Parent">{unit.parent ? (unit.parent && unit.parent.name) : <Tag color="red">Not Available</Tag>}</Descriptions.Item>
           </Descriptions>
         </CardBody>
       </Card>

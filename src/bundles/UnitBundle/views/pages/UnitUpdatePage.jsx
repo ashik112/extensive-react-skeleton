@@ -159,5 +159,5 @@ const mapDispatchToProps = (dispatch) => ({
     unitActions.fetchUnitList(),
   ),
 });
-const WrappedUnitForm = Form.create({ name: 'unit_create' })(UnitForm);
+const WrappedUnitForm = Form.create({ name: 'unit_update' })(UnitForm);
 export default connect(mapStateToProps, mapDispatchToProps)(UnitUpdatePage);
