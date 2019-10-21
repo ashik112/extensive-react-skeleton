@@ -7,14 +7,15 @@ import PropTypes from 'prop-types';
 import CompanyForm from '../templates/CompanyForm';
 import companyActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import companyApiService, {companyApiRoutes} from '../../apiServices/companyApiService';
+import companyApiService, { companyApiRoutes } from '../../apiServices/companyApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
 import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import {serverURL} from '../../../../constants';
+import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 
 class CompanyUpdatePage extends Component {
@@ -60,18 +61,7 @@ class CompanyUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(companyRouteLinks.list);
-              }}
-            >
-              <span>
-                &nbsp;
-                Company List
-              </span>
-            </Button>
+            <ButtonBack title="Company List" route={companyRouteLinks.list} />
             {
               company && company.id && (
                 <div style={{ float: 'right' }}>

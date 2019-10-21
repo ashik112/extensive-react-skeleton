@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// ! Write code here
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -14,11 +13,11 @@ import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class CompanyShowPage extends Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       company: {},
     };
@@ -35,25 +34,12 @@ class CompanyShowPage extends Component {
     });
   }
 
-  handleDelete =() => {
-    console.log('delete');
-  };
-
   render() {
     const { company } = this.state;
     return (
       <Card>
         <CardHeader>
-          <Button
-            type="primary"
-            icon="arrow-left"
-            onClick={async () => {
-              history.push(companyRouteLinks.list);
-            }}
-          >
-            &nbsp;
-            Company List
-          </Button>
+          <ButtonBack title="Company List" route={companyRouteLinks.list} />
           {
             company && company.id && (
               <div style={{ float: 'right' }}>

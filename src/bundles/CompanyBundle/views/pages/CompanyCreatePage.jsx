@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Button, Form, Spin,
+  Form, Spin,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,10 +8,10 @@ import CompanyForm from '../templates/CompanyForm';
 import companyActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import companyRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class CompanyCreatePage extends Component {
   constructor(props) {
@@ -36,16 +36,7 @@ class CompanyCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(companyRouteLinks.list);
-              }}
-            >
-              <span>&nbsp;Company List</span>
-            </Button>
+            <ButtonBack title="Company List" route={companyRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedCompanyForm company={{ name: '', address: '' }} handleSubmit={this.handleSubmit} />
