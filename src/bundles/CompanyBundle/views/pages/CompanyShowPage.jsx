@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Descriptions, Divider, Tag,
+  Descriptions, Tag,
 } from 'antd';
 import companyApiService, { companyApiRoutes } from '../../apiServices/companyApiService';
 import Card from '../../../../components/Card/Card';
@@ -10,10 +10,7 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import companyRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonEdit from '../../../../views/atoms/CardButtonEdit';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 class CompanyShowPage extends Component {
   constructor(props) {
@@ -39,16 +36,14 @@ class CompanyShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <ButtonBack title="Company List" route={companyRouteLinks.list} />
-          {
-            company && company.id && (
-              <div style={{ float: 'right' }}>
-                <CardButtonEdit route={companyRouteLinks.edit(company.id)} />
-                <Divider type="vertical" />
-                <CardButtonDelete url={`${serverURL}${companyApiRoutes.companyDelete(company.id)}`} route={companyRouteLinks.list} />
-              </div>
-            )
-          }
+          <CardActionButtons
+            title="Company"
+            update
+            remove
+            linkRouteObject={companyRouteLinks}
+            deleteApiRouteFunction={companyApiRoutes.companyDelete}
+            entity={company}
+          />
         </CardHeader>
         <CardBody>
           <Descriptions layout="vertical" size="small" bordered>

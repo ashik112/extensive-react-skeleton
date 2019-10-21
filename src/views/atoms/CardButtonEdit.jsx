@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Tooltip } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import history from '../../services/history';
@@ -7,19 +7,21 @@ import history from '../../services/history';
 
 function CardButtonEdit({ route }) {
   return (
-    <Button
-      size="default"
-      type="primary"
-      className="button-color-daybreak"
-      icon="edit"
-      onClick={async () => {
-        try {
-          await history.push(route);
-        } catch (e) {
-          /* */
-        }
-      }}
-    />
+    <Tooltip title="Edit">
+      <Button
+        size="default"
+        type="primary"
+        className="button-color-daybreak"
+        icon="edit"
+        onClick={async () => {
+          try {
+            await history.push(route);
+          } catch (e) {
+            /* */
+          }
+        }}
+      />
+    </Tooltip>
   );
 }
 

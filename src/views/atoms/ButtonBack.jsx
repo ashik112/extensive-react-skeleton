@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import {Button, Tooltip} from 'antd';
 import PropTypes from 'prop-types';
 import history from '../../services/history';
 
@@ -7,19 +7,19 @@ import history from '../../services/history';
 export default function ButtonBack({ title, route }) {
   return (
     <>
-      <Button
-        tabIndex={-1}
-        type="primary"
-        icon="arrow-left"
-        onClick={async () => {
-          await history.push(route);
-        }}
-      >
-        <span>
-          &nbsp;
-          {title}
-        </span>
-      </Button>
+      <Tooltip title="Back to List">
+        <Button
+          tabIndex={-1}
+          type="primary"
+          icon="arrow-left"
+          onClick={async () => {
+            await history.push(route);
+          }}
+        >
+          {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+          <span>&nbsp;{title}&nbsp;List</span>
+        </Button>
+      </Tooltip>
     </>
   );
 }
@@ -30,6 +30,6 @@ ButtonBack.propTypes = {
 };
 
 ButtonBack.defaultProps = {
-  title: 'List',
+  title: '',
   route: '/dashboard',
 };

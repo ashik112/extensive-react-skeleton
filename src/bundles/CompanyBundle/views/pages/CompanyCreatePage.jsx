@@ -36,7 +36,7 @@ class CompanyCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Company List" route={companyRouteLinks.list} />
+            <ButtonBack title="Company" route={companyRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedCompanyForm company={{ name: '', address: '' }} handleSubmit={this.handleSubmit} />

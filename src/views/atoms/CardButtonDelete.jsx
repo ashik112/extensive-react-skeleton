@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Icon, Popconfirm} from 'antd';
+import {Button, Icon, Popconfirm, Tooltip} from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { remove } from '../../services/apiService';
@@ -37,13 +37,15 @@ class CardButtonDelete extends Component {
           placement="left"
           icon={<Icon type="question-circle-o" style={{ color: 'red' }} />}
         >
-          <Button
-            tabIndex={-1}
-            size="default"
-            type="danger"
-            icon="delete"
-            loading={loading}
-          />
+          <Tooltip title="Delete">
+            <Button
+              tabIndex={-1}
+              size="default"
+              type="danger"
+              icon="delete"
+              loading={loading}
+            />
+          </Tooltip>
         </Popconfirm>
       </>
     );

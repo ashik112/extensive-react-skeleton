@@ -16,6 +16,7 @@ import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
 import CardButtonView from '../../../../views/atoms/CardButtonView';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
 class CompanyUpdatePage extends Component {
@@ -61,16 +62,14 @@ class CompanyUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Company List" route={companyRouteLinks.list} />
-            {
-              company && company.id && (
-                <div style={{ float: 'right' }}>
-                  <CardButtonView route={companyRouteLinks.show(company.id)} />
-                  <Divider type="vertical" />
-                  <CardButtonDelete url={`${serverURL}${companyApiRoutes.companyDelete(company.id)}`} route={companyRouteLinks.list} />
-                </div>
-              )
-            }
+            <CardActionButtons
+              title="Company"
+              show
+              remove
+              linkRouteObject={companyRouteLinks}
+              deleteApiRouteFunction={companyApiRoutes.companyDelete}
+              entity={company}
+            />
           </CardHeader>
           <CardBody>
             {company && company.id && <WrappedCompanyForm company={company} handleSubmit={this.handleSubmit} />}
