@@ -35,6 +35,7 @@ export const AntSelect = ({ field, form, ...props }) => {
     <>
       <Select
         {...props}
+        allowClear
         defaultValue={selectedValue || null}
         style={{ width: '100%' }}
         onChange={(value) => {
