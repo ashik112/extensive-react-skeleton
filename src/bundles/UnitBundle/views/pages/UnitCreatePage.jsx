@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Button, Form, Spin,
+  Form, Spin,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,10 +8,10 @@ import UnitForm from '../templates/UnitForm';
 import unitActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import unitRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class UnitCreatePage extends Component {
   constructor(props) {
@@ -41,15 +41,7 @@ class UnitCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(unitRouteLinks.list);
-              }}
-            >
-              <span>&nbsp;Unit List</span>
-            </Button>
+            <ButtonBack title="Unit List" route={unitRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedUnitForm list={list} unit={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />

@@ -15,6 +15,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 
 class LocationUpdatePage extends Component {
@@ -70,19 +71,7 @@ class LocationUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(locationRouteLinks.list);
-              }}
-            >
-              <span>
-                &nbsp;
-                Location List
-              </span>
-            </Button>
+            <ButtonBack title="Location List" route={locationRouteLinks.list} />
             {
               location && location.id && (
                 <div style={{ float: 'right' }}>

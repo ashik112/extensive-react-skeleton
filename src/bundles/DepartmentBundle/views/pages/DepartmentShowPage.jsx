@@ -13,6 +13,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class DepartmentShowPage extends Component {
   constructor(props) {
@@ -38,16 +39,7 @@ class DepartmentShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <Button
-            type="primary"
-            icon="arrow-left"
-            onClick={async () => {
-              history.push(departmentRouteLinks.list);
-            }}
-          >
-            &nbsp;
-            Department List
-          </Button>
+          <ButtonBack title="Department List" route={departmentRouteLinks.list} />
           {
             department && department.id && (
               <div style={{ float: 'right' }}>

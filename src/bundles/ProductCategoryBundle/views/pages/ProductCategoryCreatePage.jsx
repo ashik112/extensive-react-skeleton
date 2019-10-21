@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Button, Form, Spin,
+  Form, Spin,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,10 +8,10 @@ import ProductCategoryForm from '../templates/ProductCategoryForm';
 import productCategoryActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import productCategoryRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class ProductCategoryCreatePage extends Component {
   constructor(props) {
@@ -41,16 +41,7 @@ class ProductCategoryCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(productCategoryRouteLinks.list);
-              }}
-            >
-              <span>&nbsp;Product Category List</span>
-            </Button>
+            <ButtonBack title="Product Category List" route={productCategoryRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedProductCategoryForm list={list} productCategory={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />

@@ -7,14 +7,15 @@ import PropTypes from 'prop-types';
 import DepartmentForm from '../templates/DepartmentForm';
 import departmentActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import departmentApiService, {departmentApiRoutes} from '../../apiServices/departmentApiService';
+import departmentApiService, { departmentApiRoutes } from '../../apiServices/departmentApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
 import history from '../../../../services/history';
 import departmentRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import {serverURL} from '../../../../constants';
+import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 
 class DepartmentUpdatePage extends Component {
@@ -60,19 +61,7 @@ class DepartmentUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(departmentRouteLinks.list);
-              }}
-            >
-              <span>
-                &nbsp;
-                Department List
-              </span>
-            </Button>
+            <ButtonBack title="Department List" route={departmentRouteLinks.list} />
             {
               department && department.id && (
                 <div style={{ float: 'right' }}>

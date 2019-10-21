@@ -15,6 +15,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 
 class ProductCategoryUpdatePage extends Component {
@@ -70,19 +71,7 @@ class ProductCategoryUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(productCategoryRouteLinks.list);
-              }}
-            >
-              <span>
-                &nbsp;
-                ProductCategory List
-              </span>
-            </Button>
+            <ButtonBack title="Product Category List" route={productCategoryRouteLinks.list} />
             {
               productCategory && productCategory.id && (
                 <div style={{ float: 'right' }}>

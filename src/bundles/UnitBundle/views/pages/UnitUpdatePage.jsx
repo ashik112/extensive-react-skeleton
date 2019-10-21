@@ -15,6 +15,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 
 class UnitUpdatePage extends Component {
@@ -71,18 +72,7 @@ class UnitUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(unitRouteLinks.list);
-              }}
-            >
-              <span>
-                &nbsp;
-                Unit List
-              </span>
-            </Button>
+            <ButtonBack title="Unit List" route={unitRouteLinks.list} />
             {
                 unit && unit.id && (
                 <div style={{ float: 'right' }}>

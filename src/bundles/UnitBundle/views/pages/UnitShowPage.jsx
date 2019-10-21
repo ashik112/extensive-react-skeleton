@@ -13,6 +13,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class UnitShowPage extends Component {
   constructor(props) {
@@ -38,16 +39,7 @@ class UnitShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <Button
-            type="primary"
-            icon="arrow-left"
-            onClick={async () => {
-              history.push(unitRouteLinks.list);
-            }}
-          >
-              &nbsp;
-              Unit List
-          </Button>
+          <ButtonBack title="Unit List" route={unitRouteLinks.list} />
           {
               unit && unit.id && (
               <div style={{ float: 'right' }}>

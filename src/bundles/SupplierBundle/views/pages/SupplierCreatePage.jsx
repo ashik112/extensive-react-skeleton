@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Button, Form, Spin,
+  Form, Spin,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,10 +8,10 @@ import SupplierForm from '../templates/SupplierForm';
 import supplierActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import supplierRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class SupplierCreatePage extends Component {
   constructor(props) {
@@ -36,16 +36,7 @@ class SupplierCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(supplierRouteLinks.list);
-              }}
-            >
-              <span>&nbsp;Supplier List</span>
-            </Button>
+            <ButtonBack title="Supplier List" route={supplierRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedSupplierForm supplier={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />

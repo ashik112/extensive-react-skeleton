@@ -13,6 +13,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class ProductCategoryShowPage extends Component {
   constructor(props) {
@@ -38,16 +39,7 @@ class ProductCategoryShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <Button
-            type="primary"
-            icon="arrow-left"
-            onClick={async () => {
-              history.push(productCategoryRouteLinks.list);
-            }}
-          >
-            &nbsp;
-            Product Category List
-          </Button>
+          <ButtonBack title="Product Category List" route={productCategoryRouteLinks.list} />
           {
             productCategory && productCategory.id && (
               <div style={{ float: 'right' }}>

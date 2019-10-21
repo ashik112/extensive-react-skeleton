@@ -13,6 +13,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
 import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class LocationShowPage extends Component {
   constructor(props) {
@@ -38,16 +39,7 @@ class LocationShowPage extends Component {
     return (
       <Card>
         <CardHeader>
-          <Button
-            type="primary"
-            icon="arrow-left"
-            onClick={async () => {
-              history.push(locationRouteLinks.list);
-            }}
-          >
-            &nbsp;
-            Location List
-          </Button>
+          <ButtonBack title="Location List" route={locationRouteLinks.list} />
           {
             location && location.id && (
               <div style={{ float: 'right' }}>

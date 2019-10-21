@@ -7,14 +7,15 @@ import PropTypes from 'prop-types';
 import SupplierForm from '../templates/SupplierForm';
 import supplierActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import supplierApiService, {supplierApiRoutes} from '../../apiServices/supplierApiService';
+import supplierApiService, { supplierApiRoutes } from '../../apiServices/supplierApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
 import history from '../../../../services/history';
 import supplierRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import {serverURL} from '../../../../constants';
+import { serverURL } from '../../../../constants';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 
 class SupplierUpdatePage extends Component {
@@ -60,19 +61,7 @@ class SupplierUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(supplierRouteLinks.list);
-              }}
-            >
-              <span>
-                &nbsp;
-                Supplier List
-              </span>
-            </Button>
+            <ButtonBack title="Supplier List" route={supplierRouteLinks.list} />
             {
               supplier && supplier.id && (
                 <div style={{ float: 'right' }}>

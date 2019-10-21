@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Button, Form, Spin,
+  Form, Spin,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,10 +8,10 @@ import LocationForm from '../templates/LocationForm';
 import locationActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import CardHeader from '../../../../components/Card/CardHeader';
-import history from '../../../../services/history';
 import locationRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
+import ButtonBack from '../../../../views/atoms/ButtonBack';
 
 class LocationCreatePage extends Component {
   constructor(props) {
@@ -41,16 +41,7 @@ class LocationCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <Button
-              tabIndex={-1}
-              type="primary"
-              icon="arrow-left"
-              onClick={async () => {
-                history.push(locationRouteLinks.list);
-              }}
-            >
-              <span>&nbsp;Location List</span>
-            </Button>
+            <ButtonBack title="Location List" route={locationRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedLocationForm list={list} location={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />
