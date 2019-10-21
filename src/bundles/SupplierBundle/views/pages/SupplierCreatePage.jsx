@@ -36,7 +36,7 @@ class SupplierCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Supplier List" route={supplierRouteLinks.list} />
+            <ButtonBack title="Supplier" route={supplierRouteLinks.list} />
           </CardHeader>
           <CardBody>
             <WrappedSupplierForm supplier={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Spin, Empty, Divider,
+  Form, Spin, Empty,
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,10 +12,7 @@ import CardHeader from '../../../../components/Card/CardHeader';
 import supplierRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
-import CardButtonDelete from '../../../../views/atoms/CardButtonDelete';
-import { serverURL } from '../../../../constants';
-import ButtonBack from '../../../../views/atoms/ButtonBack';
-import CardButtonView from '../../../../views/atoms/CardButtonView';
+import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
 class SupplierUpdatePage extends Component {
@@ -61,16 +58,14 @@ class SupplierUpdatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Supplier List" route={supplierRouteLinks.list} />
-            {
-              supplier && supplier.id && (
-                <div style={{ float: 'right' }}>
-                  <CardButtonView route={supplierRouteLinks.show(supplier.id)} />
-                  <Divider type="vertical" />
-                  <CardButtonDelete url={`${serverURL}${supplierApiRoutes.supplierDelete(supplier.id)}`} route={supplierRouteLinks.list} />
-                </div>
-              )
-            }
+            <CardActionButtons
+              title="Supplier"
+              entity={supplier}
+              linkRouteObject={supplierRouteLinks}
+              deleteApiRouteFunction={supplierApiRoutes.supplierDelete}
+              show
+              remove
+            />
           </CardHeader>
           <CardBody>
             {supplier && <WrappedSupplierForm supplier={supplier} handleSubmit={this.handleSubmit} />}
