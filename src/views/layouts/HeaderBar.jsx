@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import {
-  Icon, Layout, Dropdown, Menu, Button,
+  Icon, Layout, Dropdown, Menu,
 } from 'antd';
 import PropTypes from 'prop-types';
 
