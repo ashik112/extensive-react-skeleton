@@ -2,13 +2,14 @@ import {
   get, post, patch, remove,
 } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
+import { companyBaseURL } from '../constants';
 
 export const companyApiRoutes = {
-  companyList: 'company/list',
-  company: (id) => `company/show/${id}`,
-  companyCreate: 'company/new',
-  companyUpdate: (id) => `company/update/${id}`,
-  companyDelete: (id) => `company/delete/${id}`,
+  companyList: `${companyBaseURL}/list`,
+  company: (id) => `${companyBaseURL}/show/${id}`,
+  companyCreate: `${companyBaseURL}/new`,
+  companyUpdate: (id) => `${companyBaseURL}/update/${id}`,
+  companyDelete: (id) => `${companyBaseURL}/delete/${id}`,
 };
 
 const getCompanyList = (dispatch) => get(`${serverURL}${companyApiRoutes.companyList}`, dispatch);

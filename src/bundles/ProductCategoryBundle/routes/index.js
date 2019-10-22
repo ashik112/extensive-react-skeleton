@@ -3,20 +3,13 @@ import ProductCategoryListPage from '../views/pages/ProductCategoryListPage';
 import ProductCategoryShowPage from '../views/pages/ProductCategoryShowPage';
 import ProductCategoryCreatePage from '../views/pages/ProductCategoryCreatePage';
 import ProductCategoryUpdatePage from '../views/pages/ProductCategoryUpdatePage';
-
-const baseURL = '/product-category';
+import { productCategoryBaseURL } from '../constants';
 
 const historyRoutes = {
-  productCategoryList: `${baseURL}`, // * List should be same as baseURL for sidebar hightlight
-  productCategoryShow: `${baseURL}/show/:id`,
-  productCategoryCreate: `${baseURL}/create`,
-  productCategoryUpdate: `${baseURL}/edit/:id`,
-};
-
-export const productCategoryRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
+  productCategoryList: `${productCategoryBaseURL}`, // * List should be same as productCategoryBaseURL for sidebar hightlight
+  productCategoryShow: `${productCategoryBaseURL}/show/:id`,
+  productCategoryCreate: `${productCategoryBaseURL}/create`,
+  productCategoryUpdate: `${productCategoryBaseURL}/edit/:id`,
 };
 
 const menuRoutes = [
@@ -57,7 +50,6 @@ const menuRoutes = [
 const productCategoryRoutes = {
   historyRoutes,
   menuRoutes,
-  productCategoryRouteLinks,
 };
 
 export default productCategoryRoutes;

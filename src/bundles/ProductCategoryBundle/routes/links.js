@@ -1,10 +1,10 @@
-const baseURL = '/product-category';
+import { productCategoryBaseURL } from '../constants';
 
 const productCategoryRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
-  list: `${baseURL}`,
+  edit: (id) => `${productCategoryBaseURL}/edit/${id}`,
+  show: (id) => `${productCategoryBaseURL}/show/${id}`,
+  create: `${productCategoryBaseURL}/create`,
+  list: `${productCategoryBaseURL}`,
 };
 
 export default productCategoryRouteLinks;

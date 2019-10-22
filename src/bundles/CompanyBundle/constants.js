@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const departmentBaseURL = '/department';
+export const companyBaseURL = '/company';

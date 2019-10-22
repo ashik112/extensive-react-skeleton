@@ -2,13 +2,14 @@ import {
   get, post, patch, remove,
 } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
+import { departmentBaseURL } from '../constants';
 
 export const departmentApiRoutes = {
-  departmentList: 'department/list',
-  department: (id) => `department/show/${id}`,
-  departmentCreate: 'department/new',
-  departmentUpdate: (id) => `department/update/${id}`,
-  departmentDelete: (id) => `department/delete/${id}`,
+  departmentList: `${departmentBaseURL}/list`,
+  department: (id) => `${departmentBaseURL}/show/${id}`,
+  departmentCreate: `${departmentBaseURL}/new`,
+  departmentUpdate: (id) => `${departmentBaseURL}/update/${id}`,
+  departmentDelete: (id) => `${departmentBaseURL}/delete/${id}`,
 };
 
 const getDepartmentList = (dispatch) => get(`${serverURL}${departmentApiRoutes.departmentList}`, dispatch);

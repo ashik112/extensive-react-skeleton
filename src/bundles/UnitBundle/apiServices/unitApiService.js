@@ -2,13 +2,14 @@ import {
   get, post, patch, remove,
 } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
+import { unitBaseURL } from '../constants';
 
 export const unitApiRoutes = {
-  unitList: 'unit/list',
-  unit: (id) => `unit/show/${id}`,
-  unitCreate: 'unit/new',
-  unitUpdate: (id) => `unit/update/${id}`,
-  unitDelete: (id) => `unit/delete/${id}`,
+  unitList: `${unitBaseURL}/list`,
+  unit: (id) => `${unitBaseURL}/show/${id}`,
+  unitCreate: `${unitBaseURL}/new`,
+  unitUpdate: (id) => `${unitBaseURL}/update/${id}`,
+  unitDelete: (id) => `${unitBaseURL}/delete/${id}`,
 };
 
 const getUnitList = (dispatch) => get(`${serverURL}${unitApiRoutes.unitList}`, dispatch);

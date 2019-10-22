@@ -2,13 +2,14 @@ import {
   get, post, patch, remove,
 } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
+import { productCategoryBaseURL } from '../constants';
 
 export const productCategoryApiRoutes = {
-  productCategoryList: 'product-category/list',
-  productCategory: (id) => `product-category/show/${id}`,
-  productCategoryCreate: 'product-category/new',
-  productCategoryUpdate: (id) => `product-category/update/${id}`,
-  productCategoryDelete: (id) => `product-category/delete/${id}`,
+  productCategoryList: `${productCategoryBaseURL}/list`,
+  productCategory: (id) => `${productCategoryBaseURL}/show/${id}`,
+  productCategoryCreate: `${productCategoryBaseURL}/new`,
+  productCategoryUpdate: (id) => `${productCategoryBaseURL}/update/${id}`,
+  productCategoryDelete: (id) => `${productCategoryBaseURL}/delete/${id}`,
 };
 
 const getProductCategoryList = (dispatch) => get(`${serverURL}${productCategoryApiRoutes.productCategoryList}`, dispatch);

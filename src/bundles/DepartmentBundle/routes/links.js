@@ -1,10 +1,10 @@
-const baseURL = '/department';
+import { departmentBaseURL } from '../constants';
 
 const departmentRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
-  list: `${baseURL}`,
+  edit: (id) => `${departmentBaseURL}/edit/${id}`,
+  show: (id) => `${departmentBaseURL}/show/${id}`,
+  create: `${departmentBaseURL}/create`,
+  list: `${departmentBaseURL}`,
 };
 
 export default departmentRouteLinks;

@@ -1,10 +1,10 @@
-const baseURL = '/company';
+import { companyBaseURL } from '../constants';
 
 const companyRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
-  list: `${baseURL}`,
+  edit: (id) => `${companyBaseURL}/edit/${id}`,
+  show: (id) => `${companyBaseURL}/show/${id}`,
+  create: `${companyBaseURL}/create`,
+  list: `${companyBaseURL}`,
 };
 
 export default companyRouteLinks;

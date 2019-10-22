@@ -3,20 +3,13 @@ import SupplierListPage from '../views/pages/SupplierListPage';
 import SupplierShowPage from '../views/pages/SupplierShowPage';
 import SupplierCreatePage from '../views/pages/SupplierCreatePage';
 import SupplierUpdatePage from '../views/pages/SupplierUpdatePage';
-
-const baseURL = '/supplier';
+import { supplierBaseURL } from '../constants';
 
 const historyRoutes = {
-  supplierList: `${baseURL}`, // * List should be same as baseURL for sidebar hightlight
-  supplierShow: `${baseURL}/show/:id`,
-  supplierCreate: `${baseURL}/create`,
-  supplierUpdate: `${baseURL}/edit/:id`,
-};
-
-export const supplierRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
+  supplierList: `${supplierBaseURL}`, // * List should be same as supplierBaseURL for sidebar hightlight
+  supplierShow: `${supplierBaseURL}/show/:id`,
+  supplierCreate: `${supplierBaseURL}/create`,
+  supplierUpdate: `${supplierBaseURL}/edit/:id`,
 };
 
 const menuRoutes = [
@@ -57,7 +50,6 @@ const menuRoutes = [
 const supplierRoutes = {
   historyRoutes,
   menuRoutes,
-  supplierRouteLinks,
 };
 
 export default supplierRoutes;

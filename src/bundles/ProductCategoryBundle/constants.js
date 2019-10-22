@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const supplierBaseURL = '/supplier';
+export const productCategoryBaseURL = '/product-category';

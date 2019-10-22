@@ -3,20 +3,13 @@ import UnitListPage from '../views/pages/UnitListPage';
 import UnitShowPage from '../views/pages/UnitShowPage';
 import UnitCreatePage from '../views/pages/UnitCreatePage';
 import UnitUpdatePage from '../views/pages/UnitUpdatePage';
-
-const baseURL = '/unit';
+import { unitBaseURL } from '../constants';
 
 const historyRoutes = {
-  unitList: `${baseURL}`, // * List should be same as baseURL for sidebar hightlight
-  unitShow: `${baseURL}/show/:id`,
-  unitCreate: `${baseURL}/create`,
-  unitUpdate: `${baseURL}/edit/:id`,
-};
-
-export const unitRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
+  unitList: `${unitBaseURL}`, // * List should be same as unitBaseURL for sidebar hightlight
+  unitShow: `${unitBaseURL}/show/:id`,
+  unitCreate: `${unitBaseURL}/create`,
+  unitUpdate: `${unitBaseURL}/edit/:id`,
 };
 
 const menuRoutes = [
@@ -57,7 +50,6 @@ const menuRoutes = [
 const unitRoutes = {
   historyRoutes,
   menuRoutes,
-  unitRouteLinks,
 };
 
 export default unitRoutes;

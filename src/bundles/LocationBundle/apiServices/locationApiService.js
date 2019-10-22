@@ -2,13 +2,14 @@ import {
   get, post, patch, remove,
 } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
+import { locationBaseURL } from '../constants';
 
 export const locationApiRoutes = {
-  locationList: 'location/list',
-  location: (id) => `location/show/${id}`,
-  locationCreate: 'location/new',
-  locationUpdate: (id) => `location/update/${id}`,
-  locationDelete: (id) => `location/delete/${id}`,
+  locationList: `${locationBaseURL}/list`,
+  location: (id) => `${locationBaseURL}/show/${id}`,
+  locationCreate: `${locationBaseURL}/new`,
+  locationUpdate: (id) => `${locationBaseURL}/update/${id}`,
+  locationDelete: (id) => `${locationBaseURL}/delete/${id}`,
 };
 
 const getLocationList = (dispatch) => get(`${serverURL}${locationApiRoutes.locationList}`, dispatch);

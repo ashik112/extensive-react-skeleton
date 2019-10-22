@@ -3,20 +3,13 @@ import DepartmentListPage from '../views/pages/DepartmentListPage';
 import DepartmentShowPage from '../views/pages/DepartmentShowPage';
 import DepartmentCreatePage from '../views/pages/DepartmentCreatePage';
 import DepartmentUpdatePage from '../views/pages/DepartmentUpdatePage';
-
-const baseURL = '/department';
+import { departmentBaseURL } from '../constants';
 
 const historyRoutes = {
-  departmentList: `${baseURL}`, // * List should be same as baseURL for sidebar hightlight
-  departmentShow: `${baseURL}/show/:id`,
-  departmentCreate: `${baseURL}/create`,
-  departmentUpdate: `${baseURL}/edit/:id`,
-};
-
-export const departmentRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
+  departmentList: `${departmentBaseURL}`, // * List should be same as departmentBaseURL for sidebar hightlight
+  departmentShow: `${departmentBaseURL}/show/:id`,
+  departmentCreate: `${departmentBaseURL}/create`,
+  departmentUpdate: `${departmentBaseURL}/edit/:id`,
 };
 
 const menuRoutes = [
@@ -57,7 +50,6 @@ const menuRoutes = [
 const departmentRoutes = {
   historyRoutes,
   menuRoutes,
-  departmentRouteLinks,
 };
 
 export default departmentRoutes;

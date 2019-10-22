@@ -3,20 +3,13 @@ import LocationListPage from '../views/pages/LocationListPage';
 import LocationShowPage from '../views/pages/LocationShowPage';
 import LocationCreatePage from '../views/pages/LocationCreatePage';
 import LocationUpdatePage from '../views/pages/LocationUpdatePage';
-
-const baseURL = '/location';
+import { locationBaseURL } from '../constants';
 
 const historyRoutes = {
-  locationList: `${baseURL}`, // * List should be same as baseURL for sidebar hightlight
-  locationShow: `${baseURL}/show/:id`,
-  locationCreate: `${baseURL}/create`,
-  locationUpdate: `${baseURL}/edit/:id`,
-};
-
-export const locationRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
+  locationList: `${locationBaseURL}`, // * List should be same as locationBaseURL for sidebar hightlight
+  locationShow: `${locationBaseURL}/show/:id`,
+  locationCreate: `${locationBaseURL}/create`,
+  locationUpdate: `${locationBaseURL}/edit/:id`,
 };
 
 const menuRoutes = [
@@ -57,7 +50,6 @@ const menuRoutes = [
 const locationRoutes = {
   historyRoutes,
   menuRoutes,
-  locationRouteLinks,
 };
 
 export default locationRoutes;

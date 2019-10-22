@@ -2,13 +2,14 @@ import {
   get, post, patch, remove,
 } from '../../../services/apiService';
 import { serverURL } from '../../../constants';
+import { supplierBaseURL } from '../constants';
 
 export const supplierApiRoutes = {
-  supplierList: 'supplier/list',
-  supplier: (id) => `supplier/show/${id}`,
-  supplierCreate: 'supplier/new',
-  supplierUpdate: (id) => `supplier/update/${id}`,
-  supplierDelete: (id) => `supplier/delete/${id}`,
+  supplierList: `${supplierBaseURL}/list`,
+  supplier: (id) => `${supplierBaseURL}/show/${id}`,
+  supplierCreate: `${supplierBaseURL}/new`,
+  supplierUpdate: (id) => `${supplierBaseURL}/update/${id}`,
+  supplierDelete: (id) => `${supplierBaseURL}/delete/${id}`,
 };
 
 const getSupplierList = (dispatch) => get(`${serverURL}${supplierApiRoutes.supplierList}`, dispatch);

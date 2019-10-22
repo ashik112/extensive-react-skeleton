@@ -1,10 +1,10 @@
-const baseURL = '/supplier';
+import { supplierBaseURL } from '../constants';
 
 const supplierRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
-  list: `${baseURL}`,
+  edit: (id) => `${supplierBaseURL}/edit/${id}`,
+  show: (id) => `${supplierBaseURL}/show/${id}`,
+  create: `${supplierBaseURL}/create`,
+  list: `${supplierBaseURL}`,
 };
 
 export default supplierRouteLinks;

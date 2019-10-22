@@ -9,7 +9,7 @@ import unitActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import unitApiService, { unitApiRoutes } from '../../apiServices/unitApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
-import unitRouteLinks from '../../routes/links';
+import { unitRouteLinks } from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';

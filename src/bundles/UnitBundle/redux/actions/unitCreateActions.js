@@ -3,7 +3,7 @@ import unitApiService from '../../apiServices/unitApiService';
 import checkHttpError from '../../../../services/checkHttpError';
 import { showAlert } from '../../../../services/generalhelper';
 import history from '../../../../services/history';
-import unitRouteLinks from '../../routes/links';
+import { unitRouteLinks } from '../../routes/links';
 
 const createUnitBegin = () => ({
   type: unitActionTypes.UNIT_CREATE_REQUEST,

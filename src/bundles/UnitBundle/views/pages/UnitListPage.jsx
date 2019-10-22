@@ -9,7 +9,7 @@ import unitActions from '../../redux/actions';
 import Card from '../../../../components/Card/Card';
 import CardBody from '../../../../components/Card/CardBody';
 import history from '../../../../services/history';
-import unitRouteLinks from '../../routes/links';
+import { unitRouteLinks } from '../../routes/links';
 import TableActionButtons from '../../../../views/templates/TableActionButtons';
 import unitApiService from '../../apiServices/unitApiService';
 

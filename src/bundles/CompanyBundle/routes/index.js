@@ -3,20 +3,13 @@ import CompanyListPage from '../views/pages/CompanyListPage';
 import CompanyShowPage from '../views/pages/CompanyShowPage';
 import CompanyCreatePage from '../views/pages/CompanyCreatePage';
 import CompanyUpdatePage from '../views/pages/CompanyUpdatePage';
-
-const baseURL = '/company';
+import { companyBaseURL } from '../constants';
 
 const historyRoutes = {
-  companyList: `${baseURL}`, // * List should be same as baseURL for sidebar hightlight
-  companyShow: `${baseURL}/show/:id`,
-  companyCreate: `${baseURL}/create`,
-  companyUpdate: `${baseURL}/edit/:id`,
-};
-
-export const companyRouteLinks = {
-  edit: (id) => `${baseURL}/edit/${id}`,
-  show: (id) => `${baseURL}/show/${id}`,
-  create: `${baseURL}/create`,
+  companyList: `${companyBaseURL}`, // * List should be same as companyBaseURL for sidebar hightlight
+  companyShow: `${companyBaseURL}/show/:id`,
+  companyCreate: `${companyBaseURL}/create`,
+  companyUpdate: `${companyBaseURL}/edit/:id`,
 };
 
 const menuRoutes = [
@@ -57,7 +50,6 @@ const menuRoutes = [
 const companyRoutes = {
   historyRoutes,
   menuRoutes,
-  companyRouteLinks,
 };
 
 export default companyRoutes;
