@@ -3,7 +3,7 @@ import { Tag } from 'antd';
 import PropTypes from 'prop-types';
 
 function getStatusElement(status) {
-  try{
+  try {
     const { value, name } = status;
     switch (value) {
       case 0: return <Tag color="grey">{name}</Tag>;
