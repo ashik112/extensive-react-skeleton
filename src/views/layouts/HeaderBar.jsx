@@ -62,9 +62,9 @@ class HeaderBar extends Component {
             {/*<Typography.Text style={{ verticalAlign: 'middle', fontWeight: 'bold' }}>
               {companyName}
             </Typography.Text>*/}
-            <Dropdown overlay={this.getMenu()}>
+            <Dropdown overlay={this.getMenu()} trigger={['click', 'hover']}>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line,jsx-a11y/anchor-is-valid */}
-              <a tabIndex={-1} className="ant-dropdown-link" href="#"> User <Icon style={{ bottom: '3px', position: 'relative' }} type="down" /> </a>
+              <a tabIndex={-1} className="ant-dropdown-link"> User <Icon style={{ bottom: '3px', position: 'relative' }} type="down" /> </a>
             </Dropdown>
           </div>
         </Header>
