@@ -13,7 +13,7 @@ import { unitRouteLinks } from '../../routes/links';
 import TableActionButtons from '../../../../views/templates/TableActionButtons';
 import unitApiService from '../../apiServices/unitApiService';
 
-class UnitListPage extends Component {
+class RequisitionListPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -124,13 +124,13 @@ class UnitListPage extends Component {
   }
 }
 
-UnitListPage.defaultProps = {
+RequisitionListPage.defaultProps = {
   getList: () => { },
   list: [],
   loading: false,
 };
 
-UnitListPage.propTypes = {
+RequisitionListPage.propTypes = {
   getList: PropTypes.func,
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
@@ -147,4 +147,4 @@ const mapDispatchToProps = (dispatch) => ({
   ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UnitListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RequisitionListPage);

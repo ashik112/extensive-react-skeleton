@@ -4,7 +4,7 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import UnitForm from '../templates/UnitForm';
+import RequisitionForm from '../templates/UnitForm';
 import unitActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import unitApiService, { unitApiRoutes } from '../../apiServices/unitApiService';
@@ -15,7 +15,7 @@ import Card from '../../../../components/Card/Card';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
 
-class UnitUpdatePage extends Component {
+class RequisitionUpdatePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,7 +89,7 @@ class UnitUpdatePage extends Component {
 }
 
 
-UnitUpdatePage.defaultProps = {
+RequisitionUpdatePage.defaultProps = {
   loading: false,
   list: [],
   updateUnit: () => {},
@@ -102,7 +102,7 @@ UnitUpdatePage.defaultProps = {
   getList: () => { },
 };
 
-UnitUpdatePage.propTypes = {
+RequisitionUpdatePage.propTypes = {
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
   updateUnit: PropTypes.func,
@@ -132,5 +132,5 @@ const mapDispatchToProps = (dispatch) => ({
     unitActions.fetchUnitList(),
   ),
 });
-const WrappedUnitForm = Form.create({ name: 'unit_update' })(UnitForm);
-export default connect(mapStateToProps, mapDispatchToProps)(UnitUpdatePage);
+const WrappedUnitForm = Form.create({ name: 'unit_update' })(RequisitionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RequisitionUpdatePage);

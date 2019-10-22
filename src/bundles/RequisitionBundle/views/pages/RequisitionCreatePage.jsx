@@ -4,7 +4,7 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import UnitForm from '../templates/UnitForm';
+import RequisitionForm from '../templates/UnitForm';
 import unitActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import CardHeader from '../../../../components/Card/CardHeader';
@@ -13,7 +13,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
 
-class UnitCreatePage extends Component {
+class RequisitionCreatePage extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,7 +52,7 @@ class UnitCreatePage extends Component {
   }
 }
 
-UnitCreatePage.defaultProps = {
+RequisitionCreatePage.defaultProps = {
   loading: false,
   list: [],
   createUnit: () => {},
@@ -61,7 +61,7 @@ UnitCreatePage.defaultProps = {
   getList: () => { },
 };
 
-UnitCreatePage.propTypes = {
+RequisitionCreatePage.propTypes = {
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
   createUnit: PropTypes.func,
@@ -90,5 +90,5 @@ const mapDispatchToProps = (dispatch) => ({
   ),
 });
 
-const WrappedUnitForm = Form.create({ name: 'unit_create' })(UnitForm);
-export default connect(mapStateToProps, mapDispatchToProps)(UnitCreatePage);
+const WrappedUnitForm = Form.create({ name: 'unit_create' })(RequisitionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RequisitionCreatePage);

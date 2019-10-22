@@ -12,7 +12,7 @@ import CardBody from '../../../../components/Card/CardBody';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';
 
-class UnitShowPage extends Component {
+class RequisitionShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,4 +59,4 @@ class UnitShowPage extends Component {
   }
 }
 
-export default connect()(UnitShowPage);
+export default connect()(RequisitionShowPage);

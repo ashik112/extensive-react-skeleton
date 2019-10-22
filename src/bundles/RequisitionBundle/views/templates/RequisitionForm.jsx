@@ -24,7 +24,7 @@ const validationSchema = yup.object().shape({
   parent: yup.number().nullable(true),
 });
 
-export default function UnitForm({
+export default function RequisitionForm({
   handleSubmit, loading, unit, list,
 }) {
   return (
