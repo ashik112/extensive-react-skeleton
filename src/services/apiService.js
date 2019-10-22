@@ -13,7 +13,7 @@ export const apiPrefix = '/api';
  * * [routes for apis]
  */
 const routes = {
-  authLogin: 'login_check',
+  authLogin: '/login_check',
 };
 
 function authHeaderProvider() {
