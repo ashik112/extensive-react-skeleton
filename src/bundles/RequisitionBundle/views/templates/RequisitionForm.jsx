@@ -12,7 +12,7 @@ import {
   AntDatePicker,
   AntSelect, AntTextArea,
 } from '../../../../forms/FormikAntFields';
-import {dateFormat} from '../../../../constants';
+import { dateFormat } from '../../../../constants';
 
 const validationSchema = yup.object().shape({
   date: yup.date().required('Required!'),

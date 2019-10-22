@@ -3,6 +3,7 @@ import {
   Form, Spin, Empty,
 } from 'antd';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import RequisitionForm from '../templates/RequisitionForm';
 import requisitionActions from '../../redux/actions';
@@ -13,8 +14,6 @@ import requisitionRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';
-import moment from 'moment';
-import {dateFormat} from '../../../../constants';
 
 class RequisitionUpdatePage extends Component {
   constructor(props) {

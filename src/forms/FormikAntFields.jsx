@@ -4,7 +4,6 @@ import { getIn } from 'formik';
 import {
   Input, InputNumber, Select, Tooltip, DatePicker,
 } from 'antd';
-import moment from 'moment';
 
 const { TextArea } = Input;
 const { Option } = Select;
