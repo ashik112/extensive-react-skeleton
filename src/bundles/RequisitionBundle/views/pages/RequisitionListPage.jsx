@@ -4,14 +4,17 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 import CardHeader from '../../../../components/Card/CardHeader';
-import unitActions from '../../redux/actions';
+import requisitionActions from '../../redux/actions';
 import Card from '../../../../components/Card/Card';
 import CardBody from '../../../../components/Card/CardBody';
 import history from '../../../../services/history';
-import { unitRouteLinks } from '../../routes/links';
+import requisitionRouteLinks from '../../routes/links';
 import TableActionButtons from '../../../../views/templates/TableActionButtons';
-import unitApiService from '../../apiServices/unitApiService';
+import requisitionApiService from '../../apiServices/requisitionApiService';
+import { dateFormat } from '../../../../constants';
+import RequisitionStatus from '../atoms/RequisitionStatus';
 
 class RequisitionListPage extends Component {
   constructor(props) {
@@ -39,6 +42,12 @@ class RequisitionListPage extends Component {
     const { list } = this.state;
     const columns = [
       {
+        title: 'Status',
+        dataIndex: 'requisition_status',
+        key: 'requisition_status',
+        render: (status) => <RequisitionStatus status={status} />,
+      },
+      {
         title: 'ID',
         dataIndex: 'id',
         key: 'id',
@@ -46,24 +55,35 @@ class RequisitionListPage extends Component {
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
+        title: 'Date',
+        dataIndex: 'date',
+        key: 'date',
+        render: (date) => <Moment format={dateFormat}>{date}</Moment>,
       },
       {
-        title: 'Short',
-        dataIndex: 'short',
-        key: 'short',
+        title: 'Description',
+        dataIndex: 'description',
+        key: 'description',
       },
       {
-        title: 'Conversion Factor',
-        dataIndex: 'conversion_factor',
-        key: 'conversionFactor',
+        title: 'Budgeted',
+        dataIndex: 'budgeted',
+        key: 'budgeted',
       },
       {
-        title: 'Parent',
-        dataIndex: 'parent.name',
-        key: 'parent',
+        title: 'LC',
+        dataIndex: 'lc',
+        key: 'lc',
+      },
+      {
+        title: 'Institute',
+        dataIndex: 'institute',
+        key: 'institute',
+      },
+      {
+        title: 'Department',
+        dataIndex: 'department.name',
+        key: 'department',
       },
       {
         title: 'Action',
@@ -79,8 +99,8 @@ class RequisitionListPage extends Component {
             entity={item}
             row={row}
             index={index}
-            linkRouteObject={unitRouteLinks}
-            deleteApiFunction={unitApiService.deleteUnit}
+            linkRouteObject={requisitionRouteLinks}
+            deleteApiFunction={requisitionApiService.deleteRequisition}
             updateList={(updatedList) => {
               this.setState({
                 list: updatedList,
@@ -98,10 +118,10 @@ class RequisitionListPage extends Component {
             <Card>
               <CardHeader>
                 <Tooltip
-                  title="Create a new Unit"
+                  title="Create a new Requisition"
                   mouseEnterDelay={1}
                 >
-                  <Button type="primary" icon="plus" onClick={() => history.push(unitRouteLinks.create)}> Unit </Button>
+                  <Button type="primary" icon="plus" onClick={() => history.push(requisitionRouteLinks.create)}> Requisition </Button>
                 </Tooltip>
               </CardHeader>
               <CardBody>
@@ -137,13 +157,13 @@ RequisitionListPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  list: state.unitReducer.list,
-  loading: state.unitReducer.loading,
+  list: state.requisitionReducer.list,
+  loading: state.requisitionReducer.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getList: () => dispatch(
-    unitActions.fetchUnitList(),
+    requisitionActions.fetchRequisitionList(),
   ),
 });
 

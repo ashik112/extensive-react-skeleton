@@ -1,10 +1,10 @@
 import { requisitionBaseURL } from '../constants';
 
-const productCategoryRouteLinks = {
+const requisitionRouteLinks = {
   edit: (id) => `${requisitionBaseURL}/edit/${id}`,
   show: (id) => `${requisitionBaseURL}/show/${id}`,
   create: `${requisitionBaseURL}/create`,
   list: `${requisitionBaseURL}`,
 };
 
-export default productCategoryRouteLinks;
+export default requisitionRouteLinks;

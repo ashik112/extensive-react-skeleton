@@ -6,6 +6,7 @@ import unitRoutes from '../bundles/UnitBundle/routes';
 import authenticationRoutes from '../bundles/AuthenticationBundle/routes';
 import locationRoutes from '../bundles/LocationBundle/routes';
 import productCategoryRoutes from '../bundles/ProductCategoryBundle/routes';
+import requisitionRoutes from '../bundles/RequisitionBundle/routes';
 
 /**
  * * Routes for history
@@ -19,6 +20,7 @@ export const historyRoutes = {
   ...unitRoutes.historyRoutes,
   ...locationRoutes.historyRoutes,
   ...productCategoryRoutes.historyRoutes,
+  ...requisitionRoutes.historyRoutes,
 };
 
 /**
@@ -32,4 +34,5 @@ export const menuRoutes = [
   ...unitRoutes.menuRoutes,
   ...locationRoutes.menuRoutes,
   ...productCategoryRoutes.menuRoutes,
+  ...requisitionRoutes.menuRoutes,
 ];

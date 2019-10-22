@@ -4,11 +4,11 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import RequisitionForm from '../templates/UnitForm';
-import unitActions from '../../redux/actions';
+import RequisitionForm from '../templates/RequisitionForm';
+import requisitionActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
 import CardHeader from '../../../../components/Card/CardHeader';
-import { unitRouteLinks } from '../../routes/links';
+import requisitionRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import ButtonBack from '../../../../views/atoms/ButtonBack';
@@ -31,8 +31,8 @@ class RequisitionCreatePage extends Component {
   }
 
   handleSubmit = async (values) => {
-    const { createUnit } = this.props;
-    await createUnit(values);
+    const { createRequisition } = this.props;
+    await createRequisition(values);
   };
 
   render() {
@@ -41,10 +41,10 @@ class RequisitionCreatePage extends Component {
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
-            <ButtonBack title="Unit" route={unitRouteLinks.list} />
+            <ButtonBack title="Requisition" route={requisitionRouteLinks.list} />
           </CardHeader>
           <CardBody>
-            <WrappedUnitForm list={list} unit={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />
+            <WrappedRequisitionForm list={list} requisition={{ name: '', description: '' }} handleSubmit={this.handleSubmit} />
           </CardBody>
         </Card>
       </Spin>
@@ -55,7 +55,7 @@ class RequisitionCreatePage extends Component {
 RequisitionCreatePage.defaultProps = {
   loading: false,
   list: [],
-  createUnit: () => {},
+  createRequisition: () => {},
   clearStore: () => {},
   clearNotifications: () => {},
   getList: () => { },
@@ -64,31 +64,31 @@ RequisitionCreatePage.defaultProps = {
 RequisitionCreatePage.propTypes = {
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
-  createUnit: PropTypes.func,
+  createRequisition: PropTypes.func,
   clearStore: PropTypes.func,
   clearNotifications: PropTypes.func,
   getList: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  loading: state.unitReducer.loading,
-  list: state.unitReducer.list,
+  loading: state.requisitionReducer.loading,
+  list: state.requisitionReducer.list,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  createUnit: (param) => dispatch(
-    unitActions.createUnit(param),
+  createRequisition: (param) => dispatch(
+    requisitionActions.createRequisition(param),
   ),
   clearStore: () => dispatch(
-    unitActions.clearUnitStore(),
+    requisitionActions.clearRequisitionStore(),
   ),
   clearNotifications: () => dispatch(
     notificationActions.closeAll(),
   ),
   getList: () => dispatch(
-    unitActions.fetchUnitList(),
+    requisitionActions.fetchRequisitionList(),
   ),
 });
 
-const WrappedUnitForm = Form.create({ name: 'unit_create' })(RequisitionForm);
+const WrappedRequisitionForm = Form.create({ name: 'requisition_create' })(RequisitionForm);
 export default connect(mapStateToProps, mapDispatchToProps)(RequisitionCreatePage);

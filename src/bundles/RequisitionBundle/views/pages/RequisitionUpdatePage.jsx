@@ -4,12 +4,12 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import RequisitionForm from '../templates/UnitForm';
-import unitActions from '../../redux/actions';
+import RequisitionForm from '../templates/RequisitionForm';
+import requisitionActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import unitApiService, { unitApiRoutes } from '../../apiServices/unitApiService';
+import requisitionApiService, { requisitionApiRoutes } from '../../apiServices/requisitionApiService';
 import CardHeader from '../../../../components/Card/CardHeader';
-import { unitRouteLinks } from '../../routes/links';
+import requisitionRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';
@@ -19,7 +19,7 @@ class RequisitionUpdatePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      unit: null,
+      requisition: null,
     };
   }
 
@@ -29,9 +29,9 @@ class RequisitionUpdatePage extends Component {
       const { params } = match;
       if (params) {
         getList();
-        unitApiService.getUnit(params.id, dispatch).then((res) => {
+        requisitionApiService.getRequisition(params.id, dispatch).then((res) => {
           this.setState({
-            unit: res.data,
+            requisition: res.data,
           });
         });
       }
@@ -47,40 +47,40 @@ class RequisitionUpdatePage extends Component {
   }
 
   handleSubmit = (params) => {
-    const { updateUnit } = this.props;
-    const { unit } = this.state;
-    updateUnit(unit.id, params);
+    const { updateRequisition } = this.props;
+    const { requisition } = this.state;
+    updateRequisition(requisition.id, params);
   };
 
   render() {
     const { loading, list } = this.props;
-    const { unit } = this.state;
+    const { requisition } = this.state;
     const initialValue = (
-      unit
-        && unit.id
+      requisition
+        && requisition.id
         && {
-          id: unit.id,
-          name: unit.name,
-          short: unit.short,
-          conversionFactor: unit.conversion_factor,
-          parent: (unit.parent && unit.parent.id) || null,
+          id: requisition.id,
+          name: requisition.name,
+          short: requisition.short,
+          conversionFactor: requisition.conversion_factor,
+          parent: (requisition.parent && requisition.parent.id) || null,
         }) || null;
     return (
       <Spin spinning={loading}>
         <Card>
           <CardHeader>
             <CardActionButtons
-              title="Unit"
-              entity={unit}
-              linkRouteObject={unitRouteLinks}
-              deleteApiRouteFunction={unitApiRoutes.unitDelete}
+              title="Requisition"
+              entity={requisition}
+              linkRouteObject={requisitionRouteLinks}
+              deleteApiRouteFunction={requisitionApiRoutes.requisitionDelete}
               show
               remove
             />
           </CardHeader>
           <CardBody>
-            {unit && <WrappedUnitForm list={list} unit={initialValue} handleSubmit={this.handleSubmit} />}
-            {!unit && <Empty />}
+            {requisition && <WrappedRequisitionForm list={list} requisition={initialValue} handleSubmit={this.handleSubmit} />}
+            {!requisition && <Empty />}
           </CardBody>
         </Card>
       </Spin>
@@ -92,7 +92,7 @@ class RequisitionUpdatePage extends Component {
 RequisitionUpdatePage.defaultProps = {
   loading: false,
   list: [],
-  updateUnit: () => {},
+  updateRequisition: () => {},
   dispatch: () => {},
   clearStore: () => {},
   clearNotifications: () => {},
@@ -105,7 +105,7 @@ RequisitionUpdatePage.defaultProps = {
 RequisitionUpdatePage.propTypes = {
   loading: PropTypes.bool,
   list: PropTypes.arrayOf(PropTypes.shape([])),
-  updateUnit: PropTypes.func,
+  updateRequisition: PropTypes.func,
   dispatch: PropTypes.func,
   clearStore: PropTypes.func,
   clearNotifications: PropTypes.func,
@@ -114,23 +114,23 @@ RequisitionUpdatePage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  loading: state.unitReducer.loading,
-  list: state.unitReducer.list,
+  loading: state.requisitionReducer.loading,
+  list: state.requisitionReducer.list,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUnit: (id, param) => dispatch(
-    unitActions.updateUnit(id, param),
+  updateRequisition: (id, param) => dispatch(
+    requisitionActions.updateRequisition(id, param),
   ),
   clearStore: () => dispatch(
-    unitActions.clearUnitStore(),
+    requisitionActions.clearRequisitionStore(),
   ),
   clearNotifications: () => dispatch(
     notificationActions.closeAll(),
   ),
   getList: () => dispatch(
-    unitActions.fetchUnitList(),
+    requisitionActions.fetchRequisitionList(),
   ),
 });
-const WrappedUnitForm = Form.create({ name: 'unit_update' })(RequisitionForm);
+const WrappedRequisitionForm = Form.create({ name: 'requisition_update' })(RequisitionForm);
 export default connect(mapStateToProps, mapDispatchToProps)(RequisitionUpdatePage);

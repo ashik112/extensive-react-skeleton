@@ -25,12 +25,12 @@ const validationSchema = yup.object().shape({
 });
 
 export default function RequisitionForm({
-  handleSubmit, loading, unit, list,
+  handleSubmit, loading, requisition, list,
 }) {
   return (
     <div>
       <Formik
-        initialValues={unit}
+        initialValues={requisition}
         enableReinitialize
         onSubmit={(values) => {
           handleSubmit(values);
@@ -39,13 +39,13 @@ export default function RequisitionForm({
       >
         <Form>
           {
-              unit && unit.id && (
+              requisition && requisition.id && (
               <Row gutter={8} style={{ margin: 10 }}>
                 <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
                       ID:
                 </Col>
                 <Col span={20}>
-                  {unit.id}
+                  {requisition.id}
                 </Col>
               </Row>
               )
@@ -95,7 +95,7 @@ export default function RequisitionForm({
                 showSearch
                 optionFilterProp="name"
                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                selectedValue={unit.parent || null}
+                selectedValue={requisition.parent || null}
                 options={list}
                 component={AntSelect}
               />

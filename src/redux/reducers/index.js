@@ -8,6 +8,7 @@ import productCategoryReducer from '../../bundles/ProductCategoryBundle/redux/re
 import alertReducer from './alertReducer';
 import notificationReducer from './notificationReducer';
 import authReducer from '../../bundles/AuthenticationBundle/redux/reducer';
+import requisitionReducer from '../../bundles/RequisitionBundle/redux/reducer';
 
 export default combineReducers({
   companyReducer,
@@ -19,4 +20,5 @@ export default combineReducers({
   unitReducer,
   locationReducer,
   productCategoryReducer,
+  requisitionReducer,
 });

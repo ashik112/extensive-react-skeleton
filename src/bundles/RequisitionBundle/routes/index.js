@@ -12,12 +12,6 @@ const historyRoutes = {
   requisitionUpdate: `${requisitionBaseURL}/edit/:id`,
 };
 
-export const requisitionRouteLinks = {
-  edit: (id) => `${requisitionBaseURL}/edit/${id}`,
-  show: (id) => `${requisitionBaseURL}/show/${id}`,
-  create: `${requisitionBaseURL}/create`,
-};
-
 const menuRoutes = [
   {
     path: historyRoutes.requisitionList,
@@ -56,7 +50,6 @@ const menuRoutes = [
 const requisitionRoutes = {
   historyRoutes,
   menuRoutes,
-  requisitionRouteLinks,
 };
 
 export default requisitionRoutes;
