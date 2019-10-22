@@ -19,8 +19,13 @@ export function getCompany(id) {
 }
 
 /**
+ * /**
  * * [Shows Alert using "antd" message object]
  * ! Requires "antd"
+ * @param type
+ * @param body
+ * @param duration
+ * @returns {MessageType|null}
  */
 export function showAlert(type, body, duration = 5) {
   try {

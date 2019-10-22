@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { remove } from '../../services/apiService';
 import history from '../../services/history';
-import { showNotification } from '../../services/generalhelper';
+import { showAlert } from '../../services/generalhelper';
 import checkHttpError from '../../services/checkHttpError';
 
 
@@ -21,7 +21,7 @@ class CardButtonDelete extends Component {
     const { dispatch, url, route } = this.props;
     remove(url, dispatch).then(() => {
       history.push(route);
-      showNotification('success', 'Successful!', 'Deletion Complete.', 5);
+      showAlert('success', 'Operation Successful!', 3);
     }).catch((err) => {
       checkHttpError(err, 2, 5, dispatch);
     });

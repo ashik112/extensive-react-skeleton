@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import history from '../../services/history';
 import TableButtonDelete from '../atoms/TableButtonDelete';
+import {showAlert} from '../../services/generalhelper';
+import checkHttpError from '../../services/checkHttpError';
 
 
 class TableActionButtons extends Component {
@@ -23,8 +25,10 @@ class TableActionButtons extends Component {
       await deleteApiFunction(id, dispatch).then(() => {
         list.splice(index, 1);
         this.toggleLoading(false);
+        showAlert('success', 'Operation Successful!', 3);
         updateList(list);
-      }).catch(() => {
+      }).catch((e) => {
+        checkHttpError(e, 1, 3, dispatch);
         this.toggleLoading(false);
       });
     }
