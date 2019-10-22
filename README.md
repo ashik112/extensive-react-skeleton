@@ -1,4 +1,4 @@
-# React Project Skeleton
+# BIZNET FRONTEND V2 (REACT)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Available Scripts
