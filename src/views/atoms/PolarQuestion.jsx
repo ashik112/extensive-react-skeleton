@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function getAnswer(answer) {
   if (answer === null || answer === undefined) {
-    return <Tag>N/A</Tag>;
+    return <Tag>Not Available</Tag>;
   }
 
   if (answer) {

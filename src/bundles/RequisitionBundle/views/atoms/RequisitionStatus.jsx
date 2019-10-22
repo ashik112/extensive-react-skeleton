@@ -11,7 +11,7 @@ function getStatusElement(status) {
       default: return <Tag>{name}</Tag>;
     }
   } catch (e) {
-    return <Tag>N/A</Tag>;
+    return <Tag>Not Available</Tag>;
   }
 }
 
@@ -25,7 +25,7 @@ export default function RequisitionStatus({ status }) {
 RequisitionStatus.defaultProps = {
   status: {
     value: -1,
-    name: 'N/A',
+    name: 'Not Available',
   },
 };
 
