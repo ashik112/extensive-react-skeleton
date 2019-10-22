@@ -14,6 +14,7 @@ import checkHttpError from '../../../../services/checkHttpError';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';
 import { dateFormat } from '../../../../constants';
 import RequisitionStatus from '../atoms/RequisitionStatus';
+import PolarQuestion from '../../../../views/atoms/PolarQuestion';
 
 class RequisitionShowPage extends Component {
   constructor(props) {
@@ -58,9 +59,9 @@ class RequisitionShowPage extends Component {
           <Divider type="horizontal" />
           <Descriptions layout="vertical" size="small" bordered column={24}>
             <Descriptions.Item label="ID" span={2}>{requisition.id}</Descriptions.Item>
-            <Descriptions.Item label="Budgeted" span={2}>{requisition.budgeted}</Descriptions.Item>
-            <Descriptions.Item label="LC" span={2}>{requisition.lc}</Descriptions.Item>
-            <Descriptions.Item label="Institute" span={18}>{requisition.institute}</Descriptions.Item>
+            <Descriptions.Item label="Budgeted" span={2}><PolarQuestion answer={requisition.budgeted} /></Descriptions.Item>
+            <Descriptions.Item label="LC" span={2}><PolarQuestion answer={requisition.lc} /></Descriptions.Item>
+            <Descriptions.Item label="Institute" span={18}><PolarQuestion answer={requisition.institute} /></Descriptions.Item>
             <Descriptions.Item label="Description">{requisition.description}</Descriptions.Item>
           </Descriptions>
         </CardBody>

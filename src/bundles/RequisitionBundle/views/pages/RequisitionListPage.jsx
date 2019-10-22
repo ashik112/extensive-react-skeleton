@@ -15,6 +15,7 @@ import TableActionButtons from '../../../../views/templates/TableActionButtons';
 import requisitionApiService from '../../apiServices/requisitionApiService';
 import { dateFormat } from '../../../../constants';
 import RequisitionStatus from '../atoms/RequisitionStatus';
+import PolarQuestion from '../../../../views/atoms/PolarQuestion';
 
 class RequisitionListPage extends Component {
   constructor(props) {
@@ -69,16 +70,19 @@ class RequisitionListPage extends Component {
         title: 'Budgeted',
         dataIndex: 'budgeted',
         key: 'budgeted',
+        render: (answer) => <PolarQuestion answer={answer} />,
       },
       {
         title: 'LC',
         dataIndex: 'lc',
         key: 'lc',
+        render: (answer) => <PolarQuestion answer={answer} />,
       },
       {
         title: 'Institute',
         dataIndex: 'institute',
         key: 'institute',
+        render: (answer) => <PolarQuestion answer={answer} />,
       },
       {
         title: 'Department',

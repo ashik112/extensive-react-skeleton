@@ -15,7 +15,7 @@ const historyRoutes = {
 const menuRoutes = [
   {
     path: historyRoutes.requisitionList,
-    icon: 'hdd',
+    icon: 'shopping-cart',
     exact: true,
     title: 'Requisition',
     visibleInSidebar: true,
