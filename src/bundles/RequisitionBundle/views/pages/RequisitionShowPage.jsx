@@ -50,20 +50,19 @@ class RequisitionShowPage extends Component {
           />
         </CardHeader>
         <CardBody>
-          <Descriptions layout="vertical" size="small" bordered>
-            <Descriptions.Item label="Status">
+          <Divider type="horizontal" />
+          <Descriptions layout="horizontal" size="small" bordered column={24}>
+            <Descriptions.Item label="ID" span={24}>{requisition.id}</Descriptions.Item>
+            <Descriptions.Item label="Date" span={24}><Moment format={dateFormat}>{requisition.date}</Moment></Descriptions.Item>
+            <Descriptions.Item label="Status" span={24}>
               {requisition.requisition_status && <RequisitionStatus status={requisition.requisition_status} />}
             </Descriptions.Item>
-            <Descriptions.Item label="Date"><Moment format={dateFormat}>{requisition.date}</Moment></Descriptions.Item>
+            <Descriptions.Item label="Description" span={24}>{requisition.description}</Descriptions.Item>
+            <Descriptions.Item label="Budgeted" span={8}><PolarQuestion answer={requisition.budgeted} /></Descriptions.Item>
+            <Descriptions.Item label="LC" span={8}><PolarQuestion answer={requisition.lc} /></Descriptions.Item>
+            <Descriptions.Item label="Institute" span={8}><PolarQuestion answer={requisition.institute} /></Descriptions.Item>
           </Descriptions>
           <Divider type="horizontal" />
-          <Descriptions layout="vertical" size="small" bordered column={24}>
-            <Descriptions.Item label="ID" span={2}>{requisition.id}</Descriptions.Item>
-            <Descriptions.Item label="Budgeted" span={2}><PolarQuestion answer={requisition.budgeted} /></Descriptions.Item>
-            <Descriptions.Item label="LC" span={2}><PolarQuestion answer={requisition.lc} /></Descriptions.Item>
-            <Descriptions.Item label="Institute" span={18}><PolarQuestion answer={requisition.institute} /></Descriptions.Item>
-            <Descriptions.Item label="Description">{requisition.description}</Descriptions.Item>
-          </Descriptions>
         </CardBody>
       </Card>
     );
