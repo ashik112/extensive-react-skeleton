@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types,react/jsx-props-no-spreading */
 import React from 'react';
 import {
-  Row, Col, Descriptions, Divider,
+  Row, Col, Divider,
 } from 'antd';
 import {
   Formik, Field, Form,
@@ -9,7 +9,6 @@ import {
 import * as yup from 'yup';
 import ButtonSubmit from '../../../../views/atoms/ButtonSubmit';
 import { AntInput, AntSelect } from '../../../../forms/FormikAntFields';
-import CardBody from '../../../../components/Card/CardBody';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),
