@@ -6,16 +6,16 @@ import history from '../../../../services/history';
 import { unitRouteLinks } from '../../routes/links';
 
 const deleteUnitBegin = () => ({
-  type: unitActionTypes.DEPARTMENT_DELETE_REQUEST,
+  type: unitActionTypes.UNIT_DELETE_REQUEST,
 });
 
 const deleteUnitSuccess = (data) => ({
-  type: unitActionTypes.DEPARTMENT_DELETE_SUCCESS,
+  type: unitActionTypes.UNIT_DELETE_SUCCESS,
   payload: data,
 });
 
 const deleteUnitFailure = (error) => ({
-  type: unitActionTypes.DEPARTMENT_DELETE_FAILURE,
+  type: unitActionTypes.UNIT_DELETE_FAILURE,
   payload: { error },
 });
 
