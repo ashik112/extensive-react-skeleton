@@ -13,7 +13,8 @@ import requisitionRouteLinks from '../../routes/links';
 import CardBody from '../../../../components/Card/CardBody';
 import Card from '../../../../components/Card/Card';
 import CardActionButtons from '../../../../views/templates/CardActionButtons';
-
+import moment from 'moment';
+import {dateFormat} from '../../../../constants';
 
 class RequisitionUpdatePage extends Component {
   constructor(props) {
@@ -60,10 +61,9 @@ class RequisitionUpdatePage extends Component {
         && requisition.id
         && {
           id: requisition.id,
-          name: requisition.name,
-          short: requisition.short,
-          conversionFactor: requisition.conversion_factor,
-          parent: (requisition.parent && requisition.parent.id) || null,
+          description: requisition.description,
+          department: (requisition.department && requisition.department.id) || null,
+          date: moment(requisition.date) || null,
         }) || null;
     return (
       <Spin spinning={loading}>

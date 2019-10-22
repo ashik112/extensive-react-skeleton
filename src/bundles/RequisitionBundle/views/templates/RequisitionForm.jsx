@@ -9,19 +9,15 @@ import {
 import * as yup from 'yup';
 import ButtonSubmit from '../../../../views/atoms/ButtonSubmit';
 import {
-  AntInput,
-  AntInputNumber,
-  AntSelect,
+  AntDatePicker,
+  AntSelect, AntTextArea,
 } from '../../../../forms/FormikAntFields';
+import {dateFormat} from '../../../../constants';
 
 const validationSchema = yup.object().shape({
-  name: yup.string().required('Required!'),
-  short: yup.string().required('Required!'),
-  conversionFactor: yup.number().positive()
-    .typeError('Not a number!')
-    .min(0.001, 'Must be greater than 0.001!')
-    .required('Required!'),
-  parent: yup.number().nullable(true),
+  date: yup.date().required('Required!'),
+  description: yup.string().nullable(true),
+  department: yup.number().nullable(true),
 });
 
 export default function RequisitionForm({
@@ -53,50 +49,41 @@ export default function RequisitionForm({
             }
           <Row gutter={8} style={{ margin: 10 }}>
             <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
-                Name:
+                Date:
             </Col>
             <Col span={20}>
               <Field
-                name="name"
-                component={AntInput}
+                name="date"
+                format={[dateFormat, 'YYYY-MM-DD']} // ! first one will format & rest will be used for parsing
+                component={AntDatePicker}
               />
             </Col>
           </Row>
           <Row gutter={8} style={{ margin: 10 }}>
             <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
-                Short:
+                Description:
             </Col>
             <Col span={20}>
               <Field
-                name="short"
-                component={AntInput}
+                name="description"
+                component={AntTextArea}
               />
             </Col>
           </Row>
           <Row gutter={8} style={{ margin: 10 }}>
             <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
-              Conversion Factor:
+                Department:
             </Col>
             <Col span={20}>
               <Field
-                min={0.001}
-                step={0.001}
-                name="conversionFactor"
-                component={AntInputNumber}
-              />
-            </Col>
-          </Row>
-          <Row gutter={8} style={{ margin: 10 }}>
-            <Col span={3} style={{ textAlign: 'right', marginLeft: 5 }}>
-                Parent:
-            </Col>
-            <Col span={20}>
-              <Field
-                name="parent"
+                showField="description"
+                valueField="id"
+                disabled={!list}
+                name="department"
                 showSearch
                 optionFilterProp="name"
                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                selectedValue={requisition.parent || null}
+                selectedValue={requisition.department || null}
                 options={list}
                 component={AntSelect}
               />
