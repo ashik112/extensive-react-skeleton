@@ -9,6 +9,7 @@ import {
 import PropTypes from 'prop-types';
 import { historyRoutes, menuRoutes } from '../../routes';
 import './layout.scss';
+import image from '../../assets/img/building-blue.jpg';
 
 const {
   Sider,
@@ -49,6 +50,11 @@ class Sidebar extends Component {
           mode="inline"
           style={{
             height: '100%',
+            background: 'linear-gradient(0deg,rgba(255,0,150,0.3),rgba(255,0,150,0.3)),url(http://lorempixel.com/800/600/nature/2)',
+            backgroundImage: `url(${image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'top center',
+            backgroundBlendMode: 'multiply',
           }}
         >
           <Menu.Item
