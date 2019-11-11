@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const serverURL = 'http://biznet-v2.local/api/';
+export const serverURL = 'http://skeleton-backend.local/api/';

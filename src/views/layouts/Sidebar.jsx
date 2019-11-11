@@ -4,12 +4,11 @@ import {
   Link,
 } from 'react-router-dom';
 import {
-  Layout, Menu, Icon, Button,
+  Layout, Menu, Icon,
 } from 'antd';
 import PropTypes from 'prop-types';
-import { historyRoutes, menuRoutes } from '../../routes';
+import { menuRoutes } from '../../routes';
 import './layout.scss';
-import image from '../../assets/img/building-blue.jpg';
 
 const {
   Sider,
@@ -35,6 +34,7 @@ class Sidebar extends Component {
           overflow: 'auto',
           height: '100vh',
           position: 'sticky',
+          boxShadow: '0 8px 15px rgba(0, 0, 0, 0.05)',
           // ! HedaerBar not fixed -> comment out top
           // top: 0,
           // ! for fixed Header
@@ -50,33 +50,13 @@ class Sidebar extends Component {
           mode="inline"
           style={{
             height: '100%',
-            background: 'linear-gradient(0deg,rgba(255,0,150,0.3),rgba(255,0,150,0.3)),url(http://lorempixel.com/800/600/nature/2)',
-            backgroundImage: `url(${image})`,
+            // background: 'linear-gradient(0deg,rgba(255,0,150,0.3),rgba(255,0,150,0.3)),url(http://lorempixel.com/800/600/nature/2)',
+            // backgroundImage: `url(${image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'top center',
             backgroundBlendMode: 'multiply',
           }}
         >
-          <Menu.Item
-            tabIndex={-1}
-          >
-            <Icon
-              type="desktop"
-              style={{
-                opacity: 0,
-              }}
-            />
-            <span style={{ textAlign: 'center' }}>
-              <Button tabIndex={-1} type="primary" ghost>
-                <Link
-                  tabIndex={-1}
-                  to={historyRoutes.dashboard}
-                >
-                  &nbsp; &nbsp;BIZNET&nbsp; &nbsp;
-                </Link>
-              </Button>
-            </span>
-          </Menu.Item>
           <Menu.Divider
             style={{
               opacity: 0,

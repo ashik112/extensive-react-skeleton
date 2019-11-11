@@ -1,9 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import {
-  Icon, Layout, Dropdown, Menu,
+  Icon, Layout, Dropdown, Menu, Button,
 } from 'antd';
 import PropTypes from 'prop-types';
+import { historyRoutes } from 'routes';
+import {
+  Link,
+} from 'react-router-dom';
 
 const {
   Header,
@@ -58,6 +62,23 @@ class HeaderBar extends Component {
             style={{ cursor: 'pointer' }}
             onClick={toggleSidebar}
           />
+
+          <Icon
+            type="desktop"
+            style={{
+              opacity: 0,
+            }}
+          />
+          <span style={{ textAlign: 'center' }}>
+            <Button tabIndex={-1} type="primary" ghost>
+              <Link
+                tabIndex={-1}
+                to={historyRoutes.dashboard}
+              >
+                &nbsp; &nbsp;SKELETON&nbsp; &nbsp;
+              </Link>
+            </Button>
+          </span>
           <div style={{ float: 'right', verticalAlign: 'bottom', marginRight: '10px' }}>
             {/*<Typography.Text style={{ verticalAlign: 'middle', fontWeight: 'bold' }}>
               {companyName}
@@ -81,8 +102,8 @@ HeaderBar.propTypes = {
 
 HeaderBar.defaultProps = {
   collapsed: true,
-  toggleSidebar: () => {},
-  logout: () => {},
+  toggleSidebar: () => { },
+  logout: () => { },
 };
 
 export default HeaderBar;
