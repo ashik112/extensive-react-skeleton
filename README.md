@@ -1,4 +1,4 @@
-# BIZNET FRONTEND V2 (REACT)
+# EXTENSIVE REACT SKELETON
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Available Scripts
