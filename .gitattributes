@@ -1,1 +1,4 @@
 src/assets/mdbreact/* linguist-vendored
+src/assets/mdbreact/css/mdb.css linguist-vendored
+src/assets/mdbreact/css/mdb.lite.css linguist-vendored
+src/assets/mdbreact/css/free/modules/animations-extended/animations-extended.css linguist-vendored
