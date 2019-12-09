@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 //import { userExist } from '../helpers/userHelper';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { historyRoutes } from './index';
+import historyRoutes from './historyRoutes';
 
 /**
  * * [Conditional rendering with Authentication]

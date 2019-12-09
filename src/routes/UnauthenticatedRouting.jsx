@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types,react/jsx-props-no-spreading */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { historyRoutes } from './index';
+import historyRoutes from './historyRoutes';
 //import { userExist } from '../helpers/userHelper';
 
 /**

@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Switch, Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import LoginPage from './bundles/AuthenticationBundle/views/pages/LoginPage';
-import { historyRoutes } from './routes';
-import history from './services/history';
+import LoginPage from './containers/AuthenticationBundle/views/pages/LoginPage';
+import historyRoutes from './routes/historyRoutes';
+import history from './constants/history';
 import UnauthenticatedRouting from './routes/UnauthenticatedRouting';
-import LayoutWrapper from './views/layouts/LayoutWrapper';
+import LayoutWrapper from './containers/Layouts/LayoutWrapper';
 
 const Root = ({ store, persistor }) => (
   <Provider store={store}>

@@ -1,20 +1,22 @@
 import alertActions from '../redux/actions/alertActions';
 import notificationActions from '../redux/actions/notificationActions';
+import { store } from '../redux/store';
 
 /**
  * 1 for alert, 2 for notification
  * @param error
  * @param alertType
- * @param dispatch
  * @param duration
+ * ! Requires antd for alert & notification
  */
-export default function checkHttpError(error, alertType, duration = 5, dispatch) {
+export default function checkHttpError(error, alertType, duration = 5) {
+  const { dispatch } = store;
   switch (alertType) {
     case 1:
       try {
-        if (error.response.data.errors.children) {
+        if (error.data.errors.children) {
           // eslint-disable-next-line no-restricted-syntax,no-unused-vars
-          for (const [key, value] of Object.entries(error.response.data.errors.children)) {
+          for (const [key, value] of Object.entries(error.data.errors.children)) {
             value.errors.forEach(async (err) => {
               await dispatch(alertActions.warning(err, duration));
             });
@@ -25,10 +27,10 @@ export default function checkHttpError(error, alertType, duration = 5, dispatch)
         // console.log(e);
       }
       try {
-        if (error.response && error.response.statusText) {
-          dispatch(alertActions.error(error.response.statusText, duration));
-        } else if (error.response.message) {
-          dispatch(alertActions.error(error.response.message, duration));
+        if (error && error.statusText) {
+          dispatch(alertActions.error(error.statusText, duration));
+        } else if (error.message) {
+          dispatch(alertActions.error(error.message, duration));
         } else {
           dispatch(alertActions.error('Unexpected Error', duration));
         }
@@ -38,21 +40,21 @@ export default function checkHttpError(error, alertType, duration = 5, dispatch)
       break;
     case 2:
       try {
-        if (error.response.data.errors.children) {
+        if (error.data.errors.children) {
           // eslint-disable-next-line no-restricted-syntax,no-unused-vars
-          for (const [key, value] of Object.entries(error.response.data.errors.children)) {
+          for (const [key, value] of Object.entries(error.data.errors.children)) {
             value.errors.forEach(async (err) => {
               await dispatch(notificationActions.warning(err, '', duration));
             });
           }
-        } else if (error.response && error.response.data && error.response.data.message) {
-          dispatch(notificationActions.error(error.response.statusText, error.response.data.message, duration));
+        } else if (error && error.data && error.data.message) {
+          dispatch(notificationActions.error(error.statusText, error.data.message, duration));
         } else {
           dispatch(notificationActions.error('Unexpected Error!', 'Please contact server administration.', duration));
         }
       } catch (e) {
-        if (error.response && error.response.data && error.response.data.message) {
-          dispatch(notificationActions.error(error.response.statusText, error.response.data.message, duration));
+        if (error && error.data && error.data.message) {
+          dispatch(notificationActions.error(error.statusText, error.data.message, duration));
         } else {
           dispatch(notificationActions.error('Unexpected Error!', 'Please contact server administration.', duration));
         }

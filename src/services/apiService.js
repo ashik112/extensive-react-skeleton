@@ -1,13 +1,12 @@
 /* eslint-disable no-undef,max-len,no-unused-vars */
 import axios from 'axios';
-import { serverURL } from '../constants';
+import { apiUrl } from '../constants/config';
 import storageService from './storageService';
-import history from './history';
-import { historyRoutes } from '../routes';
-import authActionTypes from '../bundles/AuthenticationBundle/redux/actionTypes';
+import history from '../constants/history';
+import historyRoutes from '../routes/historyRoutes';
 import { store } from '../redux/store';
-
-export const apiPrefix = '/api';
+import authActionTypes
+  from '../containers/AuthenticationBundle/redux/actionTypes';
 
 /**
  * * [routes for apis]
@@ -16,21 +15,33 @@ const routes = {
   authLogin: '/login_check',
 };
 
+/**
+ * Create Axios Instance
+ * @type {AxiosInstance}
+ */
+const axiosinstance = axios.create({
+  timeout: 10000,
+  params: {}, // do not remove this, its added to add params later in the config
+});
+
+/**
+ * Provides Http Headers
+ * @returns {{Authorization: string, 'Content-Type': string}|{}}
+ */
 function authHeaderProvider() {
   // * return authorization header with jwt token
   try {
     // const user = JSON.parse(storageService.get(storageService.keys.user));
 
     // * get company id from redux store
-    const { authReducer: { user } } = store.getState();
+    const { authReducer: { token } } = store.getState();
     /*const { companyReducer } = store.getState();*/
     /*const companyID = companyReducer.company.id;*/
 
-    if (user && user.token) {
+    if (token) {
       return {
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Bearer ${token}`,
         /*'company-id': companyID,*/
-        'Content-Type': 'application/json',
       };
     }
     return {};
@@ -39,21 +50,23 @@ function authHeaderProvider() {
   }
 }
 
-
 /**
  * * [Logout and Go To Login Page]
  * ! clear all items form local storage
  */
-function logout(dispatch) {
+function logout() {
   // remove user from local storage to log user out
   // storageService.remove(storageService.keys.user);
   // remove company id from local storage
   // storageService.remove(storageService.keys.companyID);
   try {
-    dispatch({ type: authActionTypes.LOGOUT });
+    store.dispatch({ type: authActionTypes.LOGOUT });
     // dispatch({ type: companyActionTypes.CLEAR });
-    dispatch({ type: 'RESET_APP' });
-    storageService.clear();
+    const { authReducer: { token } } = store.getState();
+    if (token) {
+      store.dispatch({ type: 'RESET_APP' });
+      storageService.clear();
+    }
     history.push(historyRoutes.login);
   } catch (e) {
     /* */
@@ -65,12 +78,11 @@ function logout(dispatch) {
  * ! needs dispatch for Redux
  * ! Logout if, 401: Expired JW-Token
  * @param error
- * @param dispatch
  */
-function handleError(error, dispatch) {
+function handleError(error) {
   try {
-    if ((error.response && error.response.data && error.response.data.code === 401) || error.code === '401' || error.code === 401) {
-      dispatch(logout(dispatch));
+    if ((error.response && error.response.data && error.response.data.code === 401) || error.code === '401' || error.code === 401 || (error.response && error.response.status === 401)) {
+      logout();
     }
   } catch (err) {
     // console.error(err);
@@ -78,80 +90,102 @@ function handleError(error, dispatch) {
 }
 
 /**
- * * [Get Request]
- * ! needs dispatch for Redux
- * @param url
- * @param dispatch
- * @returns {Promise<any>}
+ * Add a request interceptor
  */
-export async function get(url, dispatch) {
-  const headers = await authHeaderProvider();
-  return new Promise(((resolve, reject) => {
-    axios.get(`${url}`, { headers }).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      handleError(error, dispatch);
-      reject(error);
-    });
-  }));
-}
+axiosinstance.interceptors.request.use(
+  (config) => {
+    const cfg = config;
+    const header = authHeaderProvider();
+    if (header && header.Authorization) {
+      cfg.headers.Authorization = header.Authorization;
+    }
+    cfg.headers['Content-Type'] = 'application/json';
+    return config;
+  },
+  (error) => {
+    // Promise.reject(error);
+    throw error;
+  },
+);
 
-/**
- * * [Post Request]
- * @param url
- * @param param
- * @param dispatch
- * @returns {Promise<any>}
- */
-export async function post(url, param, dispatch) {
-  const headers = await authHeaderProvider();
-  return new Promise(((resolve, reject) => {
-    axios.post(`${url}`, param, { headers }).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      handleError(error, dispatch);
-      reject(error);
-    });
-  }));
-}
+export const get = async (url) => {
+  try {
+    return await axiosinstance
+      .get(url);
+  } catch (error) {
+    handleError(error);
+    throw error.response;
+  }
+};
 
-/**
- * * [Patch Request]
- * @param url
- * @param param
- * @param dispatch
- * @returns {Promise<any>}
- */
-// eslint-disable-next-line no-unused-vars
-export async function patch(url, param, dispatch) {
-  const headers = await authHeaderProvider();
-  return new Promise(((resolve, reject) => {
-    axios.patch(`${url}`, param, { headers }).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      handleError(error, dispatch);
-      reject(error);
-    });
-  }));
-}
+export const post = async (url, data) => {
+  try {
+    return await axiosinstance
+      .post(url, JSON.stringify(data));
+  } catch (error) {
+    handleError(error);
+    throw error.response;
+  }
+};
 
-/**
- * * [Delete Request]
- * @param url
- * @param dispatch
- * @returns {Promise<any>}
- */
-export async function remove(url, dispatch) {
-  const headers = await authHeaderProvider();
-  return new Promise(((resolve, reject) => {
-    axios.delete(`${url}`, { headers }).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      handleError(error, dispatch);
-      reject(error);
-    });
-  }));
-}
+export const patch = async (url, data) => {
+  try {
+    return await axiosinstance
+      .patch(url, JSON.stringify(data));
+  } catch (error) {
+    handleError(error);
+    throw error.response;
+  }
+};
+
+export const remove = async (url) => {
+  try {
+    return await axiosinstance
+      .delete(url);
+  } catch (error) {
+    handleError(error);
+    throw error.response;
+  }
+};
+
+const request = async (options) => {
+  switch (options.method) {
+    case 'POST':
+      try {
+        return await axiosinstance
+          .post(options.url, JSON.stringify(options.data));
+      } catch (error) {
+        handleError(error);
+        throw error.response;
+      }
+    case 'GET':
+      try {
+        return await axiosinstance
+          .get(options.url);
+      } catch (error) {
+        handleError(error);
+        throw error.response;
+      }
+    case 'PATCH':
+      try {
+        return await axiosinstance
+          .patch(options.url, JSON.stringify(options.data));
+      } catch (error) {
+        handleError(error);
+        throw error.response;
+      }
+    case 'DELETE':
+      try {
+        return await axiosinstance
+          .delete(options.url);
+      } catch (error) {
+        handleError(error);
+        throw error.response;
+      }
+    default:
+      return null;
+  }
+};
 
 /**
  * * [Login request for User]
@@ -159,33 +193,23 @@ export async function remove(url, dispatch) {
  * @param params
  */
 function login(params) {
-  return axios.post(`${serverURL}${routes.authLogin}`,
-    { username: params.username, password: params.password });
+  return request({
+    url: `${apiUrl}auth/login`,
+    method: 'POST',
+    data: params,
+  });
 }
-
-//const getPurchase = (id, dispatch) => get(`${serverURL}${routes.purchase}/${id}`, dispatch);
-
-//const getLc = (id, dispatch) => get(`${serverURL}${routes.lc}/commercial-invoice-products/${id}`, dispatch);
-
-/** Flock::begin * */
-/*const getFlock = (id, dispatch) => get(`${serverURL}${routes.flock}/${id}`, dispatch);
-const getFlockList = (dispatch) => get(`${serverURL}${routes.flockList}`, dispatch);
-const deleteFlock = (id) => remove(`${serverURL}${routes.flock}/${id}`);
-const createFlock = (params, dispatch) => post(`${serverURL}${routes.flock}`, params, dispatch);
-const updateFlock = (params, dispatch) => patch(`${serverURL}${routes.flock}`, params, dispatch);*/
-/** Flock::end * */
 
 
 const apiService = {
   routes,
   login,
   logout,
+  request,
   get,
   post,
-  remove,
   patch,
-  authHeaderProvider,
-  serverURL,
+  remove,
 };
 
 export default apiService;
