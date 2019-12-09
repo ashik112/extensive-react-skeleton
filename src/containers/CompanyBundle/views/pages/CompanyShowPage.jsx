@@ -5,10 +5,11 @@ import {
   Card,
   Descriptions, Tag,
 } from 'antd';
-import companyApiService, { companyApiRoutes } from '../../apiServices/companyApiService';
+import companyApiService from '../../apiServices/companyApiService';
 import historyRoutes from '../../../../routes/historyRoutes';
 import checkHttpError from '../../../../services/checkHttpError';
 import CardActionButtons from '../../../../components/templates/CardActionButtons';
+import {companyApiRoutes} from '../../../../routes/apiRoutes';
 
 class CompanyShowPage extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class CompanyShowPage extends Component {
             update
             remove
             linkRouteObject={historyRoutes.company}
-            deleteApiRouteFunction={companyApiRoutes.companyDelete}
+            deleteApiRouteFunction={companyApiRoutes.remove}
             entity={company}
           />,
         ]}

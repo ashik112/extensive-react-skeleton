@@ -1,25 +1,16 @@
 import {
   get, post, patch, remove,
 } from '../../../services/apiService';
-import { apiUrl } from '../../../constants/config';
-import { companyBaseURL } from '../constants';
+import { companyApiRoutes } from '../../../routes/apiRoutes';
 
-export const companyApiRoutes = {
-  companyList: `${companyBaseURL}/list`,
-  company: (id) => `${companyBaseURL}/show/${id}`,
-  companyCreate: `${companyBaseURL}/new`,
-  companyUpdate: (id) => `${companyBaseURL}/update/${id}`,
-  companyDelete: (id) => `${companyBaseURL}/delete/${id}`,
-};
 
-const getCompanyList = (dispatch) => get(`${apiUrl}${companyApiRoutes.companyList}`, dispatch);
-const getCompany = (id = () => {}) => get(`${apiUrl}${companyApiRoutes.company(id)}`);
-const updateCompany = (id, param) => patch(`${apiUrl}${companyApiRoutes.companyUpdate(id)}`, param);
-const deleteCompany = (id) => remove(`${apiUrl}${companyApiRoutes.companyDelete(id)}`);
-const createCompany = (param) => post(`${apiUrl}${companyApiRoutes.companyCreate}`, param);
+const getCompanyList = () => get(companyApiRoutes.list);
+const getCompany = (id) => get(companyApiRoutes.company(id));
+const updateCompany = (id, param) => patch(companyApiRoutes.edit(id), param);
+const deleteCompany = (id) => remove(companyApiRoutes.remove(id));
+const createCompany = (param) => post(companyApiRoutes.new, param);
 
 const companyApiService = {
-  companyApiRoutes,
   getCompanyList,
   getCompany,
   updateCompany,

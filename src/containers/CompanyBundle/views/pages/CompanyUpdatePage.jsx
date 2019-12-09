@@ -7,9 +7,10 @@ import PropTypes from 'prop-types';
 import CompanyForm from '../components/CompanyForm';
 import companyActions from '../../redux/actions';
 import notificationActions from '../../../../redux/actions/notificationActions';
-import companyApiService, { companyApiRoutes } from '../../apiServices/companyApiService';
+import companyApiService from '../../apiServices/companyApiService';
 import historyRoutes from '../../../../routes/historyRoutes';
 import CardActionButtons from '../../../../components/templates/CardActionButtons';
+import { companyApiRoutes } from '../../../../routes/apiRoutes';
 
 
 class CompanyUpdatePage extends Component {
@@ -60,7 +61,7 @@ class CompanyUpdatePage extends Component {
               show
               remove
               linkRouteObject={historyRoutes.company}
-              deleteApiRouteFunction={companyApiRoutes.companyDelete}
+              deleteApiRouteFunction={companyApiRoutes.remove}
               entity={company}
             />,
           ]}
