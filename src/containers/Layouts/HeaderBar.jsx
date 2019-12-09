@@ -1,4 +1,4 @@
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/prefer-stateless-function,react/jsx-one-expression-per-line */
 import React, { Component } from 'react';
 import {
   Icon, Layout, Dropdown, Menu, Button,
@@ -8,6 +8,7 @@ import {
   Link,
 } from 'react-router-dom';
 import historyRoutes from '../../routes/historyRoutes';
+import { applicationTitle } from '../../constants';
 
 const {
   Header,
@@ -75,7 +76,7 @@ class HeaderBar extends Component {
                 tabIndex={-1}
                 to={historyRoutes.dashboard}
               >
-                &nbsp; &nbsp;HRIS&nbsp; &nbsp;
+                &nbsp; &nbsp;{applicationTitle}&nbsp; &nbsp;
               </Link>
             </Button>
           </span>
