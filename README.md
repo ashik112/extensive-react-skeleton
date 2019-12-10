@@ -92,7 +92,7 @@ Versions may change in the future and more libraries will be added.
 # Folder Structure
 ```
 ├── src
-│   ├── containers --------------------------------------> Company, Employee etc.
+│   ├── containers -----------------------------------> Company, Employee etc.
 │   │   ├── {Title}
 │   │   │   ├── apiServices --------------------------> all api related code goes here
 │   │   │   ├── redux --------------------------------> redux related codes are here for a particular module
