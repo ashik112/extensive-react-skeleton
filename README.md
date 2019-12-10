@@ -77,15 +77,6 @@ Versions may change in the future and more libraries will be added.
 1. "source-map-explorer": "^2.1.0"
 #### Http
 1. "axios": "^0.19.0"
-#### [React Material Kit](https://demos.creative-tim.com/material-kit-react/#/documentation/cards)
-1. "@material-ui/core": "4.3.2"
-2. "@material-ui/icons": "4.2.1"
-3. "classnames": "2.2.6"
-4. "node-sass": "^4.12.0"
-5. "nouislider": "14.0.2"
-6. "react-datetime": "2.16.3"
-7. "react-slick": "0.25.2"
-8. "react-swipeable-views": "0.13.3"
 #### Lint
 1. "eslint": "^6.5.1" `(dev)`
 2. "eslint-config-airbnb": "^18.0.1" `(dev)`
