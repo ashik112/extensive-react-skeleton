@@ -4,29 +4,29 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Project Structure
 ```
 ├── src
-│   ├── containers -----------------------------------> Company, Employee etc.
+│   ├── containers -------------------------------> Company, Employee etc.
 │   │   ├── {Title}
-│   │   │   ├── apiServices --------------------------> all api related code goes here
-│   │   │   ├── redux --------------------------------> redux related codes are here for a particular module
+│   │   │   ├── apiServices ----------------------> all api related code goes here
+│   │   │   ├── redux ----------------------------> redux related codes are here for a particular module
 │   │   │   │   ├──  actions.js
 │   │   │   │   ├──  actionTypes.js
-│   │   │   │   ├──  reducer.js ----------------------> must be exported and imported in `src/redux/reducers/index.js` to be included in `combineReducers`
+│   │   │   │   ├──  reducer.js ------------------> must be exported and imported in `src/redux/reducers/index.js` to be included in `combineReducers`
 │   │   │   ├── routes
-│   │   │   │   │   ├── index.js ---------------------> history & menu for the bundle routing goes here
-│   │   │   ├── pages -----> Application Pages; DashboardPage, LoginPage etc.
+│   │   │   │   │   ├── index.js -----------------> history & menu for the bundle routing goes here
+│   │   │   ├── pages ----------------------------> Application Pages; DashboardPage, LoginPage etc.
 │   │   │   │   ├──  **/*.jsx
-│   │   │   ├── components ---------------------------> components for it's container
-│   │   │   │   ├──  **/*.jsx ------------------------> LoginForm, MonthlySalesChart etc.
+│   │   │   ├── components -----------------------> components for it's container
+│   │   │   │   ├──  **/*.jsx --------------------> LoginForm, MonthlySalesChart etc.
 │   │   ├── ...
 │   │   ├── Layouts
 │   │   │   │   ├── HeaderBar, Sidebar
-│   │   │   │   ├── LayoutWrapper.jsx ----------------> Sidebar.jsx + HeaderBar.jsx
-│   ├── assets ---------------------------------------> Images, CSS & Other assets.
+│   │   │   │   ├── LayoutWrapper.jsx ------------> Sidebar.jsx + HeaderBar.jsx
+│   ├── assets -----------------------------------> Images, CSS & Other assets.
 │   ├── constants
-│   │   ├── config.js.temp ---------------------------> base api url. must be copied/renamed to `config.js`
-│   │   ├── history.js -------------------------------> createBrowserHistory for react-router
-│   │   ├── index.js ---------------------------------> Application Name
-│   ├── redux ----------------------------------------> common redux related codes for whole application
+│   │   ├── config.js.temp -----------------------> base api url. must be copied/renamed to `config.js`
+│   │   ├── history.js ---------------------------> createBrowserHistory for react-router
+│   │   ├── index.js -----------------------------> Application Name
+│   ├── redux ------------------------------------> common redux related codes for whole application
 │   │   ├── actions
 │   │   ├── actionTypes
 │   │   ├── reducers
