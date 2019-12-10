@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CompanyForm from '../components/CompanyForm';
 import companyActions from '../../redux/actions';
-import notificationActions from '../../../../redux/actions/notificationActions';
+import notificationActions from '../../../../redux/notification/notificationActions';
 import historyRoutes from '../../../../routes/historyRoutes';
-import ButtonBack from '../../../../components/atoms/ButtonBack';
+import ButtonBack from '../../../../shared/components/Button/ButtonBack';
 
 class CompanyCreatePage extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class CompanyCreatePage extends Component {
       <Spin spinning={loading}>
         <Card
           extra={[
-            <ButtonBack title="Company" route={historyRoutes.company.list} />,
+            <ButtonBack key="buttonBack" title="Company" route={historyRoutes.company.list} />,
           ]}
         >
           <WrappedCompanyForm company={{ name: '', address: '' }} submit={this.handleSubmit} />

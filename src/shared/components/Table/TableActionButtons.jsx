@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Button, Divider } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import history from '../../constants/history';
-import TableButtonDelete from '../atoms/TableButtonDelete';
-import { showAlert } from '../../services/generalhelper';
-import checkHttpError from '../../services/checkHttpError';
+import history from '../../../constants/history';
+import TableButtonDelete from './TableButtonDelete';
+import { showAlert } from '../../../services/generalhelper';
+import checkHttpError from '../../../services/checkHttpError';
 
 
 class TableActionButtons extends Component {

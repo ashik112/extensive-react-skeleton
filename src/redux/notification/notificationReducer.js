@@ -1,4 +1,4 @@
-import notificationActionTypes from '../actionTypes/notificationActionTypes';
+import notificationActionTypes from './notificationActionTypes';
 
 const notificationReducer = (state = {}, action) => {
   switch (action.type) {

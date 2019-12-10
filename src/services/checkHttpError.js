@@ -1,5 +1,5 @@
-import alertActions from '../redux/actions/alertActions';
-import notificationActions from '../redux/actions/notificationActions';
+import alertActions from '../redux/alert/alertActions';
+import notificationActions from '../redux/notification/notificationActions';
 import { store } from '../redux/store';
 
 /**

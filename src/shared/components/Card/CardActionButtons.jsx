@@ -2,11 +2,11 @@ import React from 'react';
 import { Divider } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ButtonBack from '../atoms/ButtonBack';
-import CardButtonView from '../atoms/CardButtonView';
-import CardButtonDelete from '../atoms/CardButtonDelete';
-import { apiUrl} from '../../constants/config';
-import CardButtonEdit from '../atoms/CardButtonEdit';
+import ButtonBack from '../Button/ButtonBack';
+import CardButtonView from './CardButtonView';
+import CardButtonDelete from './CardButtonDelete';
+import { apiUrl} from '../../../constants/config';
+import CardButtonEdit from './CardButtonEdit';
 
 
 function CardActionButtons({

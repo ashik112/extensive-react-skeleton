@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import menuRoutes from '../../routes/menuRoutes';
 import './layout.scss';
 
+const { SubMenu } = Menu;
+
 const {
   Sider,
 } = Layout;

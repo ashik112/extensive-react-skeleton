@@ -2,8 +2,8 @@ import React from 'react';
 //import Popconfirm from 'antd/es/popconfirm';
 //import Icon from 'antd/es/icon';
 import logo from './logo.svg';
-//import Badge from './components/Badge/Badge';
-//import Button from './components/CustomButtons/Button';
+//import Badge from './shared/Badge/Badge';
+//import Button from './shared/CustomButtons/Button';
 import './App.css';
 
 function App() {

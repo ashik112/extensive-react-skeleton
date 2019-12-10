@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import companyActionTypes from '../actionTypes';
-import alertActions from '../../../../redux/actions/alertActions';
+import alertActions from '../../../../redux/alert/alertActions';
 import companyApiService from '../../apiServices/companyApiService';
 import createCompany from './companyCreateActions';
 import updateCompany from './companyUpdateActions';

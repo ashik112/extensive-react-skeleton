@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Tooltip} from 'antd';
 import PropTypes from 'prop-types';
-import history from '../../constants/history';
+import history from '../../../constants/history';
 
 // eslint-disable-next-line no-unused-vars
 export default function ButtonBack({ title, route }) {

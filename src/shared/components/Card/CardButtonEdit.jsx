@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Tooltip } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import history from '../../constants/history';
+import history from '../../../constants/history';
 
 
 function CardButtonEdit({ route }) {

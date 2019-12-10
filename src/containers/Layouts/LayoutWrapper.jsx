@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import historyRoutes from '../../routes/historyRoutes';
 import menuRoutes from '../../routes/menuRoutes';
 import AuthenticatedRouting from '../../routes/AuthenticatedRouting';
-import NotFound from '../../components/pages/NotFound';
+import NotFound from '../../shared/pages/NotFound';
 import authActions from '../AuthenticationBundle/redux/actions';
 import HeaderBar from './HeaderBar';
 import Sidebar from './Sidebar';
@@ -113,7 +113,7 @@ class LayoutWrapper extends Component {
                     unCheckedChildren="Light"
                     location={location}
                   >
-                    {menuRoutes.map((route) => (
+                    {menuRoutes.map((route) => !route.submenu && (
                       <AuthenticatedRouting
                         key={route.path}
                         path={route.path}

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {Button, Icon, Popconfirm, Tooltip} from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { remove } from '../../services/apiService';
-import history from '../../constants/history';
-import { showAlert } from '../../services/generalhelper';
-import checkHttpError from '../../services/checkHttpError';
+import { remove } from '../../../services/apiService';
+import history from '../../../constants/history';
+import { showAlert } from '../../../services/generalhelper';
+import checkHttpError from '../../../services/checkHttpError';
 
 
 class CardButtonDelete extends Component {

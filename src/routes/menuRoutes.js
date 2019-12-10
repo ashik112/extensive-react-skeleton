@@ -13,6 +13,20 @@ import DashboardPage
 
 const menuRoutes = [
   {
+    title: 'Admin',
+    submenu: true,
+    child: [
+      {
+        path: historyRoutes.dashboard,
+        icon: 'home',
+        exact: true,
+        title: 'Dashboard',
+        visibleInSidebar: true,
+        component: DashboardPage,
+      },
+    ],
+  },
+  {
     path: historyRoutes.dashboard,
     icon: 'home',
     exact: true,

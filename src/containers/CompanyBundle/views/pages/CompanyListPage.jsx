@@ -9,7 +9,7 @@ import companyActions from '../../redux/actions';
 import history from '../../../../constants/history';
 import historyRoutes from '../../../../routes/historyRoutes';
 import companyApiService from '../../apiServices/companyApiService';
-import TableActionButtons from '../../../../components/templates/TableActionButtons';
+import TableActionButtons from '../../../../shared/components/Table/TableActionButtons';
 
 class CompanyListPage extends Component {
   constructor(props) {
@@ -86,6 +86,7 @@ class CompanyListPage extends Component {
             <Card
               extra={[
                 <Tooltip
+                  key="company-create-tooltip"
                   title="Create a new Company"
                   mouseEnterDelay={1}
                 >

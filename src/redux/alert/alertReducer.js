@@ -1,4 +1,4 @@
-import alertActionTypes from '../actionTypes/alertActionTypes';
+import alertActionTypes from './alertActionTypes';
 
 const alertReducer = (state = {}, action) => {
   switch (action.type) {

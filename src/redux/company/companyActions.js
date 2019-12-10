@@ -1,4 +1,4 @@
-import companyActionsTypes from '../actionTypes/companyActionsTypes';
+import companyActionsTypes from './companyActionsTypes';
 
 const fetchCompany = () => ({
   type: companyActionsTypes.FETCH,
