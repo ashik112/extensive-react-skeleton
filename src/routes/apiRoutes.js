@@ -7,6 +7,7 @@ function makeURL(baseURL, url) {
 export const baseURL = {
   company: 'company/',
   employee: 'employee/',
+  auth: 'auth/',
 };
 
 export const companyApiRoutes = {
@@ -15,6 +16,10 @@ export const companyApiRoutes = {
   new: makeURL(baseURL.company, 'new'),
   edit: (id) => makeURL(baseURL.company, `update/${id}`),
   remove: (id) => makeURL(baseURL.company, `delete/${id}`),
+};
+
+export const authApiRoutes = {
+  login: makeURL(baseURL.auth, 'login'),
 };
 
 export const employeeApiRoutes = {

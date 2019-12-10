@@ -7,6 +7,7 @@ import historyRoutes from '../routes/historyRoutes';
 import { store } from '../redux/store';
 import authActionTypes
   from '../containers/AuthenticationBundle/redux/actionTypes';
+import { authApiRoutes } from '../routes/apiRoutes';
 
 /**
  * * [routes for apis]
@@ -194,7 +195,7 @@ const request = async (options) => {
  */
 function login(params) {
   return request({
-    url: `${apiUrl}auth/login`,
+    url: authApiRoutes.login,
     method: 'POST',
     data: params,
   });

@@ -11,11 +11,38 @@ import menuRoutes from '../../routes/menuRoutes';
 import './layout.scss';
 
 const { SubMenu } = Menu;
-
 const {
   Sider,
 } = Layout;
-// const { SubMenu } = Menu;
+
+const renderMenuItem = (item) => (
+  item.visibleInSidebar && (
+  <Menu.Item
+    key={item.path}
+    tabIndex={-1}
+  >
+    <Icon type={item.icon} />
+    <span>{item.title}</span>
+    <Link
+      tabIndex={-1}
+      to={item.path}
+    />
+  </Menu.Item>
+  )
+);
+
+const renderSubmenu = (submenu) => {
+  const items = submenu.child.map((c) => renderMenuItem(c));
+  return (
+    <SubMenu
+      title={submenu.title}
+      key={submenu.title}
+    >
+      {items}
+    </SubMenu>
+  );
+};
+
 class Sidebar extends Component {
   render() {
     const {
@@ -65,19 +92,12 @@ class Sidebar extends Component {
             }}
           />
           {
-            menuRoutes.map((route) => route.visibleInSidebar && (
-              <Menu.Item
-                key={route.path}
-                tabIndex={-1}
-              >
-                <Icon type={route.icon} />
-                <span>{route.title}</span>
-                <Link
-                  tabIndex={-1}
-                  to={route.path}
-                />
-              </Menu.Item>
-            ))
+            menuRoutes.map((route) => {
+              if (route.submenu) {
+                return renderSubmenu(route);
+              }
+              return renderMenuItem(route);
+            })
           }
           <Menu.Divider
             style={{
