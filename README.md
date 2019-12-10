@@ -45,7 +45,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 │   ├── shared -----------------------------------> shared components and services to use throughout the application
 │   ├── styles -----------------------------------> less, css, sass
 │   │   ├── formLayout.js ------------------------> ant form layout
-│   │   ├── less ---------------------------------> ant form layout
 │   │   ├── less
 │   │   │   ├── theme.less -----------------------> ant design style override
 │   │   │   ├── **/*.less
