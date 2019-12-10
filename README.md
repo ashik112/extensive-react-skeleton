@@ -1,6 +1,76 @@
 # EXTENSIVE REACT SKELETON
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Project Structure
+```
+├── src
+│   ├── containers -----------------------------------> Company, Employee etc.
+│   │   ├── {Title}
+│   │   │   ├── apiServices --------------------------> all api related code goes here
+│   │   │   ├── redux --------------------------------> redux related codes are here for a particular module
+│   │   │   │   ├──  actions.js
+│   │   │   │   ├──  actionTypes.js
+│   │   │   │   ├──  reducer.js ----------------------> must be exported and imported in `src/redux/reducers/index.js` to be included in `combineReducers`
+│   │   │   ├── routes
+│   │   │   │   │   ├── index.js ---------------------> history & menu for the bundle routing goes here
+│   │   │   ├── pages -----> Application Pages; DashboardPage, LoginPage etc.
+│   │   │   │   ├──  **/*.jsx
+│   │   │   ├── components ---------------------------> components for it's container
+│   │   │   │   ├──  **/*.jsx ------------------------> LoginForm, MonthlySalesChart etc.
+│   │   ├── ...
+│   │   ├── Layouts
+│   │   │   │   ├── HeaderBar, Sidebar
+│   │   │   │   ├── LayoutWrapper.jsx ----------------> Sidebar.jsx + HeaderBar.jsx
+│   ├── assets ---------------------------------------> Images, CSS & Other assets.
+│   ├── constants
+│   │   ├── config.js.temp ---------------------------> base api url. must be copied/renamed to `config.js`
+│   │   ├── history.js -------------------------------> createBrowserHistory for react-router
+│   │   ├── index.js ---------------------------------> Application Name
+│   ├── redux ----------------------------------------> common redux related codes for whole application
+│   │   ├── actions
+│   │   ├── actionTypes
+│   │   ├── reducers
+│   │   ├── store.js
+│   ├── routes -----------------------------------> page routing
+│   │   ├── apiRoutes ----------------------------> all api routes
+│   │   ├── AuthenticatedRouting.jsx -------------> when user logged in and authorized
+│   │   ├── UnauthenticatedRouting.jsx -----------> when user not logged in or unauthorized
+│   │   ├── menuRoutes ---------------------------> routes for sidebar rendering and routing
+│   │   ├── historyRoutes ------------------------> to change pages
+│   ├── services ---------------------------------> reusable services goes here to use throughout the application
+│   │   ├── apiService ---------------------------> axios middleware and actions
+│   │   ├── checkHttpError -----------------------> check http errors and handle
+│   │   ├── storageService -----------------------> localStorage actions
+│   │   ├── **/*.js
+│   ├── shared -----------------------------------> shared components and services to use throughout the application
+│   ├── styles -----------------------------------> less, css, sass
+│   │   ├── formLayout.js ------------------------> ant form layout
+│   │   ├── less ---------------------------------> ant form layout
+│   │   ├── less
+│   │   │   ├── theme.less -----------------------> ant design style override
+│   │   │   ├── **/*.less
+│   ├── Root.js ----------------------------------> Starts Here
+│   ├── index.js
+│   ├── index.css
+│   └── serviceWorker.js
+├── build (or dist) ------------------------------> `yarn build`
+├── public
+│   ├── index.html
+│   ├── favicon.ico
+│   ├── manifest.json
+├── node_modules
+├── test
+├── jsconfig.json -------------------------------> specify base url as `src`, needed for `components`
+├── .babelrc.js ---------------------------------> Babel plugin import.
+├── .eslintrc.json ------------------------------> linting config and rules. `(eslint)`
+├── .config-overrides.js ------------------------> Custom webpack config. with `custom-cra`
+├── README.md
+├── package.json --------------------------------> packages
+├── yarn.lock
+├── README.md
+└── .gitignore
+```
+
 # Available Scripts
 
 In the project directory, you can run:
@@ -89,75 +159,6 @@ Versions may change in the future and more libraries will be added.
 2. "less": "^3.10.3"
 3. "less-loader": "^5.0.0"
 
-# Folder Structure
-```
-├── src
-│   ├── containers -----------------------------------> Company, Employee etc.
-│   │   ├── {Title}
-│   │   │   ├── apiServices --------------------------> all api related code goes here
-│   │   │   ├── redux --------------------------------> redux related codes are here for a particular module
-│   │   │   │   ├──  actions.js
-│   │   │   │   ├──  actionTypes.js
-│   │   │   │   ├──  reducer.js ----------------------> must be exported and imported in `src/redux/reducers/index.js` to be included in `combineReducers`
-│   │   │   ├── routes
-│   │   │   │   │   ├── index.js ---------------------> history & menu for the bundle routing goes here
-│   │   │   ├── pages -----> Application Pages; DashboardPage, LoginPage etc.
-│   │   │   │   ├──  **/*.jsx
-│   │   │   ├── components ---------------------------> components for it's container
-│   │   │   │   ├──  **/*.jsx ------------------------> LoginForm, MonthlySalesChart etc.
-│   │   ├── ...
-│   │   ├── Layouts
-│   │   │   │   ├── HeaderBar, Sidebar
-│   │   │   │   ├── LayoutWrapper.jsx ----------------> Sidebar.jsx + HeaderBar.jsx
-│   ├── assets ---------------------------------------> Images, CSS & Other assets.
-│   ├── constants
-│   │   ├── config.js.temp ---------------------------> base api url. must be copied/renamed to `config.js`
-│   │   ├── history.js -------------------------------> createBrowserHistory for react-router
-│   │   ├── index.js ---------------------------------> Application Name
-│   ├── redux ----------------------------------------> common redux related codes for whole application
-│   │   ├── actions
-│   │   ├── actionTypes
-│   │   ├── reducers
-│   │   ├── store.js
-│   ├── routes -----------------------------------> page routing
-│   │   ├── apiRoutes ----------------------------> all api routes
-│   │   ├── AuthenticatedRouting.jsx -------------> when user logged in and authorized
-│   │   ├── UnauthenticatedRouting.jsx -----------> when user not logged in or unauthorized
-│   │   ├── menuRoutes ---------------------------> routes for sidebar rendering and routing
-│   │   ├── historyRoutes ------------------------> to change pages
-│   ├── services ---------------------------------> reusable services goes here to use throughout the application
-│   │   ├── apiService ---------------------------> axios middleware and actions
-│   │   ├── checkHttpError -----------------------> check http errors and handle
-│   │   ├── storageService -----------------------> localStorage actions
-│   │   ├── **/*.js
-│   ├── shared -----------------------------------> shared components and services to use throughout the application
-│   ├── styles -----------------------------------> less, css, sass
-│   │   ├── formLayout.js ------------------------> ant form layout
-│   │   ├── less ---------------------------------> ant form layout
-│   │   ├── less
-│   │   │   ├── theme.less -----------------------> ant design style override
-│   │   │   ├── **/*.less
-│   ├── Root.js ----------------------------------> Starts Here
-│   ├── index.js
-│   ├── index.css
-│   └── serviceWorker.js
-├── build (or dist) ------------------------------> `yarn build`
-├── public
-│   ├── index.html
-│   ├── favicon.ico
-│   ├── manifest.json
-├── node_modules
-├── test
-├── jsconfig.json -------------------------------> specify base url as `src`, needed for `components`
-├── .babelrc.js ---------------------------------> Babel plugin import.
-├── .eslintrc.json ------------------------------> linting config and rules. `(eslint)`
-├── .config-overrides.js ------------------------> Custom webpack config. with `custom-cra`
-├── README.md
-├── package.json --------------------------------> packages
-├── yarn.lock
-├── README.md
-└── .gitignore
-```
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
