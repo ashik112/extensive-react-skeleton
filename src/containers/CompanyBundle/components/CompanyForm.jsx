@@ -7,12 +7,12 @@ import {
   Formik, Field,
 } from 'formik';
 import * as yup from 'yup';
-import ButtonSubmit from '../../../../shared/components/Button/ButtonSubmit';
-import { AntInput } from '../../../../shared/forms/FormikAntFields';
+import ButtonSubmit from '../../../shared/components/Button/ButtonSubmit';
+import { AntInput } from '../../../shared/forms/FormikAntFields';
 import {
   antFormItemLayout,
   antTailFormItemLayout,
-} from '../../../../styles/fromLayout';
+} from '../../../styles/fromLayout';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Required!'),

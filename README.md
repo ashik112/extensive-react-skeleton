@@ -92,8 +92,8 @@ Versions may change in the future and more libraries will be added.
 # Folder Structure
 ```
 ├── src
-│   ├── bundles --------------------------------------> CompanyBundle, PurchaseBundle etc.
-│   │   ├── {Title}Bundle
+│   ├── containers --------------------------------------> Company, Employee etc.
+│   │   ├── {Title}
 │   │   │   ├── apiServices --------------------------> all api related code goes here
 │   │   │   ├── redux --------------------------------> redux related codes are here for a particular module
 │   │   │   │   ├──  actions.js
@@ -101,37 +101,43 @@ Versions may change in the future and more libraries will be added.
 │   │   │   │   ├──  reducer.js ----------------------> must be exported and imported in `src/redux/reducers/index.js` to be included in `combineReducers`
 │   │   │   ├── routes
 │   │   │   │   │   ├── index.js ---------------------> history & menu for the bundle routing goes here
-│   │   │   ├── views -----> follow the design structure of pages, templates, atoms
-│   │   │   │   ├──  pages
-│   │   │   │   │   ├── **/*.jsx ---------------------> DashboardPage, LoginPage etc.
-│   │   │   │   ├──  templates
-│   │   │   │   │   ├── **/*.jsx ---------------------> LoginForm, MonthlySalesChart etc.
-│   │   │   │   ├──  atoms
-│   │   │   │   │   ├── **/*.jsx ---------------------> Input, Button etc.
+│   │   │   ├── pages -----> Application Pages; DashboardPage, LoginPage etc.
+│   │   │   │   ├──  **/*.jsx
+│   │   │   ├── components ---------------------------> components for it's container
+│   │   │   │   ├──  **/*.jsx ------------------------> LoginForm, MonthlySalesChart etc.
 │   │   ├── ...
-│   ├── assets ---------------------------------------> Images, CSS and `React Material Kit` assets.
-│   ├── layouts
-│   │   ├── HeaderBar.jsx
-│   │   ├── Sidebar.jsx
-│   │   ├── LayoutWrapper.jsx ------------------------> Sidebar.jsx + HeaderBar.jsx
-│   ├── pages
-│   ├── templates
-│   ├── atoms
+│   │   ├── Layouts
+│   │   │   │   ├── HeaderBar, Sidebar
+│   │   │   │   ├── LayoutWrapper.jsx ----------------> Sidebar.jsx + HeaderBar.jsx
+│   ├── assets ---------------------------------------> Images, CSS & Other assets.
 │   ├── constants
-│   │   ├── index.js.temp ----------------------------> must be copied/renamed to `index.js`
+│   │   ├── config.js.temp ---------------------------> base api url. must be copied/renamed to `config.js`
+│   │   ├── history.js -------------------------------> createBrowserHistory for react-router
+│   │   ├── index.js ---------------------------------> Application Name
 │   ├── redux ----------------------------------------> common redux related codes for whole application
 │   │   ├── actions
 │   │   ├── actionTypes
 │   │   ├── reducers
 │   │   ├── store.js
 │   ├── routes -----------------------------------> page routing
-│   │   ├── index.js -----------------------------> import routes form bundles and export them together
+│   │   ├── apiRoutes ----------------------------> all api routes
 │   │   ├── AuthenticatedRouting.jsx -------------> when user logged in and authorized
 │   │   ├── UnauthenticatedRouting.jsx -----------> when user not logged in or unauthorized
+│   │   ├── menuRoutes ---------------------------> routes for sidebar rendering and routing
+│   │   ├── historyRoutes ------------------------> to change pages
 │   ├── services ---------------------------------> reusable services goes here to use throughout the application
+│   │   ├── apiService ---------------------------> axios middleware and actions
+│   │   ├── checkHttpError -----------------------> check http errors and handle
+│   │   ├── storageService -----------------------> localStorage actions
 │   │   ├── **/*.js
-│   ├── components -------------------------------> `React Material Kit` components.
-│   ├── Root.js
+│   ├── shared -----------------------------------> shared components and services to use throughout the application
+│   ├── styles -----------------------------------> less, css, sass
+│   │   ├── formLayout.js ------------------------> ant form layout
+│   │   ├── less ---------------------------------> ant form layout
+│   │   ├── less
+│   │   │   ├── theme.less -----------------------> ant design style override
+│   │   │   ├── **/*.less
+│   ├── Root.js ----------------------------------> Starts Here
 │   ├── index.js
 │   ├── index.css
 │   └── serviceWorker.js

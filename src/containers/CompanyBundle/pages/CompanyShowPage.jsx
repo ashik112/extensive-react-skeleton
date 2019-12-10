@@ -5,11 +5,11 @@ import {
   Card,
   Descriptions, Tag,
 } from 'antd';
-import companyApiService from '../../apiServices/companyApiService';
-import historyRoutes from '../../../../routes/historyRoutes';
-import checkHttpError from '../../../../services/checkHttpError';
-import CardActionButtons from '../../../../shared/components/Card/CardActionButtons';
-import {companyApiRoutes} from '../../../../routes/apiRoutes';
+import companyApiService from '../apiServices/companyApiService';
+import historyRoutes from '../../../routes/historyRoutes';
+import checkHttpError from '../../../services/checkHttpError';
+import CardActionButtons from '../../../shared/components/Card/CardActionButtons';
+import {companyApiRoutes} from '../../../routes/apiRoutes';
 
 class CompanyShowPage extends Component {
   constructor(props) {

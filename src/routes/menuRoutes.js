@@ -1,15 +1,15 @@
 import CompanyListPage
-  from '../containers/CompanyBundle/views/pages/CompanyListPage';
+  from '../containers/CompanyBundle/pages/CompanyListPage';
 import CompanyShowPage
-  from '../containers/CompanyBundle/views/pages/CompanyShowPage';
+  from '../containers/CompanyBundle/pages/CompanyShowPage';
 import CompanyCreatePage
-  from '../containers/CompanyBundle/views/pages/CompanyCreatePage';
+  from '../containers/CompanyBundle/pages/CompanyCreatePage';
 import CompanyUpdatePage
-  from '../containers/CompanyBundle/views/pages/CompanyUpdatePage';
+  from '../containers/CompanyBundle/pages/CompanyUpdatePage';
 
 import historyRoutes from './historyRoutes';
 import DashboardPage
-  from '../containers/DashboardBundle/views/pages/DashboardPage';
+  from '../containers/DashboardBundle/pages/DashboardPage';
 
 const menuRoutes = [
   {

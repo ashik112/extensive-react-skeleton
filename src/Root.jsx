@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Switch, Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import LoginPage from './containers/AuthenticationBundle/views/pages/LoginPage';
+import LoginPage from './containers/AuthenticationBundle/pages/LoginPage';
 import historyRoutes from './routes/historyRoutes';
 import history from './constants/history';
 import UnauthenticatedRouting from './routes/UnauthenticatedRouting';

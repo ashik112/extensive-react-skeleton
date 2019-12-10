@@ -3,7 +3,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import authActions from '../../redux/actions';
+import authActions from '../redux/actions';
 import LoginForm from '../components/LoginForm';
 import LoginHeader from '../components/LoginHeader';
 import './LoginPage.scss';

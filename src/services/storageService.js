@@ -21,7 +21,7 @@ function set(key, value) {
 
 /**
  * * [Get Value from Storage using a key]
- * @param  {} key
+ * @param key
  */
 function get(key) {
   try {

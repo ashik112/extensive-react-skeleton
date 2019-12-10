@@ -6,10 +6,10 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CompanyForm from '../components/CompanyForm';
-import companyActions from '../../redux/actions';
-import notificationActions from '../../../../redux/notification/notificationActions';
-import historyRoutes from '../../../../routes/historyRoutes';
-import ButtonBack from '../../../../shared/components/Button/ButtonBack';
+import companyActions from '../redux/actions';
+import notificationActions from '../../../redux/notification/notificationActions';
+import historyRoutes from '../../../routes/historyRoutes';
+import ButtonBack from '../../../shared/components/Button/ButtonBack';
 
 class CompanyCreatePage extends Component {
   constructor(props) {

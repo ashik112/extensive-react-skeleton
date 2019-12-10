@@ -5,11 +5,11 @@ import {
 } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import companyActions from '../../redux/actions';
-import history from '../../../../constants/history';
-import historyRoutes from '../../../../routes/historyRoutes';
-import companyApiService from '../../apiServices/companyApiService';
-import TableActionButtons from '../../../../shared/components/Table/TableActionButtons';
+import companyActions from '../redux/actions';
+import history from '../../../constants/history';
+import historyRoutes from '../../../routes/historyRoutes';
+import companyApiService from '../apiServices/companyApiService';
+import TableActionButtons from '../../../shared/components/Table/TableActionButtons';
 
 class CompanyListPage extends Component {
   constructor(props) {

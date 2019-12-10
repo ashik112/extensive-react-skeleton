@@ -66,7 +66,7 @@ typings/
 .history
 
 # project config
-src/constants/index.js
+src/constants/config.js
 
 # build directory
 build

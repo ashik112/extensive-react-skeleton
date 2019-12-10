@@ -5,12 +5,12 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CompanyForm from '../components/CompanyForm';
-import companyActions from '../../redux/actions';
-import notificationActions from '../../../../redux/notification/notificationActions';
-import companyApiService from '../../apiServices/companyApiService';
-import historyRoutes from '../../../../routes/historyRoutes';
-import CardActionButtons from '../../../../shared/components/Card/CardActionButtons';
-import { companyApiRoutes } from '../../../../routes/apiRoutes';
+import companyActions from '../redux/actions';
+import notificationActions from '../../../redux/notification/notificationActions';
+import companyApiService from '../apiServices/companyApiService';
+import historyRoutes from '../../../routes/historyRoutes';
+import CardActionButtons from '../../../shared/components/Card/CardActionButtons';
+import { companyApiRoutes } from '../../../routes/apiRoutes';
 
 
 class CompanyUpdatePage extends Component {
